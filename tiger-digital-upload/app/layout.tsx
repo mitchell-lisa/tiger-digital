@@ -58,7 +58,7 @@ const schema = {
     addressCountry: "US",
   },
   areaServed: "United States",
-  sameAs: [site.social.instagram, site.social.linkedin, site.social.facebook],
+  sameAs: [site.social.linkedin, site.social.facebook],
   founder: { "@type": "Person", name: "Joe DiMarino" },
   knowsAbout: ["Local SEO", "Google Ads", "AI search visibility", "Reputation management"],
   aggregateRating: {

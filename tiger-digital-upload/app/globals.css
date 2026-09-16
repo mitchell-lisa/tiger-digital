@@ -75,31 +75,74 @@ body {
   background: var(--color-tiger);
   color: #fff;
 }
+/* Hover states are deliberately a full step darker rather than a wash. A 5%
+   tint reads as a rendering glitch; a clear colour change reads as a control. */
 .btn-primary:hover {
-  background: var(--color-tiger-deep);
+  background: var(--color-ink);
 }
 .btn-dark {
   background: var(--color-ink);
   color: #fff;
 }
 .btn-dark:hover {
-  background: var(--color-ink-soft);
+  background: var(--color-tiger);
 }
 .btn-outline {
   border: 1.5px solid currentColor;
 }
+/* Outline buttons fill in on hover instead of tinting, so the change is
+   unmistakable on both paper and navy. */
 .btn-outline:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--color-tiger);
+  border-color: var(--color-tiger);
+  color: #fff;
 }
 .btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #fff;
+  border-color: #fff;
+  color: var(--color-ink);
 }
 .btn-light {
   background: var(--color-paper);
   color: var(--color-tiger);
 }
 .btn-light:hover {
-  background: var(--color-cream);
+  background: var(--color-tiger);
+  color: #fff;
+}
+
+/* Keyboard focus. Only :focus-visible, so a mouse click never paints a ring,
+   but tabbing always does. Two-tone so it survives on navy and on paper. */
+:focus-visible {
+  outline: 3px solid var(--color-tiger);
+  outline-offset: 2px;
+  border-radius: 2px;
+  /* Tailwind's transition-colors animates outline-color, which makes the ring
+     fade in. A focus ring has to be there the instant you tab to it. */
+  transition-property: none;
+}
+/* Navy reads on cream and paper; on the navy bands it would vanish, so those
+   switch to sky. `on-dark` is for elements that only turn dark when focused. */
+.bg-ink :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--color-tiger-light);
+}
+
+/* Any card or tile that behaves as a link. Border and lift, not a tint. */
+.card-link {
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
+}
+.card-link:hover {
+  border-color: var(--color-tiger);
+  box-shadow: 0 10px 30px -18px rgba(18, 32, 58, 0.55);
+}
+
+/* Text links inside body copy: underline on hover rather than a colour shift
+   alone, so the affordance does not depend on colour perception. */
+.link-quiet:hover {
+  color: var(--color-tiger);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .stat {

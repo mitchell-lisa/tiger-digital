@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { services, site } from "@/lib/site";
 import CTABand from "@/components/CTABand";
-import GeoGrid from "@/components/GeoGrid";
 import AdsResult from "@/components/AdsResult";
+import Icon from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Services: Local SEO, Paid Ads & Reputation Management",
@@ -41,7 +41,7 @@ export default function ServicesPage() {
           id={s.slug}
           className="scroll-mt-20 border-b border-line"
         >
-          <div className="container-x py-16 md:py-24 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+          <div className="container-x py-16 md:py-24 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-start">
             <div>
               <h2 className="display text-3xl sm:text-4xl">{s.name}</h2>
               <p className="mt-5 text-lg text-ink-soft leading-relaxed">{s.intro}</p>
@@ -62,21 +62,26 @@ export default function ServicesPage() {
               <p className="eyebrow text-tiger-light">{s.resultsHeading}</p>
               <dl className="mt-6 space-y-5">
                 {s.results.map((r) => (
-                  <div key={r.label} className="border-b border-white/10 pb-4 last:border-0 last:pb-0">
-                    <dd className="stat text-3xl text-tiger-light">{r.value}</dd>
-                    <dt className="mt-1 text-sm text-white/60">{r.label}</dt>
+                  <div
+                    key={r.label}
+                    className="flex items-start gap-4 border-b border-white/10 pb-4 last:border-0 last:pb-0"
+                  >
+                    {r.icon && (
+                      <span className="text-tiger-light mt-1.5 shrink-0">
+                        <Icon name={r.icon} className="w-6 h-6" />
+                      </span>
+                    )}
+                    <div>
+                      <dd className="stat text-3xl text-tiger-light">{r.value}</dd>
+                      <dt className="mt-1 text-sm text-white/60">{r.label}</dt>
+                    </div>
                   </div>
                 ))}
               </dl>
             </aside>
           </div>
-          {s.slug === "local-seo" && (
-            <div className="container-x pb-16 md:pb-24">
-              <div className="bg-ink rounded-xl p-4 sm:p-6"><GeoGrid /></div>
-            </div>
-          )}
           {s.slug === "paid-advertising" && (
-            <div className="container-x pb-16 md:pb-24">
+            <div className="container-x pb-16 md:pb-24 -mt-4">
               <AdsResult />
             </div>
           )}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { homeResults, site } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -35,6 +35,33 @@ export default function Hero() {
           <p className="mt-4 text-sm text-white/50 fade-up fade-up-3">
             Free consultation. No commitment.
           </p>
+        </div>
+
+        {/* Sneak peek at the results section further down the page. Values come
+            from the same homeResults data, so the two can never disagree. */}
+        <div className="mt-14 border-t border-white/15 pt-7 fade-up fade-up-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <p className="eyebrow text-white/40">A few recent numbers</p>
+            <a
+              href="#results"
+              className="text-sm font-semibold text-tiger-light hover:text-white transition-colors"
+            >
+              See what is behind them <span aria-hidden>↓</span>
+            </a>
+          </div>
+          <dl className="mt-6 grid grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-4">
+            {homeResults.map((r) => (
+              <div key={r.value}>
+                <dt className="sr-only">{r.teaser}</dt>
+                <dd>
+                  <span className="stat block text-2xl sm:text-3xl text-tiger-light">
+                    {r.value}
+                  </span>
+                  <span className="mt-2 block text-xs text-white/50 leading-snug">{r.teaser}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

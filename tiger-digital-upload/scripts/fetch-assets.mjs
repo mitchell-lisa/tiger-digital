@@ -28,7 +28,10 @@ const logos = {
   "dkp-gastro": "6b042a76-51a2-4b5b-8424-1822de4b20dc/Untitled+design+%2888%29.png",
 };
 const team = {
-  joe: "e29ac263-e711-47f2-92eb-e66540196eec/joe+final.png",
+  // joe.webp is NOT listed here: Joe supplied a new headshot directly in
+  // September 2026 and the committed file is the only copy. Regenerating from
+  // this script would overwrite it with the old Squarespace portrait.
+
   marvin: "7de0c4db-e8f4-43ca-990e-e2ea5123a31e/marvin+final.png",
   kyle: "353e523b-fd43-4119-924b-c13625bb7c3f/kyle+final.png",
   santiago: "c2b1df53-57e6-4a48-b7e5-0960446d1e0d/santi+final.png",
@@ -367,14 +370,8 @@ async function makeSeal(headPng, ink) {
       .toBuffer(),
   );
 
-  // geo-grid report: crop the two map panels out of the 1920x1080 graphic
-  const grid = await get("29ed640d-87be-4c84-bf28-c24236ed4f4c/Reyla++2025+Wrapped+%281%29.png", 2500);
-  const g = sharp(grid).flatten({ background: "#fff" });
-  const { width: W } = await g.metadata();
-  const s = W / 1000;
-  const box = (x0, y0, x1, y1) => ({ left: Math.round(x0 * s), top: Math.round(y0 * s), width: Math.round((x1 - x0) * s), height: Math.round((y1 - y0) * s) });
-  writeFileSync("public/results/map-before.jpg", await g.clone().extract(box(84, 86, 483, 487)).resize({ width: 900, fit: "inside" }).jpeg({ quality: 82 }).toBuffer());
-  writeFileSync("public/results/map-after.jpg", await g.clone().extract(box(500, 86, 899, 487)).resize({ width: 900, fit: "inside" }).jpeg({ quality: 82 }).toBuffer());
+  // The two map panels that used to be cropped out of this graphic are gone:
+  // the heat map was removed from the site in September 2026.
   console.log("result graphics");
 }
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CTABand from "@/components/CTABand";
-import GeoGrid from "@/components/GeoGrid";
+import Icon from "@/components/Icon";
 import AdsResult from "@/components/AdsResult";
 import { site } from "@/lib/site";
 import { pillars, tracks, type Track } from "@/lib/search-funds";
@@ -118,9 +118,10 @@ export default function SearchFundTrack({ track }: { track: Track }) {
                 className="scroll-mt-20 bg-paper p-7 md:p-10 grid gap-8 lg:grid-cols-[1fr_1fr]"
               >
                 <div>
-                  <div className="flex items-baseline gap-4">
-                    <span className="stat text-3xl text-tiger">{`0${i + 1}`}</span>
-                    <h3 className="display text-2xl sm:text-3xl">{p.name}</h3>
+                  <div className="flex items-center gap-4 text-tiger">
+                    <Icon name={p.icon} className="w-8 h-8 shrink-0" />
+                    <span className="stat text-3xl">{`0${i + 1}`}</span>
+                    <h3 className="display text-2xl sm:text-3xl text-ink">{p.name}</h3>
                   </div>
                   <p className="mt-5 text-lg text-ink-soft leading-relaxed">{p.what}</p>
                   <p className="mt-5 text-muted leading-relaxed border-l-2 border-tiger pl-4">
@@ -152,15 +153,12 @@ export default function SearchFundTrack({ track }: { track: Track }) {
           <p className="eyebrow text-tiger">Proof</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">What that looks like in practice.</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
-            Two campaigns from our own client base. Not search-fund portfolio companies in every
-            case, but the same work on the same kind of local business.
+            A campaign from our own client base. Not a search-fund portfolio company, but the same
+            work on the same kind of local business.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 items-start">
-          <div className="bg-ink rounded-xl p-4 sm:p-6">
-            <GeoGrid />
-          </div>
+        <div className="mt-12 max-w-3xl">
           <AdsResult />
         </div>
         <p className="mt-6 text-sm text-muted">

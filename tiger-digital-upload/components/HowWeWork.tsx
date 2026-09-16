@@ -25,7 +25,13 @@ export default function HowWeWork() {
       <div>
         <div className="rule">
           <p className="eyebrow text-tiger">Sound familiar?</p>
-          <h2 className="display mt-3 text-3xl sm:text-4xl">The problems we inherit most.</h2>
+          <h2 className="display mt-3 text-3xl sm:text-4xl">
+            The problems we take over most often.
+          </h2>
+          <p className="mt-5 text-muted leading-relaxed">
+            These are the issues our clients hand us on day one. Every one of them is something we
+            fix as part of the work, not something you need solved before you call.
+          </p>
         </div>
         <ul className="mt-8 space-y-4">
           {challenges.map((c) => (
@@ -36,7 +42,7 @@ export default function HowWeWork() {
           ))}
         </ul>
         <p className="mt-8 text-muted leading-relaxed">
-          If that sounds like the business you just bought, we can usually show what&rsquo;s broken in the
+          If that sounds like your business, our team can usually show you what&rsquo;s broken in the
           first conversation.
         </p>
       </div>

@@ -11,8 +11,8 @@ export default function CTABand() {
               Let&rsquo;s find out what&rsquo;s holding your business back.
             </h2>
             <p className="mt-3 text-ink-soft text-lg max-w-xl">
-              A short call with Joe. We&rsquo;ll look at your reviews, your map coverage, and your ad
-            spend, then tell you what we&rsquo;d fix first.
+              Schedule a short call with our team to discuss what&rsquo;s holding your business back
+              and how we can help.
             </p>
           </div>
         </div>
