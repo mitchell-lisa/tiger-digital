@@ -1,12 +1,17 @@
+import type { PortableTextBlock } from "@portabletext/types";
 import { sanityClient } from "@/lib/sanity/client";
 
 /** Sections an editor may show, hide or reorder. Nothing else is renderable. */
 export const SECTION_KEYS = [
   "intro",
+  "experience",
   "services",
   "section",
   "testimonial",
   "faq",
+  "proof",
+  "checklist",
+  "related",
   "resource",
   "cta",
 ] as const;
@@ -24,8 +29,9 @@ export type LandingPage = {
   h1: string;
   heroSubheading?: string;
   intro: string;
-  sectionHeading?: string;
-  sectionBody?: string;
+  clientExperience?: string;
+  contentSections?: { heading: string; body: PortableTextBlock[] }[];
+  relatedLinks?: { label: string; href: string }[];
   affiliationNotice: string;
   sectionOrder?: SectionKey[];
   faqs?: { question: string; answer: string }[];
@@ -42,7 +48,16 @@ export type LandingPage = {
 };
 
 export type SiteDefaults = {
-  serviceBlocks: { heading: string; body: string }[];
+  serviceBlocks: { heading: string; body: string; steps?: string[] }[];
+  proofPoints?: { value: string; label: string; basis?: string }[];
+  proofDisclaimer?: string;
+  transitionChecklist?: {
+    heading?: string;
+    items?: string[];
+    linkLabel?: string;
+    linkHref?: string;
+  };
+  relatedLinks?: { label: string; href: string }[];
   defaultCtaText?: string;
   defaultCtaUrl?: string;
 };
@@ -65,8 +80,9 @@ const PAGE_FIELDS = /* groq */ `
   h1,
   heroSubheading,
   intro,
-  sectionHeading,
-  sectionBody,
+  clientExperience,
+  contentSections[]{heading, body},
+  relatedLinks[]{label, href},
   affiliationNotice,
   sectionOrder,
   faqs[]{question, answer},
@@ -137,7 +153,7 @@ export async function getSiteDefaults(): Promise<SiteDefaults | null> {
     "site defaults",
     () =>
       client.fetch<SiteDefaults | null>(
-        /* groq */ `*[_type == "siteDefaults"][0]{serviceBlocks[]{heading, body}, defaultCtaText, defaultCtaUrl}`,
+        /* groq */ `*[_type == "siteDefaults"][0]{serviceBlocks[]{heading, body, steps}, proofPoints[]{value, label, basis}, proofDisclaimer, transitionChecklist{heading, items, linkLabel, linkHref}, relatedLinks[]{label, href}, defaultCtaText, defaultCtaUrl}`,
       ),
     null,
   );
@@ -150,14 +166,22 @@ export function visibleSections(page: LandingPage, defaults: SiteDefaults | null
     switch (key) {
       case "intro":
         return Boolean(page.intro);
+      case "experience":
+        return Boolean(page.clientExperience);
       case "services":
         return Boolean(defaults?.serviceBlocks?.length);
       case "section":
-        return Boolean(page.sectionHeading || page.sectionBody);
+        return Boolean(page.contentSections?.length);
       case "testimonial":
         return Boolean(page.testimonialQuote && page.testimonialAttribution);
       case "faq":
         return Boolean(page.faqs?.length);
+      case "proof":
+        return Boolean(defaults?.proofPoints?.length);
+      case "checklist":
+        return Boolean(defaults?.transitionChecklist?.items?.length);
+      case "related":
+        return Boolean((page.relatedLinks ?? defaults?.relatedLinks ?? []).length);
       case "resource":
         return Boolean(page.resourceUrl && page.resourceLabel);
       case "cta":

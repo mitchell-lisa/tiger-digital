@@ -98,17 +98,49 @@ export const landingPage = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sectionHeading",
-      title: "Section heading",
-      type: "string",
+      name: "contentSections",
+      title: "Content sections",
+      description:
+        "The body of the page. Add as many as the subject deserves. The import fills these from the sheet; anything you add here is yours and a re-import will not overwrite it.",
+      type: "array",
       group: "content",
-      validation: (rule) => rule.max(120),
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "contentSection",
+          fields: [
+            defineField({
+              name: "heading",
+              title: "Heading",
+              type: "string",
+              validation: (rule) => rule.required().max(120),
+            }),
+            defineField({
+              name: "body",
+              title: "Body",
+              description:
+                "Sub-headings, bullets and links are available. Keep it specific to this page: length on its own is not worth anything, and ten padded pages read worse than ten short honest ones.",
+              type: "richText",
+              validation: (rule) => rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: "heading", body: "body" },
+            prepare: ({ title, body }) => {
+              const blocks = Array.isArray(body) ? body.length : 0;
+              return { title: title ?? "(no heading)", subtitle: `${blocks} block${blocks === 1 ? "" : "s"}` };
+            },
+          },
+        }),
+      ],
     }),
     defineField({
-      name: "sectionBody",
-      title: "Section body",
+      name: "clientExperience",
+      title: "Our experience with this audience",
+      description:
+        "Only for audiences we genuinely work with. This is a claim about our client base, so it must be true for THIS page - leave it blank rather than generalising from another page. It is not a claim about the institution, and the affiliation notice still applies.",
       type: "text",
-      rows: 6,
+      rows: 3,
       group: "content",
     }),
     defineField({
@@ -146,7 +178,7 @@ export const landingPage = defineType({
         list: [
           { title: "Introduction", value: "intro" },
           { title: "Services", value: "services" },
-          { title: "Section", value: "section" },
+          { title: "Content sections", value: "section" },
           { title: "Testimonial", value: "testimonial" },
           { title: "FAQs", value: "faq" },
           { title: "Further reading", value: "resource" },
@@ -232,6 +264,31 @@ export const landingPage = defineType({
           if (doc?.testimonialQuote && !value) return "Attribution is required when there is a quote.";
           return true;
         }),
+    }),
+    defineField({
+      name: "relatedLinks",
+      title: "Related pages on this site",
+      description:
+        "Internal links shown near the end of the page. Shared defaults are used when this is empty; anything added here replaces them for this page.",
+      type: "array",
+      group: "extras",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "relatedLink",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string", validation: (r) => r.required().max(90) }),
+            defineField({
+              name: "href",
+              title: "Path",
+              description: "A path on this site, starting with /",
+              type: "string",
+              validation: (r) => r.required().regex(/^\/[\w\-/#]*$/, { name: "site path" }),
+            }),
+          ],
+          preview: { select: { title: "label", subtitle: "href" } },
+        }),
+      ],
     }),
     defineField({
       name: "resourceLabel",

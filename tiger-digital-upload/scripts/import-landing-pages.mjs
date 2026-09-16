@@ -22,6 +22,7 @@
  */
 import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
+import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -63,53 +64,8 @@ const REQUIRED = [
   "affiliation_notice", "seo_title", "meta_description",
 ];
 
-/** The sheet's slug repeats the section name; the URL does not need to. */
-const shortSlug = (slug) => slug.replace(/^search-fund-marketing-/, "").trim();
-
-/** Slugs that already belong to hand-built pages under /search-funds. */
-const RESERVED_SLUGS = new Set(["self-funded", "traditional"]);
-
-const STATUS = { draft: "draft", "needs revision": "needs-revision", approved: "approved" };
-
-/** Fields the importer owns, in Sanity's shape. Anything not here is never touched. */
-function mapRow(row) {
-  const faqs = [];
-  if (row.faq_1_question) faqs.push({ _key: "faq1", question: row.faq_1_question, answer: row.faq_1_answer });
-  if (row.faq_2_question) faqs.push({ _key: "faq2", question: row.faq_2_question, answer: row.faq_2_answer });
-
-  const doc = {
-    pageId: row.page_id,
-    title: row.school_name,
-    slug: { _type: "slug", current: shortSlug(row.slug) },
-    audienceName: row.school_name,
-    audienceLocation: row.school_location || undefined,
-    h1: row.h1,
-    heroSubheading: row.hero_subheading || undefined,
-    intro: row.intro,
-    sectionHeading: row.section_heading || undefined,
-    sectionBody: row.section_body || undefined,
-    affiliationNotice: row.affiliation_notice,
-    faqs: faqs.length ? faqs : undefined,
-    resourceLabel: row.resource_label || undefined,
-    resourceUrl: row.resource_url || undefined,
-    resourceContext: row.resource_context || undefined,
-    ctaText: row.cta_text || undefined,
-    ctaUrl: row.cta_url || undefined,
-    seoTitle: row.seo_title,
-    metaDescription: row.meta_description,
-    primaryKeyword: row.primary_keyword || undefined,
-    editorialStatus: STATUS[(row.status || "").toLowerCase()] ?? "draft",
-    reviewNotes: row.review_notes || undefined,
-  };
-  // Testimonials only if both halves are present; a quote with no attribution
-  // is worse than no quote.
-  if (row.testimonial_quote && row.testimonial_attribution) {
-    doc.testimonialQuote = row.testimonial_quote;
-    doc.testimonialAttribution = row.testimonial_attribution;
-  }
-  for (const k of Object.keys(doc)) if (doc[k] === undefined) delete doc[k];
-  return doc;
-}
+/** Fields the schema no longer has, removed from documents written before it changed. */
+const RETIRED_FIELDS = ["sectionHeading", "sectionBody"];
 
 const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
@@ -167,6 +123,12 @@ rows.forEach((row, i) => {
     else errors.push(`${line1}\n      If this relationship is real and approved, re-run with --allow-claims.`);
   }
 
+  if (row.client_experience) {
+    warnings.push(
+      `row ${line} [${id}]: claims client experience with this audience — confirm it is still true before publishing: "${row.client_experience.slice(0, 90)}…"`,
+    );
+  }
+
   for (const [col, label] of [
     ["hero_image_url", "hero image"],
     ["testimonial_quote", "testimonial"],
@@ -196,6 +158,107 @@ if (!token) {
 }
 
 const client = createClient({ projectId, dataset, apiVersion: "2026-09-16", token, useCdn: false });
+
+/**
+ * Shared defaults, seeded once.
+ *
+ * Without this document the service blocks render nowhere, because the
+ * template hides that section when there is nothing to show - so every landing
+ * page silently loses two blocks it was designed around. Wording comes from
+ * the sheet's Import guide; the related links point at material already
+ * published on this site, which is the one kind of depth that can be added to
+ * all ten pages without duplicating prose across them.
+ *
+ * createIfNotExists, so a later run never overwrites edits made in the Studio.
+ */
+const DEFAULTS_ID = "siteDefaults";
+const SEED_DEFAULTS = {
+  _id: `drafts.${DEFAULTS_ID}`,
+  _type: "siteDefaults",
+  // Service wording from the sheet's Import guide; the steps under each are
+  // lifted verbatim from the pillars already published on the search-fund
+  // pages, so the same promise is described the same way everywhere.
+  serviceBlocks: [
+    {
+      _key: "svc1",
+      heading: "SEO and AI search visibility",
+      body: "Help prospective customers find and understand the acquired business through clearer service content and a stronger search presence.",
+      steps: [
+        "A full rank baseline before anything changes, so you know what you actually bought",
+        "Google Business Profile custody, then categories, services, and service-area cleanup",
+        "Citation and NAP consistency after the entity or the ownership changes hands",
+        "Service and location pages built for the terms that convert, not the terms with volume",
+        "Entity consistency: one name, one address, one phone, one description everywhere a model can read it",
+        "Content written to answer the question directly, in the shape an answer engine will lift",
+      ],
+    },
+    {
+      _key: "svc2",
+      heading: "Paid advertising",
+      body: "Reach prospective customers with campaigns aligned to the acquired company's services, market, and conversion goals.",
+      steps: [
+        "Budget mapped to the rank data: spend where you are invisible, pull back where you already rank",
+        "Local Services Ads and Google Guaranteed where the category supports them",
+        "Call tracking and offline conversion import, so a booked job is the conversion, not a click",
+        "Search-term and negative-keyword discipline from the first week, not the first quarterly review",
+        "Reporting that ends at cost per booked job",
+      ],
+    },
+  ],
+  // Verified figures, copied from the home page with their basis lines intact.
+  // A number without its period and client count is not evidence.
+  proofPoints: [
+    {
+      _key: "pp1",
+      value: "$100,000+",
+      label: "in closed revenue from paid ads in a single month for one client, with around a 14x return on ad spend",
+      basis: "June 2026. Revenue from closed jobs tracked back to the ads that generated the lead.",
+    },
+    {
+      _key: "pp2",
+      value: "50%",
+      label: "of paid leads booked an appointment, and 21.6% became paying customers",
+      basis: "Same client and month: 134 leads, 67 booked, 29 customers.",
+    },
+    {
+      _key: "pp3",
+      value: "3 of 3",
+      label: "websites we audited finished at 98% site health or higher",
+      basis: "3 clients, April to July 2026. Measured in SEMrush.",
+    },
+    {
+      _key: "pp4",
+      value: "23",
+      label: "location landing pages built to reach priority markets",
+    },
+  ],
+  proofDisclaimer:
+    "Results are from Tiger Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
+  // Headings only. The full explanation lives on /search-funds; repeating
+  // several hundred words of it on all ten pages would make each page
+  // proportionally less distinctive rather than more useful.
+  transitionChecklist: {
+    heading: "Six things that break at close",
+    items: [
+      "The Google Business Profile",
+      "The name",
+      "The reviews",
+      "The phone number",
+      "The tracking",
+      "The website and the domain",
+    ],
+    linkLabel: "Read what goes wrong with each",
+    linkHref: "/search-funds",
+  },
+  relatedLinks: [
+    { _key: "rl1", label: "Self-funded search: the first 90 days", href: "/search-funds/self-funded" },
+    { _key: "rl2", label: "Traditional search funds: the playbook", href: "/search-funds/traditional" },
+    { _key: "rl4", label: "What we do: rankings, ads and reviews", href: "/services" },
+    { _key: "rl5", label: "Talk to our team", href: "/contact" },
+  ],
+  defaultCtaText: "Book a consultation",
+  defaultCtaUrl: "/contact",
+};
 
 const docIds = rows.map((r) => `landingPage-${r.page_id}`);
 const draftIds = docIds.map((id) => `drafts.${id}`);
@@ -241,7 +304,18 @@ const short = (v) => {
   return s === undefined ? "(unset)" : s.length > 70 ? `${s.slice(0, 70)}…` : s;
 };
 
+const defaultsExist = (
+  await client.fetch(`count(*[_id in $ids])`, {
+    ids: [DEFAULTS_ID, `drafts.${DEFAULTS_ID}`],
+  })
+) > 0;
+
 console.log("Plan");
+console.log(
+  defaultsExist
+    ? "  shared defaults already exist; left untouched"
+    : "  + seed shared defaults (service blocks and related links) - none exist yet",
+);
 console.log(`  create    ${plan.create.length}`);
 console.log(`  update    ${plan.update.length}`);
 console.log(`  unchanged ${plan.unchanged.length}`);
@@ -273,14 +347,20 @@ if (!APPLY) {
 // --- write ------------------------------------------------------------------
 const tx = client.transaction();
 let written = 0;
+if (!defaultsExist) {
+  tx.createIfNotExists(SEED_DEFAULTS);
+  console.log("\nSeeding shared defaults.");
+}
 for (const p of [...plan.create, ...plan.update, ...plan.conflicts]) {
   const fields = { ...p.mapped };
   if (p.conflicts) for (const c of p.conflicts) delete fields[c.field]; // leave edits alone
+  const carried = { ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}) };
+  for (const dead of RETIRED_FIELDS) delete carried[dead];
   const snapshot = JSON.stringify(p.mapped); // what the sheet says now
   tx.createOrReplace({
     _id: p.draftId,
     _type: "landingPage",
-    ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}),
+    ...carried,
     ...fields,
     importSnapshot: snapshot,
     _createdAt: undefined,

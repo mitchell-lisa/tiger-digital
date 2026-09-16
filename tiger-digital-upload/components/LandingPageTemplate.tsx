@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import RichText from "@/components/RichText";
 import { site } from "@/lib/site";
 import {
   visibleSections,
@@ -92,6 +93,18 @@ export default function LandingPageTemplate({
               </section>
             );
 
+          case "experience":
+            return (
+              <section key={key} className="container-x pb-4">
+                <div className="max-w-3xl rounded-lg border border-line bg-paper p-6 md:p-7">
+                  <p className="eyebrow text-tiger">Our experience</p>
+                  <p className="mt-3 text-lg text-ink-soft leading-relaxed">
+                    {page.clientExperience}
+                  </p>
+                </div>
+              </section>
+            );
+
           case "services":
             return (
               <section key={key} className="border-y border-line bg-paper">
@@ -110,6 +123,18 @@ export default function LandingPageTemplate({
                           {b.heading}
                         </h3>
                         <p className="mt-3 text-muted leading-relaxed">{b.body}</p>
+                        {b.steps?.length ? (
+                          <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
+                            {b.steps.map((step) => (
+                              <li key={step} className="flex gap-2.5 text-sm text-ink-soft leading-relaxed">
+                                <span className="text-tiger font-bold shrink-0" aria-hidden>
+                                  ✓
+                                </span>
+                                {step}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
                       </div>
                     ))}
                   </div>
@@ -120,18 +145,107 @@ export default function LandingPageTemplate({
           case "section":
             return (
               <section key={key} className="container-x py-16 md:py-20">
-                <div className="rule max-w-3xl">
-                  {page.sectionHeading && (
-                    <h2 className="display mt-3 text-3xl sm:text-4xl">{page.sectionHeading}</h2>
-                  )}
-                  {page.sectionBody && (
-                    <p className="mt-5 text-lg text-ink-soft leading-relaxed whitespace-pre-line">
-                      {page.sectionBody}
-                    </p>
+                <div className="max-w-3xl space-y-14">
+                  {page.contentSections!.map((s) => (
+                    <div key={s.heading} className="rule">
+                      <h2 className="display mt-3 text-3xl sm:text-4xl">{s.heading}</h2>
+                      <div className="mt-5">
+                        <RichText value={s.body} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+
+          case "proof":
+            return (
+              <section key={key} className="container-x py-14 md:py-16">
+                <div className="rule max-w-2xl">
+                  <p className="eyebrow text-tiger">Results</p>
+                  <h2 className="display mt-3 text-2xl sm:text-3xl">Figures we can stand behind.</h2>
+                </div>
+                <dl className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {defaults!.proofPoints!.map((pt) => (
+                    <div
+                      key={pt.value + pt.label}
+                      className="border border-line border-t-4 border-t-tiger rounded-lg bg-paper p-5"
+                    >
+                      <dd className="stat text-[2rem] text-ink">{pt.value}</dd>
+                      <dt className="mt-2 text-sm leading-snug">{pt.label}</dt>
+                      {pt.basis && (
+                        <p className="mt-3 text-[0.78rem] text-muted leading-relaxed">{pt.basis}</p>
+                      )}
+                    </div>
+                  ))}
+                </dl>
+                {defaults!.proofDisclaimer && (
+                  <p className="mt-5 text-xs text-muted leading-relaxed max-w-3xl">
+                    {defaults!.proofDisclaimer}
+                  </p>
+                )}
+              </section>
+            );
+
+          case "checklist": {
+            const cl = defaults!.transitionChecklist!;
+            return (
+              <section key={key} className="bg-ink text-white">
+                <div className="container-x py-14 md:py-16">
+                  <div className="rule rule-light max-w-2xl">
+                    <p className="eyebrow text-tiger-light">Before you optimise anything</p>
+                    <h2 className="display mt-3 text-2xl sm:text-3xl">
+                      {cl.heading ?? "What breaks at close"}
+                    </h2>
+                  </div>
+                  <ul className="mt-8 grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
+                    {cl.items!.map((item) => (
+                      <li key={item} className="flex gap-3 text-white/80">
+                        <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-tiger-light shrink-0" aria-hidden />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {cl.linkHref && cl.linkLabel && (
+                    <Link
+                      href={cl.linkHref}
+                      className="mt-8 inline-block text-sm font-semibold text-tiger-light hover:text-white transition-colors"
+                    >
+                      {cl.linkLabel} <span aria-hidden>→</span>
+                    </Link>
                   )}
                 </div>
               </section>
             );
+          }
+
+          case "related": {
+            const links = page.relatedLinks?.length
+              ? page.relatedLinks
+              : (defaults?.relatedLinks ?? []);
+            return (
+              <section key={key} className="border-t border-line bg-paper">
+                <div className="container-x py-14 md:py-16">
+                  <div className="rule max-w-2xl">
+                    <p className="eyebrow text-tiger">Keep reading</p>
+                    <h2 className="display mt-3 text-2xl sm:text-3xl">More on this site.</h2>
+                  </div>
+                  <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
+                    {links.map((l) => (
+                      <li key={l.href}>
+                        <Link
+                          href={l.href}
+                          className="card-link block border border-line rounded-lg p-5 font-display font-bold tracking-tight"
+                        >
+                          {l.label} <span aria-hidden>→</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            );
+          }
 
           case "testimonial":
             return (
