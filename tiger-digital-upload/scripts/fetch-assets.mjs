@@ -134,13 +134,14 @@ for (const [name, url] of Object.entries(externalLogos)) {
   writeFileSync(`public/clients/${name}.png`, out);
   console.log("logo", name);
 }
-for (const [name, path] of Object.entries(team)) {
-  const buf = await get(path, 1500);
-  const trimmed = await sharp(buf).ensureAlpha().trim().resize({ width: 480, height: 800, fit: "inside" }).png().toBuffer();
-  const out = await sharp(await recolourRing(trimmed)).webp({ quality: 72 }).toBuffer();
-  writeFileSync(`public/team/${name}.webp`, out);
-  console.log("team", name);
-}
+// Team photos are NOT regenerated here any more. The committed files are square
+// face crops taken from inside the old oval portraits, which is what the team
+// grid renders as circles. Running the loop below would put the superseded
+// ovals back and undo the crops, so it is intentionally disabled; `team` and
+// `recolourRing` are kept for reference on where the originals came from.
+void team;
+void recolourRing;
+console.log("team photos: skipped (committed crops are final)");
 const SEAL = 1024;
 const INNER_R = 431; // inner ring radius
 const FILL = 0.86; // how much of the inner circle the head occupies
