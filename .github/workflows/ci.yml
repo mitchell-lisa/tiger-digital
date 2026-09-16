@@ -1,0 +1,32 @@
+name: CI
+
+# The site deploys straight from main via Vercel, so this is the only gate
+# between a branch and production.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Lint and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tiger-digital-upload
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tiger-digital-upload/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      # `next build` type-checks as part of the build, so this covers tsc too.
+      # The prebuild asset fetch is a no-op here because public/ is committed.
+      - run: npm run build

@@ -16,7 +16,7 @@ export default function TeamPage() {
           <p className="eyebrow text-tiger">Our team</p>
           <h1 className="display mt-3 text-3xl sm:text-5xl">The people doing the work.</h1>
           <p className="mt-5 text-lg text-muted leading-relaxed">
-            Tiger Digital was founded in Moorestown, New Jersey by Joe DiMarino. It's a small team on
+            Tiger Digital was founded in Moorestown, New Jersey by Joe DiMarino. It&rsquo;s a small team on
             purpose: every client works directly with the people running their campaigns.
           </p>
         </div>

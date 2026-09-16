@@ -36,7 +36,7 @@ export default function HowWeWork() {
           ))}
         </ul>
         <p className="mt-8 text-muted leading-relaxed">
-          If that sounds like the business you just bought, we can usually show what's broken in the
+          If that sounds like the business you just bought, we can usually show what&rsquo;s broken in the
           first conversation.
         </p>
       </div>
