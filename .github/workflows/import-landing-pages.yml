@@ -1,0 +1,79 @@
+name: Import landing pages
+
+# Run by hand from the Actions tab. Never on a push: importing should be a
+# decision, not a side effect of editing a file.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Dry run first. Apply only after reading the plan."
+        type: choice
+        required: true
+        default: dry-run
+        options: [dry-run, apply]
+      csv:
+        description: "CSV to import, relative to tiger-digital-upload/"
+        type: string
+        required: true
+        default: content/imports/search-fund-landing-pages.csv
+      accept_sheet:
+        description: "Let the sheet overwrite fields edited in Sanity (normally leave off)"
+        type: boolean
+        required: false
+        default: false
+
+# Read-only on the repo. The only write this job performs is to Sanity.
+permissions:
+  contents: read
+
+jobs:
+  import:
+    name: ${{ inputs.mode }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tiger-digital-upload
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tiger-digital-upload/package-lock.json
+
+      - run: npm ci
+
+      - name: Check the token is present
+        env:
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+        run: |
+          if [ -z "$SANITY_WRITE_TOKEN" ]; then
+            echo "::error::SANITY_WRITE_TOKEN is not set. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Import
+        env:
+          # Held as a GitHub secret, injected only for this step, never printed
+          # and never written to the repo.
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+          SANITY_PROJECT_ID: 7yf56y02
+          SANITY_DATASET: production
+        run: |
+          node scripts/import-landing-pages.mjs \
+            --csv="${{ inputs.csv }}" \
+            ${{ inputs.mode == 'apply' && '--apply' || '' }} \
+            ${{ inputs.accept_sheet && '--accept-sheet' || '' }} \
+            | tee "$RUNNER_TEMP/import.log"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Import (${{ inputs.mode }})"
+            echo ""
+            echo '```'
+            cat "$RUNNER_TEMP/import.log" 2>/dev/null || echo "(no output)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
