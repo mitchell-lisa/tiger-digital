@@ -170,6 +170,7 @@ export const clients: { name: string; logo: string; url?: string; dark?: boolean
   // Their logo is white, made for a dark header, so it gets the navy tile.
   { name: "Resource Renewal", logo: "/clients/resource-renewal.png", url: "https://www.resourcerenewal.com/", dark: true },
   { name: "ViperJet Drain Services", logo: "/clients/viperjet-drain.png", url: "https://www.viperjetdrain.com/" },
+  { name: "Municipal Maintenance Co.", logo: "/clients/municipal-maintenance.png", url: "https://mmc-nj.com/" },
 ];
 
 export const testimonials = [

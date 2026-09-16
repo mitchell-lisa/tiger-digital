@@ -41,6 +41,9 @@ const LOGO = "198dcc8b-e78e-4e9c-9dba-0c3dfef8013a/tiger+logo+main.png";
  * uploads, so these are absolute URLs on the clients' own sites. Same
  * processing as the CDN logos: trim, fit to the tile, palette PNG.
  */
+// Not listed below: municipal-maintenance. Joe supplied that logo directly
+// rather than from a URL, so public/clients/municipal-maintenance.png is the
+// only copy. Keep it when regenerating; this script will not recreate it.
 const externalLogos = {
   "willco-air-conditioning": "https://willcoairconditioning.com/wp-content/uploads/2025/02/Group.svg",
   "resource-renewal":
