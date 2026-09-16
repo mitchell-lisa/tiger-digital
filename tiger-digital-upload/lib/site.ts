@@ -156,25 +156,36 @@ export const services: Service[] = [
  * Same rule as the rest of this file: nothing here is inferred or rounded up.
  * `basis` is optional because the landing-page count needs no qualifier.
  */
-export const homeResults: { value: string; label: string; basis?: string }[] = [
+export const homeResults: {
+  value: string;
+  label: string;
+  basis?: string;
+  /** Compressed label for the hero teaser strip. Must stand alone: the basis
+   *  line is not next to it there. */
+  teaser: string;
+}[] = [
   {
     value: "$100,000+",
+    teaser: "closed from ads, one client, one month",
     label:
       "in closed revenue from paid ads in a single month for one client, with around a 14x return on ad spend",
     basis: "June 2026. Revenue from closed jobs tracked back to the ads that generated the lead.",
   },
   {
     value: "50%",
+    teaser: "of paid leads booked an appointment",
     label: "of paid leads booked an appointment, and 21.6% became paying customers",
     basis: "Same client and month: 134 leads, 67 booked, 29 customers.",
   },
   {
     value: "3 of 3",
+    teaser: "audited sites at 98%+ health",
     label: "websites we audited finished at 98% site health or higher",
     basis: "3 clients, April to July 2026. Measured in SEMrush.",
   },
   {
     value: "23",
+    teaser: "location pages built",
     label: "location landing pages built to reach priority markets",
   },
 ];
