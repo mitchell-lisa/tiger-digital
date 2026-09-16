@@ -14,8 +14,13 @@ export default function Hero() {
             <span className="text-tiger-light">No fluff.</span>
           </h1>
           <p className="mt-6 text-xl text-white/80 leading-snug fade-up fade-up-3">
-            Self-funded or traditional searcher, we help you dominate local search
-            after the acquisition.
+            <Link
+              href="/search-funds"
+              className="underline decoration-tiger-light/40 underline-offset-4 hover:decoration-tiger-light transition-colors"
+            >
+              Self-funded or traditional searcher
+            </Link>
+            , we help you dominate local search after the acquisition.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3 fade-up fade-up-3">
             <Link href={site.cta.primary.href} className="btn btn-primary !min-h-[3.5rem] !px-8 text-base">
