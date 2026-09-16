@@ -1,4 +1,5 @@
 import type { SchemaTypeDefinition } from "sanity";
-import { locationPage } from "./locationPage";
+import { landingPage } from "./landingPage";
+import { siteDefaults } from "./siteDefaults";
 
-export const schemaTypes: SchemaTypeDefinition[] = [locationPage];
+export const schemaTypes: SchemaTypeDefinition[] = [landingPage, siteDefaults];
