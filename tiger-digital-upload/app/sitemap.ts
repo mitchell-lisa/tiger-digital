@@ -4,6 +4,13 @@ import { tracks } from "@/lib/search-funds";
 import { getLandingPageSlugs } from "@/lib/landing-pages";
 
 /**
+ * Revalidated hourly as a safety net. The Sanity webhook refreshes this within
+ * seconds of a publish; this interval means the sitemap still self-heals if a
+ * webhook is ever missed, rather than staying stale until the next deploy.
+ */
+export const revalidate = 3600;
+
+/**
  * Only published landing pages reach the sitemap: the slug query runs against
  * Sanity's published perspective, so drafts have no entry here and no route to
  * be crawled through.
