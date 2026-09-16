@@ -119,7 +119,18 @@ export const landingPage = defineType({
       type: "text",
       rows: 2,
       group: "content",
-      validation: (rule) => rule.required(),
+      // A disclaimer that does not deny anything is not a disclaimer. This
+      // stops the notice being edited down to a sentence that merely mentions
+      // the institution, and it blocks publishing if someone tries.
+      validation: (rule) =>
+        rule
+          .required()
+          .custom((value) =>
+            typeof value === "string" &&
+            /not affiliated|no affiliation|independent|not endorsed/i.test(value)
+              ? true
+              : 'Must state the relationship plainly, e.g. "Independent service provider; not affiliated with or endorsed by ...".',
+          ),
     }),
 
     // --- sections the editor can hide or reorder -----------------------
