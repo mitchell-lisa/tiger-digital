@@ -23,6 +23,7 @@
 import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
 import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
+import { buildDraftDoc } from "./lib/build-doc.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -352,21 +353,15 @@ if (!defaultsExist) {
   console.log("\nSeeding shared defaults.");
 }
 for (const p of [...plan.create, ...plan.update, ...plan.conflicts]) {
-  const fields = { ...p.mapped };
-  if (p.conflicts) for (const c of p.conflicts) delete fields[c.field]; // leave edits alone
-  const carried = { ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}) };
-  for (const dead of RETIRED_FIELDS) delete carried[dead];
-  const snapshot = JSON.stringify(p.mapped); // what the sheet says now
-  tx.createOrReplace({
-    _id: p.draftId,
-    _type: "landingPage",
-    ...carried,
-    ...fields,
-    importSnapshot: snapshot,
-    _createdAt: undefined,
-    _updatedAt: undefined,
-    _rev: undefined,
-  });
+  tx.createOrReplace(
+    buildDraftDoc({
+      draftId: p.draftId,
+      mapped: p.mapped,
+      conflictFields: (p.conflicts ?? []).map((c) => c.field), // leave edits alone
+      existing: byId.get(p.draftId) ?? byId.get(p.docId) ?? {},
+      retiredFields: RETIRED_FIELDS,
+    }),
+  );
   written++;
 }
 if (written === 0) {
