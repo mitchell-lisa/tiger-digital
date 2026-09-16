@@ -14,6 +14,7 @@ export const siteDefaults = defineType({
   type: "document",
   groups: [
     { name: "services", title: "Service blocks", default: true },
+    { name: "proof", title: "Proof & checklist" },
     { name: "cta", title: "Call to action" },
   ],
   fields: [
@@ -43,9 +44,70 @@ export const siteDefaults = defineType({
               rows: 3,
               validation: (rule) => rule.required().max(400),
             }),
+            defineField({
+              name: "steps",
+              title: "What the work is",
+              description:
+                "The concrete steps under this service. Short lines, not paragraphs - this is what turns a one-sentence service claim into something a reader can judge.",
+              type: "array",
+              of: [{ type: "string" }],
+            }),
           ],
           preview: { select: { title: "heading", subtitle: "body" } },
         }),
+      ],
+    }),
+    defineField({
+      name: "proofPoints",
+      title: "Verified results",
+      description:
+        "Figures we can stand behind. Each carries the basis it came from, because a number without its period and client count is not evidence.",
+      type: "array",
+      group: "proof",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "proofPoint",
+          fields: [
+            defineField({ name: "value", title: "Figure", type: "string", validation: (r) => r.required().max(20) }),
+            defineField({ name: "label", title: "What it measures", type: "text", rows: 2, validation: (r) => r.required() }),
+            defineField({
+              name: "basis",
+              title: "Basis",
+              description: "Period, client count, and where it was measured. Leave blank only when the figure needs no qualifier.",
+              type: "string",
+            }),
+          ],
+          preview: { select: { title: "value", subtitle: "label" } },
+        }),
+      ],
+    }),
+    defineField({
+      name: "proofDisclaimer",
+      title: "Results disclaimer",
+      description: "Shown under the figures. Required whenever any figure is shown.",
+      type: "text",
+      rows: 2,
+      group: "proof",
+      validation: (rule) =>
+        rule.custom((value, ctx) => {
+          const doc = ctx.document as { proofPoints?: unknown[] } | undefined;
+          if (doc?.proofPoints?.length && !value) return "A disclaimer is required when figures are shown.";
+          return true;
+        }),
+    }),
+    defineField({
+      name: "transitionChecklist",
+      title: "What breaks at close (checklist)",
+      description:
+        "Headings only, linking to the full explanation elsewhere on the site. Deliberately not the full prose: repeating several hundred words on every landing page would make each page proportionally less distinctive, not more useful.",
+      type: "object",
+      group: "proof",
+      fields: [
+        defineField({ name: "heading", title: "Heading", type: "string" }),
+        defineField({ name: "items", title: "Items", type: "array", of: [{ type: "string" }] }),
+        defineField({ name: "linkLabel", title: "Link label", type: "string" }),
+        defineField({ name: "linkHref", title: "Link path", type: "string" }),
       ],
     }),
     defineField({

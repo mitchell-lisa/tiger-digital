@@ -175,23 +175,86 @@ const DEFAULTS_ID = "siteDefaults";
 const SEED_DEFAULTS = {
   _id: `drafts.${DEFAULTS_ID}`,
   _type: "siteDefaults",
+  // Service wording from the sheet's Import guide; the steps under each are
+  // lifted verbatim from the pillars already published on the search-fund
+  // pages, so the same promise is described the same way everywhere.
   serviceBlocks: [
     {
       _key: "svc1",
       heading: "SEO and AI search visibility",
       body: "Help prospective customers find and understand the acquired business through clearer service content and a stronger search presence.",
+      steps: [
+        "A full rank baseline before anything changes, so you know what you actually bought",
+        "Google Business Profile custody, then categories, services, and service-area cleanup",
+        "Citation and NAP consistency after the entity or the ownership changes hands",
+        "Service and location pages built for the terms that convert, not the terms with volume",
+        "Entity consistency: one name, one address, one phone, one description everywhere a model can read it",
+        "Content written to answer the question directly, in the shape an answer engine will lift",
+      ],
     },
     {
       _key: "svc2",
       heading: "Paid advertising",
       body: "Reach prospective customers with campaigns aligned to the acquired company's services, market, and conversion goals.",
+      steps: [
+        "Budget mapped to the rank data: spend where you are invisible, pull back where you already rank",
+        "Local Services Ads and Google Guaranteed where the category supports them",
+        "Call tracking and offline conversion import, so a booked job is the conversion, not a click",
+        "Search-term and negative-keyword discipline from the first week, not the first quarterly review",
+        "Reporting that ends at cost per booked job",
+      ],
     },
   ],
+  // Verified figures, copied from the home page with their basis lines intact.
+  // A number without its period and client count is not evidence.
+  proofPoints: [
+    {
+      _key: "pp1",
+      value: "$100,000+",
+      label: "in closed revenue from paid ads in a single month for one client, with around a 14x return on ad spend",
+      basis: "June 2026. Revenue from closed jobs tracked back to the ads that generated the lead.",
+    },
+    {
+      _key: "pp2",
+      value: "50%",
+      label: "of paid leads booked an appointment, and 21.6% became paying customers",
+      basis: "Same client and month: 134 leads, 67 booked, 29 customers.",
+    },
+    {
+      _key: "pp3",
+      value: "3 of 3",
+      label: "websites we audited finished at 98% site health or higher",
+      basis: "3 clients, April to July 2026. Measured in SEMrush.",
+    },
+    {
+      _key: "pp4",
+      value: "23",
+      label: "location landing pages built to reach priority markets",
+    },
+  ],
+  proofDisclaimer:
+    "Results are from Tiger Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
+  // Headings only. The full explanation lives on /search-funds; repeating
+  // several hundred words of it on all ten pages would make each page
+  // proportionally less distinctive rather than more useful.
+  transitionChecklist: {
+    heading: "Six things that break at close",
+    items: [
+      "The Google Business Profile",
+      "The name",
+      "The reviews",
+      "The phone number",
+      "The tracking",
+      "The website and the domain",
+    ],
+    linkLabel: "Read what goes wrong with each",
+    linkHref: "/search-funds",
+  },
   relatedLinks: [
     { _key: "rl1", label: "Self-funded search: the first 90 days", href: "/search-funds/self-funded" },
     { _key: "rl2", label: "Traditional search funds: the playbook", href: "/search-funds/traditional" },
-    { _key: "rl3", label: "Six things that break at close", href: "/search-funds" },
     { _key: "rl4", label: "What we do: rankings, ads and reviews", href: "/services" },
+    { _key: "rl5", label: "Talk to our team", href: "/contact" },
   ],
   defaultCtaText: "Book a consultation",
   defaultCtaUrl: "/contact",

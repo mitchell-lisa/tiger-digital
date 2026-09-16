@@ -9,6 +9,8 @@ export const SECTION_KEYS = [
   "section",
   "testimonial",
   "faq",
+  "proof",
+  "checklist",
   "related",
   "resource",
   "cta",
@@ -46,7 +48,15 @@ export type LandingPage = {
 };
 
 export type SiteDefaults = {
-  serviceBlocks: { heading: string; body: string }[];
+  serviceBlocks: { heading: string; body: string; steps?: string[] }[];
+  proofPoints?: { value: string; label: string; basis?: string }[];
+  proofDisclaimer?: string;
+  transitionChecklist?: {
+    heading?: string;
+    items?: string[];
+    linkLabel?: string;
+    linkHref?: string;
+  };
   relatedLinks?: { label: string; href: string }[];
   defaultCtaText?: string;
   defaultCtaUrl?: string;
@@ -143,7 +153,7 @@ export async function getSiteDefaults(): Promise<SiteDefaults | null> {
     "site defaults",
     () =>
       client.fetch<SiteDefaults | null>(
-        /* groq */ `*[_type == "siteDefaults"][0]{serviceBlocks[]{heading, body}, relatedLinks[]{label, href}, defaultCtaText, defaultCtaUrl}`,
+        /* groq */ `*[_type == "siteDefaults"][0]{serviceBlocks[]{heading, body, steps}, proofPoints[]{value, label, basis}, proofDisclaimer, transitionChecklist{heading, items, linkLabel, linkHref}, relatedLinks[]{label, href}, defaultCtaText, defaultCtaUrl}`,
       ),
     null,
   );
@@ -166,6 +176,10 @@ export function visibleSections(page: LandingPage, defaults: SiteDefaults | null
         return Boolean(page.testimonialQuote && page.testimonialAttribution);
       case "faq":
         return Boolean(page.faqs?.length);
+      case "proof":
+        return Boolean(defaults?.proofPoints?.length);
+      case "checklist":
+        return Boolean(defaults?.transitionChecklist?.items?.length);
       case "related":
         return Boolean((page.relatedLinks ?? defaults?.relatedLinks ?? []).length);
       case "resource":
