@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/Icon";
+
 /**
  * Content for the search-fund landing pages (/search-funds and its two tracks).
  *
@@ -11,6 +13,7 @@
 export type Pillar = {
   slug: string;
   name: string;
+  icon: IconName;
   /** Plain-language definition. No jargon the buyer would have to look up. */
   what: string;
   /** How the work actually gets done, in the order it gets done. */
@@ -20,11 +23,12 @@ export type Pillar = {
 export const pillars: Pillar[] = [
   {
     slug: "local-seo",
+    icon: "pin",
     name: "Local SEO",
     what:
       "Ranking the business across its whole service area on Google Maps and organic search, measured neighborhood by neighborhood instead of by one citywide keyword that flatters the report.",
     steps: [
-      "A geo-grid baseline before anything changes, so you know what you actually bought",
+      "A full rank baseline before anything changes, so you know what you actually bought",
       "Google Business Profile custody, then categories, services, and service-area cleanup",
       "Citation and NAP consistency after the entity or the ownership changes hands",
       "Service and location pages built for the terms that convert, not the terms with volume",
@@ -33,6 +37,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "ai-search",
+    icon: "sparkle",
     name: "AI Search Visibility",
     what:
       "Getting the business named in the answer when someone asks ChatGPT, Google AI Overviews, Gemini, Perplexity, or Copilot who to hire in your market.",
@@ -46,11 +51,12 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "paid-advertising",
+    icon: "target",
     name: "Paid Advertising",
     what:
       "Google Search and Local Services Ads pointed only at the zones and terms where organic visibility is not carrying the load yet.",
     steps: [
-      "Budget mapped to the geo-grid: spend where you are invisible, pull back where you already rank",
+      "Budget mapped to the rank data: spend where you are invisible, pull back where you already rank",
       "Local Services Ads and Google Guaranteed where the category supports them",
       "Call tracking and offline conversion import, so a booked job is the conversion, not a click",
       "Search-term and negative-keyword discipline from the first week, not the first quarterly review",
@@ -64,34 +70,40 @@ export const pillars: Pillar[] = [
  * ones that cost rankings if they are handled in the wrong order, which is why
  * they get their own section rather than a bullet in a services list.
  */
-export const transitionRisks: { title: string; body: string }[] = [
+export const transitionRisks: { title: string; body: string; icon: IconName }[] = [
   {
     title: "The Google Business Profile",
+    icon: "profile",
     body:
       "Ownership sits with whoever claimed it, which is often a former employee or an agency the seller fired years ago. Recovering it can take weeks, and almost nothing else should ship until it is yours.",
   },
   {
     title: "The name",
+    icon: "tag",
     body:
       "Renaming on day one throws away the reviews, citations, and direct search the seller spent decades building. If the thesis requires a rebrand, it gets sequenced, not switched.",
   },
   {
     title: "The reviews",
+    icon: "reviews",
     body:
       "Review history follows the profile, not the LLC. Lose custody of the profile in the transition and the business restarts with no rating in a market where everyone else has one.",
   },
   {
     title: "The phone number",
+    icon: "phone",
     body:
       "Port it, do not replace it. The old number is in every directory, every invoice, and the contacts of every customer the seller ever served.",
   },
   {
     title: "The tracking",
+    icon: "gauge",
     body:
       "Most sellers have no conversion tracking at all. Until calls and forms are tracked, nobody can tell you what a lead costs, and every budget conversation is a guess.",
   },
   {
     title: "The website and the domain",
+    icon: "globe",
     body:
       "If the site is on the seller's personal hosting or registrar account, that is a hostage situation waiting to happen. Get custody in writing before close if you can.",
   },
@@ -144,7 +156,7 @@ export const tracks: Track[] = [
       "ai-search":
         "Answer engines lean hard on entity consistency and review depth, which is exactly what gets scrambled during an ownership change. Cleaning that up protects the referral habit the seller built and puts you in answers his competitors have not thought about yet.",
       "paid-advertising":
-        "Ads are the only channel that produces calls in week one, which is why they usually go first when there is debt service. But they go on narrowly: the zones the grid says you are invisible in, the services with the best margin, and nowhere else until the numbers say otherwise.",
+        "Ads are the only channel that produces calls in week one, which is why they usually go first when there is debt service. But they go on narrowly: the zones the rank data says you are invisible in, the services with the best margin, and nowhere else until the numbers say otherwise.",
     },
     plan: {
       heading: "The first 90 days",
@@ -159,7 +171,7 @@ export const tracks: Track[] = [
         {
           title: "Weeks 2-4: baseline what you bought",
           body:
-            "A geo-grid across the real service area, AI prompt tracking, and an honest read on which of the seller's leads came from search versus from the seller. You cannot show progress from a starting line you never measured.",
+            "Rank tracking across the real service area, AI prompt tracking, and an honest read on which of the seller's leads came from search versus from the seller. You cannot show progress from a starting line you never measured.",
         },
         {
           title: "Weeks 4-8: protect, then fix",
@@ -178,7 +190,7 @@ export const tracks: Track[] = [
       intro:
         "You are the operator, the CFO, and the marketing department. The report is built to be read in five minutes between jobs.",
       items: [
-        "The geo-grid heatmap, same grid points every month, so movement is comparable",
+        "Rank tracking on the same points every month, so movement is comparable",
         "Cost per booked job, not cost per click",
         "Rating and review count against the two or three competitors who actually take your calls",
         "A one-page read you can forward to your lender or your accountant without translating it",
@@ -195,7 +207,7 @@ export const tracks: Track[] = [
       },
       {
         q: "Can we start before close?",
-        a: "Yes, and it is the cheapest time to do it. During diligence we can run a geo-grid on the target, look at how it surfaces in AI answers, and pull whatever ad history exists. It tells you whether the lead flow you are underwriting is a durable asset or one relationship that walks out with the seller.",
+        a: "Yes, and it is the cheapest time to do it. During diligence we can run a full rank baseline on the target, look at how it surfaces in AI answers, and pull whatever ad history exists. It tells you whether the lead flow you are underwriting is a durable asset or one relationship that walks out with the seller.",
       },
       {
         q: "What if the seller never did any marketing at all?",
@@ -230,11 +242,11 @@ export const tracks: Track[] = [
     },
     pillarNotes: {
       "local-seo":
-        "With multiple locations the failure mode is averaging. A portfolio that looks healthy in aggregate is usually two strong markets subsidizing four invisible ones. We grid every market separately and roll it up, so the board sees the distribution and not just the mean.",
+        "With multiple locations the failure mode is averaging. A portfolio that looks healthy in aggregate is usually two strong markets subsidizing four invisible ones. We track every market separately and roll it up, so the board sees the distribution and not just the mean.",
       "ai-search":
         "Answer engines resolve a business to an entity, and multi-location operators are where entity data gets messy fastest: inconsistent names, legacy locations, duplicate profiles, franchise-era citations. Cleaning that up is unglamorous and it is the difference between being cited and being invisible.",
       "paid-advertising":
-        "Spending the same amount per market is the most common waste we inherit. Some markets need ads, some need a page and twenty reviews. The grid decides. With offline conversion import, the CAC you report to the board survives contact with the actual job data.",
+        "Spending the same amount per market is the most common waste we inherit. Some markets need ads, some need a page and twenty reviews. The rank data decides. With offline conversion import, the CAC you report to the board survives contact with the actual job data.",
     },
     plan: {
       heading: "The playbook, and why it is the asset",
@@ -244,7 +256,7 @@ export const tracks: Track[] = [
         {
           title: "Diligence and the first 30 days",
           body:
-            "Baseline every market on the same grid before any change ships. You cannot show a board a trend line that starts after you already fixed things, and you cannot show a buyer one either.",
+            "Baseline every market the same way before any change ships. You cannot show a board a trend line that starts after you already fixed things, and you cannot show a buyer one either.",
         },
         {
           title: "Days 30-90: one system, every location",
@@ -268,7 +280,7 @@ export const tracks: Track[] = [
       intro:
         "Written for the quarterly update, not for a marketing audience. Every number traces back to a source your investors can check.",
       items: [
-        "Per-location geo-grid, with a portfolio roll-up",
+        "Per-location rank tracking, with a portfolio roll-up",
         "Share of AI answers by market and by prompt set, tracked over time",
         "Blended and paid CAC, with offline conversions imported so the number is real",
         "A board-ready section every quarter, in your format, that you do not have to rebuild",
@@ -278,7 +290,7 @@ export const tracks: Track[] = [
     faqs: [
       {
         q: "Can you work across multiple locations or brands?",
-        a: "Yes, and it is the case the playbook is built for. Each market gets its own grid, its own baseline, and its own budget decision, all rolled up into one portfolio view so you are not reconciling five agency reports.",
+        a: "Yes, and it is the case the playbook is built for. Each market gets its own baseline and its own budget decision, all rolled up into one portfolio view so you are not reconciling five agency reports.",
       },
       {
         q: "How do you handle add-on acquisitions?",
@@ -286,7 +298,7 @@ export const tracks: Track[] = [
       },
       {
         q: "What exactly do you report to the board?",
-        a: "Customer acquisition cost blended and by paid channel, the geo-grid distribution across markets, share of AI answers, and the movement in rating and review volume. We write it as a section you can paste into the update rather than a dashboard login nobody opens.",
+        a: "Customer acquisition cost blended and by paid channel, the rank distribution across markets, share of AI answers, and the movement in rating and review volume. We write it as a section you can paste into the update rather than a dashboard login nobody opens.",
       },
       {
         q: "Do you replace an in-house marketing hire?",

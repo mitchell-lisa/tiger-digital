@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABand from "@/components/CTABand";
+import Icon from "@/components/Icon";
 import LogoWall from "@/components/LogoWall";
 import { pillars, tracks, transitionRisks } from "@/lib/search-funds";
 import { services, site } from "@/lib/site";
@@ -113,7 +114,10 @@ export default function SearchFundsPage() {
           <div className="mt-12 grid gap-px bg-line border border-line lg:grid-cols-3">
             {pillars.map((p, i) => (
               <div key={p.slug} className="bg-paper p-7 md:p-8 flex flex-col">
-                <span className="stat text-3xl text-tiger">{`0${i + 1}`}</span>
+                <div className="flex items-center gap-3 text-tiger">
+                  <Icon name={p.icon} className="w-8 h-8" />
+                  <span className="stat text-3xl">{`0${i + 1}`}</span>
+                </div>
                 <h3 className="mt-5 font-display font-bold text-xl tracking-tight">{p.name}</h3>
                 <p className="mt-3 text-muted leading-relaxed">{p.what}</p>
                 <ul className="mt-6 space-y-2.5 border-t border-line pt-6 flex-1">
@@ -147,14 +151,20 @@ export default function SearchFundsPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {transitionRisks.map((r) => (
-              <div key={r.title} className="border-t border-white/15 pt-5">
-                <h3 className="font-display font-bold text-lg tracking-tight">{r.title}</h3>
+              <li
+                key={r.title}
+                className="flex flex-col rounded-lg border border-white/15 bg-white/[0.04] p-6 md:p-7"
+              >
+                <span className="text-tiger-light">
+                  <Icon name={r.icon} className="w-8 h-8" />
+                </span>
+                <h3 className="mt-5 font-display font-bold text-lg tracking-tight">{r.title}</h3>
                 <p className="mt-2.5 text-white/70 leading-relaxed">{r.body}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -205,7 +215,7 @@ export default function SearchFundsPage() {
               <Link
                 key={t.slug}
                 href={`/search-funds/${t.slug}`}
-                className="group border border-line rounded-lg p-7 hover:border-tiger transition-colors"
+                className="card-link group border border-line rounded-lg p-7"
               >
                 <h3 className="font-display font-bold text-xl tracking-tight">{t.name}</h3>
                 <p className="mt-2 text-sm text-muted">{t.subtitle}</p>

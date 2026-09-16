@@ -21,7 +21,7 @@ export default function TeamPage() {
           </p>
         </div>
       </section>
-      <section className="container-x pb-16 md:pb-24">
+      <section className="container-x pb-20 md:pb-28">
         <TeamGrid />
       </section>
       <CTABand />

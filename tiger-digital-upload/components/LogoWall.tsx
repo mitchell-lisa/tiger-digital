@@ -29,7 +29,7 @@ export default function LogoWall({ compact = false }: { compact?: boolean }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${c.name} website`}
-                    className={`${tile} transition hover:border-tiger hover:shadow-md`}
+                    className={`${tile} card-link`}
                   >
                     {img}
                   </a>

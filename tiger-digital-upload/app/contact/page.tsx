@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book a Consultation",
-  description: `Talk to Tiger Digital about reviews, local search, and paid ads. Call ${site.phone} or send a note and Joe will be in touch.`,
+  description: `Talk to Tiger Digital about reviews, local search, and paid ads. Call ${site.phone} or send a note and our team will be in touch.`,
 };
 
 export default function ContactPage() {
@@ -23,7 +23,7 @@ export default function ContactPage() {
           <div>
             <dt className="eyebrow text-muted">Call</dt>
             <dd className="mt-1.5">
-              <a href={site.phoneHref} className="font-display font-bold text-2xl tracking-tight hover:text-tiger transition-colors">
+              <a href={site.phoneHref} className="font-display font-bold text-2xl tracking-tight link-quiet transition-colors">
                 {site.phone}
               </a>
             </dd>
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <div>
             <dt className="eyebrow text-muted">Email</dt>
             <dd className="mt-1.5">
-              <a href={`mailto:${site.email}`} className="font-semibold text-lg hover:text-tiger transition-colors break-all">
+              <a href={`mailto:${site.email}`} className="font-semibold text-lg link-quiet transition-colors break-all">
                 {site.email}
               </a>
             </dd>

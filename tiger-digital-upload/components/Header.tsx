@@ -45,7 +45,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm font-medium text-ink-soft hover:text-ink transition-colors"
+              className="text-sm font-medium text-ink-soft hover:text-tiger hover:underline underline-offset-8 decoration-2 transition-colors"
             >
               {n.label}
             </Link>
@@ -53,7 +53,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href={site.phoneHref} className="text-sm font-semibold text-ink hover:text-tiger transition-colors">
+          <a href={site.phoneHref} className="text-sm font-semibold text-ink hover:text-tiger hover:underline underline-offset-4 transition-colors">
             {site.phone}
           </a>
           <Link href="/contact" className="btn btn-primary !min-h-[2.6rem] !py-2 !px-4 text-sm">
@@ -91,7 +91,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 onClick={close}
-                className="py-4 text-xl font-display font-bold tracking-tight border-b border-line"
+                className="py-4 text-xl font-display font-bold tracking-tight border-b border-line hover:text-tiger"
               >
                 {n.label}
               </Link>

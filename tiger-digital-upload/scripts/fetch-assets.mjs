@@ -367,14 +367,8 @@ async function makeSeal(headPng, ink) {
       .toBuffer(),
   );
 
-  // geo-grid report: crop the two map panels out of the 1920x1080 graphic
-  const grid = await get("29ed640d-87be-4c84-bf28-c24236ed4f4c/Reyla++2025+Wrapped+%281%29.png", 2500);
-  const g = sharp(grid).flatten({ background: "#fff" });
-  const { width: W } = await g.metadata();
-  const s = W / 1000;
-  const box = (x0, y0, x1, y1) => ({ left: Math.round(x0 * s), top: Math.round(y0 * s), width: Math.round((x1 - x0) * s), height: Math.round((y1 - y0) * s) });
-  writeFileSync("public/results/map-before.jpg", await g.clone().extract(box(84, 86, 483, 487)).resize({ width: 900, fit: "inside" }).jpeg({ quality: 82 }).toBuffer());
-  writeFileSync("public/results/map-after.jpg", await g.clone().extract(box(500, 86, 899, 487)).resize({ width: 900, fit: "inside" }).jpeg({ quality: 82 }).toBuffer());
+  // The two map panels that used to be cropped out of this graphic are gone:
+  // the heat map was removed from the site in September 2026.
   console.log("result graphics");
 }
 

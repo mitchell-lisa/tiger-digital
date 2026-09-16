@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/Icon";
+
 /**
  * Single source of truth for every business fact on the site.
  * Every value below was taken from tigerdigital.marketing (Aug 2026).
@@ -29,7 +31,8 @@ export const site = {
   gtmId: "GTM-WDK94G82",
 
   social: {
-    instagram: "https://www.instagram.com/tigerdigitalllc",
+    // Instagram removed from the site in September 2026 at Joe's request: no
+    // link, no icon, and not published in the sameAs list either.
     linkedin: "https://www.linkedin.com/company/tiger-digital-llc",
     facebook: "https://www.facebook.com/profile.php?id=61564562785554",
   },
@@ -80,7 +83,7 @@ export type Service = {
   short: string;
   intro: string;
   bullets: string[];
-  results: { value: string; label: string; note?: string }[];
+  results: { value: string; label: string; note?: string; icon?: IconName }[];
   resultsHeading: string;
 };
 
@@ -91,9 +94,9 @@ export const services: Service[] = [
     short:
       "Show up across your whole service area: Google Maps, traditional search, and AI-powered search.",
     intro:
-      "Most businesses are strong in some neighborhoods and invisible in others, with no clear picture of their real coverage. We track visibility on a geo-grid across your service area, neighborhood by neighborhood, and fix the blind spots. We also track how your business surfaces in AI-generated answers and optimize for those queries.",
+      "Most businesses are strong in some neighborhoods and invisible in others, with no clear picture of their real coverage. We track visibility across your service area, neighborhood by neighborhood, and fix the blind spots. We also track how your business surfaces in AI-generated answers and optimize for those queries.",
     bullets: [
-      "Geo-grid heatmap tracking across your service area",
+      "Rank tracking across your service area, measured neighborhood by neighborhood",
       "Neighborhood-level visibility analysis",
       "Google Business Profile and local-intent optimization",
       "AI search visibility tracking and optimization",
@@ -130,7 +133,7 @@ export const services: Service[] = [
     short:
       "Turn happy customers into your loudest advocates with a steady flow of genuine five-star reviews.",
     intro:
-      "Reviews are a critical driver in the customer journey for local businesses. Consumers rely on online feedback to decide who to call, and review volume and rating directly affect local SEO performance and organic leads. We work with established businesses that have a loyal customer base and haven't yet capitalized on it.",
+      "Reviews are a critical driver in the customer journey for local businesses. Customers rely on online feedback when they decide who to call, and both the number of reviews and the average rating directly affect your local SEO performance and the organic leads that follow. We work with established businesses that have a loyal customer base and haven't yet capitalized on it.",
     bullets: [
       "Review generation from real, satisfied customers",
       "Negative-review winbacks and response strategy",
@@ -139,11 +142,11 @@ export const services: Service[] = [
     ],
     resultsHeading: "What our reputation clients gain on average",
     results: [
-      { value: "309%", label: "Average positive review growth" },
-      { value: "5 mo", label: "Average time to results" },
-      { value: "3.4 to 4.7", label: "Average rating boost" },
-      { value: "+114", label: "Positive reviews added" },
-      { value: "-110", label: "Negative reviews removed or avoided" },
+      { value: "309%", label: "Average positive review growth", icon: "growth" },
+      { value: "5 mo", label: "Average time to results", icon: "calendar" },
+      { value: "3.4 to 4.7", label: "Average rating boost", icon: "star" },
+      { value: "+114", label: "Positive reviews added", icon: "plus-circle" },
+      { value: "-110", label: "Negative reviews removed or avoided", icon: "minus-circle" },
     ],
   },
 ];
@@ -245,8 +248,8 @@ export const testimonials = [
   {
     quote:
       "Tiger Digital skyrocketed our appointments and online presence, opening up a whole new funnel of opportunities for us!",
-    name: "Miss to Mrs Bridal Boutique",
-    role: "Client",
+    name: "Miss to Mrs Bridal",
+    role: "Owner, Miss to Mrs Bridal",
   },
   {
     quote:
