@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    // Sanity serves uploaded images from its own CDN; next/image will only
+    // optimise remote hosts that are listed here.
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
+  },
   async redirects() {
     // The Squarespace site used these paths. Keep them working after the cutover.
     return [
