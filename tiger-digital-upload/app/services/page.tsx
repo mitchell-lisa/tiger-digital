@@ -110,6 +110,31 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Searchers land on /services from ads and organic; this is the hand-off
+          to the acquisition-specific version of the same three services. */}
+      <section className="border-t border-line bg-paper">
+        <div className="container-x py-14 md:py-20 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="rule max-w-2xl">
+            <p className="eyebrow text-tiger">Buying a business?</p>
+            <h2 className="display mt-3 text-2xl sm:text-3xl">
+              The same three services, sequenced for an acquisition.
+            </h2>
+            <p className="mt-4 text-muted leading-relaxed">
+              A searcher has a very different first ninety days than an owner who has been running
+              the place for twenty years. We wrote the plan out for both structures.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+            <Link href="/search-funds/self-funded" className="btn btn-outline">
+              Self-funded search
+            </Link>
+            <Link href="/search-funds/traditional" className="btn btn-outline">
+              Traditional search funds
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <CTABand />
     </>
   );

@@ -23,6 +23,9 @@ export default function Footer() {
           <p className="eyebrow text-white/50 mb-4">Company</p>
           <ul className="space-y-2.5 text-sm">
             <li><Link href="/services" className="hover:text-tiger-light transition-colors">Services</Link></li>
+            <li><Link href="/search-funds" className="hover:text-tiger-light transition-colors">Search Funds</Link></li>
+            <li><Link href="/search-funds/self-funded" className="hover:text-tiger-light transition-colors">Self-funded search</Link></li>
+            <li><Link href="/search-funds/traditional" className="hover:text-tiger-light transition-colors">Traditional search funds</Link></li>
             <li><Link href="/#results" className="hover:text-tiger-light transition-colors">Results</Link></li>
             <li><Link href="/team" className="hover:text-tiger-light transition-colors">Team</Link></li>
             <li><Link href="/contact" className="hover:text-tiger-light transition-colors">Contact</Link></li>
