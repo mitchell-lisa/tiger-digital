@@ -13,9 +13,9 @@ export default function ContactPage() {
       <div>
         <div className="rule">
           <p className="eyebrow text-tiger">Consultation</p>
-          <h1 className="display mt-3 text-3xl sm:text-4xl">Let's work together.</h1>
+          <h1 className="display mt-3 text-3xl sm:text-4xl">Let&rsquo;s work together.</h1>
           <p className="mt-5 text-lg text-muted leading-relaxed">
-            Tell us a little about your business and what you want to improve. We'll take a look at your
+            Tell us a little about your business and what you want to improve. We&rsquo;ll take a look at your
             reviews, map coverage, and ad spend before we talk, so the call is useful from minute one.
           </p>
         </div>

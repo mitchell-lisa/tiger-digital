@@ -35,7 +35,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {services.map((s, i) => (
+      {services.map((s) => (
         <section
           key={s.slug}
           id={s.slug}

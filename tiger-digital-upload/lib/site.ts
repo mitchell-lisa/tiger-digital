@@ -148,6 +148,51 @@ export const services: Service[] = [
   },
 ];
 
+/**
+ * Home-page results. Supplied by Joe in September 2026, each one already
+ * carrying the client count and the period it covers, which is why every card
+ * renders its own basis line instead of leaning on one blanket disclaimer.
+ *
+ * Same rule as the rest of this file: nothing here is inferred or rounded up.
+ * `basis` is optional because the landing-page count needs no qualifier.
+ */
+export const homeResults: { value: string; label: string; basis?: string }[] = [
+  {
+    value: "$100,000+",
+    label:
+      "in closed revenue from paid ads in a single month for one client, with around a 14x return on ad spend",
+    basis: "June 2026. Revenue from closed jobs tracked back to the ads that generated the lead.",
+  },
+  {
+    value: "50%",
+    label: "of paid leads booked an appointment, and 21.6% became paying customers",
+    basis: "Same client and month: 134 leads, 67 booked, 29 customers.",
+  },
+  {
+    value: "3 of 3",
+    label: "websites we audited finished at 98% site health or higher",
+    basis: "3 clients, April to July 2026. Measured in SEMrush.",
+  },
+  {
+    value: "23",
+    label: "location landing pages built to reach priority markets",
+  },
+];
+
+/**
+ * Third-party research, not our own result, so it renders in its own band with
+ * the citation attached. Joe supplied the figure and the source. Deliberately
+ * not hyperlinked: the URL could not be checked from the build environment and
+ * a dead citation link is worse than a plain one.
+ */
+export const reviewThreshold = {
+  value: "31%",
+  claim:
+    "of consumers will only use a business rated 4.5 stars or higher, up from 17% a year earlier.",
+  source:
+    "Source: BrightLocal, Local Consumer Review Survey 2026 (1,002 US adults). brightlocal.com/research/local-consumer-review-survey",
+};
+
 export const clients: { name: string; logo: string; url?: string; dark?: boolean }[] = [
   { name: "MP Copiers", logo: "/clients/mp-copiers.png", url: "https://www.mpcopiers.com/" },
   { name: "Water Runner LLC", logo: "/clients/water-runner.png", url: "https://waterrunner.com/" },
@@ -170,6 +215,7 @@ export const clients: { name: string; logo: string; url?: string; dark?: boolean
   // Their logo is white, made for a dark header, so it gets the navy tile.
   { name: "Resource Renewal", logo: "/clients/resource-renewal.png", url: "https://www.resourcerenewal.com/", dark: true },
   { name: "ViperJet Drain Services", logo: "/clients/viperjet-drain.png", url: "https://www.viperjetdrain.com/" },
+  { name: "Municipal Maintenance Co.", logo: "/clients/municipal-maintenance.png", url: "https://mmc-nj.com/" },
 ];
 
 export const testimonials = [

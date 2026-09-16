@@ -55,7 +55,7 @@ export default function ContactForm() {
       <div className="rounded-lg border border-line bg-paper p-8">
         <p className="font-display font-bold text-2xl tracking-tight">Got it, thanks.</p>
         <p className="mt-2 text-muted">
-          Joe will be in touch shortly. If it's urgent, call{" "}
+          Joe will be in touch shortly. If it&rsquo;s urgent, call{" "}
           <a href={site.phoneHref} className="font-semibold text-ink">{site.phone}</a>.
         </p>
       </div>

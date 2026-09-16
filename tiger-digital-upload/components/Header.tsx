@@ -15,12 +15,13 @@ const nav = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  // The menu records the route it was opened on, so a navigation closes it by
+  // derivation. Closing it from an effect on `pathname` instead would be a
+  // setState during render-commit, which cascades an extra render.
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const open = openedOn === pathname;
+  const close = () => setOpenedOn(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -66,7 +67,7 @@ export default function Header() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpenedOn(open ? null : pathname)}
         >
           <span className="relative block w-6 h-4">
             <span
@@ -89,13 +90,14 @@ export default function Header() {
               <Link
                 key={n.href}
                 href={n.href}
+                onClick={close}
                 className="py-4 text-xl font-display font-bold tracking-tight border-b border-line"
               >
                 {n.label}
               </Link>
             ))}
             <div className="mt-8 flex flex-col gap-3">
-              <Link href="/contact" className="btn btn-primary w-full">
+              <Link href="/contact" onClick={close} className="btn btn-primary w-full">
                 Book a consultation
               </Link>
               <a href={site.phoneHref} className="btn btn-outline w-full">
