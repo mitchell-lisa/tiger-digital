@@ -1,47 +1,52 @@
-import { services } from "@/lib/site";
+import { homeResults, reviewThreshold } from "@/lib/site";
 
+/**
+ * Home-page results. Each card states the basis for its own number, so the
+ * section can carry specific claims without one vague disclaimer covering
+ * everything. The BrightLocal figure is third-party research rather than our
+ * own result, so it sits apart in the navy band with its citation.
+ */
 export default function Results() {
   return (
     <section id="results" className="border-y border-line scroll-mt-20">
       <div className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
           <p className="eyebrow text-tiger">Results</p>
-          <h2 className="display mt-3 text-3xl sm:text-4xl">Real numbers from real campaigns.</h2>
+          <h2 className="display mt-3 text-3xl sm:text-4xl">Numbers we can back up.</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
-            Map rankings, cost per conversion, rating, review count. Here is what that has looked like.
+            Every client result below comes straight from the reporting tools we use with clients.
+            Each one tells you how many clients it covers and when, so you know exactly what you are
+            looking at.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.slug} className="bg-paper border border-line rounded-lg p-7">
-              <p className="eyebrow text-muted">{s.name}</p>
-              <p className="mt-2 text-sm text-ink-soft">{s.resultsHeading}</p>
-              <dl className="mt-6 space-y-5">
-                {s.results.map((r) => (
-                  <div key={r.label} className="flex items-baseline justify-between gap-4 border-b border-line pb-4 last:border-0 last:pb-0">
-                    <dt className="text-sm text-muted">{r.label}</dt>
-                    <dd className="stat text-2xl sm:text-3xl text-ink whitespace-nowrap">{r.value}</dd>
-                  </div>
-                ))}
-              </dl>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {homeResults.map((r) => (
+            <div
+              key={r.label}
+              className="bg-paper border border-line border-t-4 border-t-tiger rounded-lg p-6 flex flex-col"
+            >
+              <p className="stat text-[2.15rem] sm:text-[2.5rem] text-ink">{r.value}</p>
+              <p className="mt-3 leading-snug flex-1">{r.label}</p>
+              {r.basis && <p className="mt-4 text-[0.8rem] text-muted leading-relaxed">{r.basis}</p>}
             </div>
           ))}
         </div>
 
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <blockquote className="lg:col-span-3 bg-ink text-white rounded-lg p-7 md:p-9 md:flex md:items-center md:gap-10">
-            <p className="stat text-4xl md:text-5xl text-tiger-light shrink-0">317</p>
-            <div className="mt-3 md:mt-0">
-              <p className="text-lg md:text-xl leading-relaxed">
-                “Tiger Digital helped us achieve 317 five-star reviews in under six months. This kind of
-                growth exceeded our expectations and has been key to reaching more people. Their work
-                speaks for itself!”
-              </p>
-              <footer className="mt-3 text-sm text-white/60">DKP Gastro Associates</footer>
-            </div>
-          </blockquote>
+        <div className="mt-12 bg-ink text-white rounded-lg p-7 md:p-8 flex flex-wrap items-center gap-6 md:gap-10">
+          <p className="stat text-4xl md:text-5xl text-tiger-light shrink-0">
+            {reviewThreshold.value}
+          </p>
+          <div className="flex-1 min-w-[15rem]">
+            <p className="text-lg leading-relaxed">{reviewThreshold.claim}</p>
+            <p className="mt-2.5 text-xs text-white/50 leading-relaxed">{reviewThreshold.source}</p>
+          </div>
         </div>
+
+        <p className="mt-7 text-xs text-muted leading-relaxed max-w-3xl">
+          Results are from Tiger Digital client campaigns and reflect the specific clients and
+          periods listed. Your results will depend on your market, budget, and starting point.
+        </p>
       </div>
     </section>
   );

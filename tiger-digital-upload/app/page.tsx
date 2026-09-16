@@ -14,7 +14,7 @@ export default function HomePage() {
       <ServicesOverview />
       <Results />
       <HowWeWork />
-      <Testimonials exclude="DKP Gastro Team" />
+      <Testimonials />
 
       <CTABand />
     </>
