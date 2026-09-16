@@ -28,7 +28,10 @@ const logos = {
   "dkp-gastro": "6b042a76-51a2-4b5b-8424-1822de4b20dc/Untitled+design+%2888%29.png",
 };
 const team = {
-  joe: "e29ac263-e711-47f2-92eb-e66540196eec/joe+final.png",
+  // joe.webp is NOT listed here: Joe supplied a new headshot directly in
+  // September 2026 and the committed file is the only copy. Regenerating from
+  // this script would overwrite it with the old Squarespace portrait.
+
   marvin: "7de0c4db-e8f4-43ca-990e-e2ea5123a31e/marvin+final.png",
   kyle: "353e523b-fd43-4119-924b-c13625bb7c3f/kyle+final.png",
   santiago: "c2b1df53-57e6-4a48-b7e5-0960446d1e0d/santi+final.png",
