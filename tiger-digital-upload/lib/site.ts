@@ -268,7 +268,7 @@ export const team = [
   },
   {
     name: "Marvin Bermudez",
-    role: "Digital Marketing & Web",
+    role: "COO",
     photo: "/team/marvin.webp",
     bio: "Marv has extensive experience in digital marketing and web development, with a focus on increasing online visibility and generating qualified leads. Google Ads Certified, specializing in SEO, PPC, social, email, and website optimization.",
   },

@@ -134,10 +134,10 @@ for (const [name, url] of Object.entries(externalLogos)) {
   writeFileSync(`public/clients/${name}.png`, out);
   console.log("logo", name);
 }
-// Team photos are NOT regenerated here any more. The committed files are square
-// face crops taken from inside the old oval portraits, which is what the team
-// grid renders as circles. Running the loop below would put the superseded
-// ovals back and undo the crops, so it is intentionally disabled; `team` and
+// Team photos are NOT regenerated here any more. The committed files are 4:5
+// portrait crops taken from inside the old oval portraits, which is what the
+// team grid renders. Running the loop below would put the superseded ovals back
+// and undo the crops, so it is intentionally disabled; `team` and
 // `recolourRing` are kept for reference on where the originals came from.
 void team;
 void recolourRing;
