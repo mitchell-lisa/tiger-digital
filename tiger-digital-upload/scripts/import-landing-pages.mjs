@@ -123,6 +123,12 @@ rows.forEach((row, i) => {
     else errors.push(`${line1}\n      If this relationship is real and approved, re-run with --allow-claims.`);
   }
 
+  if (row.client_experience) {
+    warnings.push(
+      `row ${line} [${id}]: claims client experience with this audience — confirm it is still true before publishing: "${row.client_experience.slice(0, 90)}…"`,
+    );
+  }
+
   for (const [col, label] of [
     ["hero_image_url", "hero image"],
     ["testimonial_quote", "testimonial"],
@@ -152,6 +158,44 @@ if (!token) {
 }
 
 const client = createClient({ projectId, dataset, apiVersion: "2026-09-16", token, useCdn: false });
+
+/**
+ * Shared defaults, seeded once.
+ *
+ * Without this document the service blocks render nowhere, because the
+ * template hides that section when there is nothing to show - so every landing
+ * page silently loses two blocks it was designed around. Wording comes from
+ * the sheet's Import guide; the related links point at material already
+ * published on this site, which is the one kind of depth that can be added to
+ * all ten pages without duplicating prose across them.
+ *
+ * createIfNotExists, so a later run never overwrites edits made in the Studio.
+ */
+const DEFAULTS_ID = "siteDefaults";
+const SEED_DEFAULTS = {
+  _id: `drafts.${DEFAULTS_ID}`,
+  _type: "siteDefaults",
+  serviceBlocks: [
+    {
+      _key: "svc1",
+      heading: "SEO and AI search visibility",
+      body: "Help prospective customers find and understand the acquired business through clearer service content and a stronger search presence.",
+    },
+    {
+      _key: "svc2",
+      heading: "Paid advertising",
+      body: "Reach prospective customers with campaigns aligned to the acquired company's services, market, and conversion goals.",
+    },
+  ],
+  relatedLinks: [
+    { _key: "rl1", label: "Self-funded search: the first 90 days", href: "/search-funds/self-funded" },
+    { _key: "rl2", label: "Traditional search funds: the playbook", href: "/search-funds/traditional" },
+    { _key: "rl3", label: "Six things that break at close", href: "/search-funds" },
+    { _key: "rl4", label: "What we do: rankings, ads and reviews", href: "/services" },
+  ],
+  defaultCtaText: "Book a consultation",
+  defaultCtaUrl: "/contact",
+};
 
 const docIds = rows.map((r) => `landingPage-${r.page_id}`);
 const draftIds = docIds.map((id) => `drafts.${id}`);
@@ -197,7 +241,18 @@ const short = (v) => {
   return s === undefined ? "(unset)" : s.length > 70 ? `${s.slice(0, 70)}…` : s;
 };
 
+const defaultsExist = (
+  await client.fetch(`count(*[_id in $ids])`, {
+    ids: [DEFAULTS_ID, `drafts.${DEFAULTS_ID}`],
+  })
+) > 0;
+
 console.log("Plan");
+console.log(
+  defaultsExist
+    ? "  shared defaults already exist; left untouched"
+    : "  + seed shared defaults (service blocks and related links) - none exist yet",
+);
 console.log(`  create    ${plan.create.length}`);
 console.log(`  update    ${plan.update.length}`);
 console.log(`  unchanged ${plan.unchanged.length}`);
@@ -229,6 +284,10 @@ if (!APPLY) {
 // --- write ------------------------------------------------------------------
 const tx = client.transaction();
 let written = 0;
+if (!defaultsExist) {
+  tx.createIfNotExists(SEED_DEFAULTS);
+  console.log("\nSeeding shared defaults.");
+}
 for (const p of [...plan.create, ...plan.update, ...plan.conflicts]) {
   const fields = { ...p.mapped };
   if (p.conflicts) for (const c of p.conflicts) delete fields[c.field]; // leave edits alone

@@ -4,6 +4,7 @@ import { sanityClient } from "@/lib/sanity/client";
 /** Sections an editor may show, hide or reorder. Nothing else is renderable. */
 export const SECTION_KEYS = [
   "intro",
+  "experience",
   "services",
   "section",
   "testimonial",
@@ -26,6 +27,7 @@ export type LandingPage = {
   h1: string;
   heroSubheading?: string;
   intro: string;
+  clientExperience?: string;
   contentSections?: { heading: string; body: PortableTextBlock[] }[];
   relatedLinks?: { label: string; href: string }[];
   affiliationNotice: string;
@@ -68,6 +70,7 @@ const PAGE_FIELDS = /* groq */ `
   h1,
   heroSubheading,
   intro,
+  clientExperience,
   contentSections[]{heading, body},
   relatedLinks[]{label, href},
   affiliationNotice,
@@ -153,6 +156,8 @@ export function visibleSections(page: LandingPage, defaults: SiteDefaults | null
     switch (key) {
       case "intro":
         return Boolean(page.intro);
+      case "experience":
+        return Boolean(page.clientExperience);
       case "services":
         return Boolean(defaults?.serviceBlocks?.length);
       case "section":

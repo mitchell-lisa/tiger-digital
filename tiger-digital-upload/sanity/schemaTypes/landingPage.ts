@@ -135,6 +135,15 @@ export const landingPage = defineType({
       ],
     }),
     defineField({
+      name: "clientExperience",
+      title: "Our experience with this audience",
+      description:
+        "Only for audiences we genuinely work with. This is a claim about our client base, so it must be true for THIS page - leave it blank rather than generalising from another page. It is not a claim about the institution, and the affiliation notice still applies.",
+      type: "text",
+      rows: 3,
+      group: "content",
+    }),
+    defineField({
       name: "affiliationNotice",
       title: "Affiliation notice",
       description:

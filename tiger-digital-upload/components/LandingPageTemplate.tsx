@@ -93,6 +93,18 @@ export default function LandingPageTemplate({
               </section>
             );
 
+          case "experience":
+            return (
+              <section key={key} className="container-x pb-4">
+                <div className="max-w-3xl rounded-lg border border-line bg-paper p-6 md:p-7">
+                  <p className="eyebrow text-tiger">Our experience</p>
+                  <p className="mt-3 text-lg text-ink-soft leading-relaxed">
+                    {page.clientExperience}
+                  </p>
+                </div>
+              </section>
+            );
+
           case "services":
             return (
               <section key={key} className="border-y border-line bg-paper">

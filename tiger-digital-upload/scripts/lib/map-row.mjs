@@ -94,6 +94,7 @@ function mapRow(row) {
     h1: row.h1,
     heroSubheading: row.hero_subheading || undefined,
     intro: row.intro,
+    clientExperience: row.client_experience || undefined,
     contentSections: contentSections.length ? contentSections : undefined,
     affiliationNotice: row.affiliation_notice,
     faqs: faqs.length ? faqs : undefined,
