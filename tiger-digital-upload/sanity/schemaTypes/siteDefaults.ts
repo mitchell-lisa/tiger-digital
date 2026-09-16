@@ -49,6 +49,25 @@ export const siteDefaults = defineType({
       ],
     }),
     defineField({
+      name: "relatedLinks",
+      title: "Related pages (shown on every landing page)",
+      description:
+        "Internal links to deeper material elsewhere on the site. A page can override these with its own.",
+      type: "array",
+      group: "services",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "relatedLink",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string", validation: (r) => r.required().max(90) }),
+            defineField({ name: "href", title: "Path", type: "string", validation: (r) => r.required() }),
+          ],
+          preview: { select: { title: "label", subtitle: "href" } },
+        }),
+      ],
+    }),
+    defineField({
       name: "defaultCtaText",
       title: "Default button text",
       description: "Used when a page leaves its own call-to-action text blank.",

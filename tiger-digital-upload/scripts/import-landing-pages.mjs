@@ -22,6 +22,7 @@
  */
 import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
+import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -63,53 +64,8 @@ const REQUIRED = [
   "affiliation_notice", "seo_title", "meta_description",
 ];
 
-/** The sheet's slug repeats the section name; the URL does not need to. */
-const shortSlug = (slug) => slug.replace(/^search-fund-marketing-/, "").trim();
-
-/** Slugs that already belong to hand-built pages under /search-funds. */
-const RESERVED_SLUGS = new Set(["self-funded", "traditional"]);
-
-const STATUS = { draft: "draft", "needs revision": "needs-revision", approved: "approved" };
-
-/** Fields the importer owns, in Sanity's shape. Anything not here is never touched. */
-function mapRow(row) {
-  const faqs = [];
-  if (row.faq_1_question) faqs.push({ _key: "faq1", question: row.faq_1_question, answer: row.faq_1_answer });
-  if (row.faq_2_question) faqs.push({ _key: "faq2", question: row.faq_2_question, answer: row.faq_2_answer });
-
-  const doc = {
-    pageId: row.page_id,
-    title: row.school_name,
-    slug: { _type: "slug", current: shortSlug(row.slug) },
-    audienceName: row.school_name,
-    audienceLocation: row.school_location || undefined,
-    h1: row.h1,
-    heroSubheading: row.hero_subheading || undefined,
-    intro: row.intro,
-    sectionHeading: row.section_heading || undefined,
-    sectionBody: row.section_body || undefined,
-    affiliationNotice: row.affiliation_notice,
-    faqs: faqs.length ? faqs : undefined,
-    resourceLabel: row.resource_label || undefined,
-    resourceUrl: row.resource_url || undefined,
-    resourceContext: row.resource_context || undefined,
-    ctaText: row.cta_text || undefined,
-    ctaUrl: row.cta_url || undefined,
-    seoTitle: row.seo_title,
-    metaDescription: row.meta_description,
-    primaryKeyword: row.primary_keyword || undefined,
-    editorialStatus: STATUS[(row.status || "").toLowerCase()] ?? "draft",
-    reviewNotes: row.review_notes || undefined,
-  };
-  // Testimonials only if both halves are present; a quote with no attribution
-  // is worse than no quote.
-  if (row.testimonial_quote && row.testimonial_attribution) {
-    doc.testimonialQuote = row.testimonial_quote;
-    doc.testimonialAttribution = row.testimonial_attribution;
-  }
-  for (const k of Object.keys(doc)) if (doc[k] === undefined) delete doc[k];
-  return doc;
-}
+/** Fields the schema no longer has, removed from documents written before it changed. */
+const RETIRED_FIELDS = ["sectionHeading", "sectionBody"];
 
 const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
@@ -276,11 +232,13 @@ let written = 0;
 for (const p of [...plan.create, ...plan.update, ...plan.conflicts]) {
   const fields = { ...p.mapped };
   if (p.conflicts) for (const c of p.conflicts) delete fields[c.field]; // leave edits alone
+  const carried = { ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}) };
+  for (const dead of RETIRED_FIELDS) delete carried[dead];
   const snapshot = JSON.stringify(p.mapped); // what the sheet says now
   tx.createOrReplace({
     _id: p.draftId,
     _type: "landingPage",
-    ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}),
+    ...carried,
     ...fields,
     importSnapshot: snapshot,
     _createdAt: undefined,

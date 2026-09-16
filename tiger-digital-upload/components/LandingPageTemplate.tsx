@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import RichText from "@/components/RichText";
 import { site } from "@/lib/site";
 import {
   visibleSections,
@@ -120,18 +121,46 @@ export default function LandingPageTemplate({
           case "section":
             return (
               <section key={key} className="container-x py-16 md:py-20">
-                <div className="rule max-w-3xl">
-                  {page.sectionHeading && (
-                    <h2 className="display mt-3 text-3xl sm:text-4xl">{page.sectionHeading}</h2>
-                  )}
-                  {page.sectionBody && (
-                    <p className="mt-5 text-lg text-ink-soft leading-relaxed whitespace-pre-line">
-                      {page.sectionBody}
-                    </p>
-                  )}
+                <div className="max-w-3xl space-y-14">
+                  {page.contentSections!.map((s) => (
+                    <div key={s.heading} className="rule">
+                      <h2 className="display mt-3 text-3xl sm:text-4xl">{s.heading}</h2>
+                      <div className="mt-5">
+                        <RichText value={s.body} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
             );
+
+          case "related": {
+            const links = page.relatedLinks?.length
+              ? page.relatedLinks
+              : (defaults?.relatedLinks ?? []);
+            return (
+              <section key={key} className="border-t border-line bg-paper">
+                <div className="container-x py-14 md:py-16">
+                  <div className="rule max-w-2xl">
+                    <p className="eyebrow text-tiger">Keep reading</p>
+                    <h2 className="display mt-3 text-2xl sm:text-3xl">More on this site.</h2>
+                  </div>
+                  <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
+                    {links.map((l) => (
+                      <li key={l.href}>
+                        <Link
+                          href={l.href}
+                          className="card-link block border border-line rounded-lg p-5 font-display font-bold tracking-tight"
+                        >
+                          {l.label} <span aria-hidden>→</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            );
+          }
 
           case "testimonial":
             return (
