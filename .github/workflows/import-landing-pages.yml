@@ -44,6 +44,10 @@ jobs:
 
       - run: npm ci
 
+      # Nothing writes to Sanity until the import safety checks pass, chief
+      # among them that an import cannot address a published document.
+      - run: npm test
+
       - name: Check the token is present
         env:
           SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
