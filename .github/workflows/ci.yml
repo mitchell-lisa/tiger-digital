@@ -34,3 +34,21 @@ jobs:
       # `next build` type-checks as part of the build, so this covers tsc too.
       # The prebuild asset fetch is a no-op here because public/ is committed.
       - run: npm run build
+
+  # Are the pages Sanity says are published actually reachable? The import can
+  # only report on documents; whether a visitor gets a page also depends on the
+  # deploy, the route and the slug. Reports against production, so it never
+  # blocks a branch - read the log, do not trust a green tick alone.
+  live:
+    name: Published pages load
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    defaults:
+      run:
+        working-directory: tiger-digital-upload
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-live-pages.mjs
