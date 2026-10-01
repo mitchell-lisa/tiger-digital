@@ -207,7 +207,10 @@ export const reviewThreshold = {
     "Source: BrightLocal, Local Consumer Review Survey 2026 (1,002 US adults). brightlocal.com/research/local-consumer-review-survey",
 };
 
-export const clients: { name: string; logo: string; url?: string; dark?: boolean }[] = [
+// `logo` is optional: a client can be listed the day they sign, with their
+// name set as a wordmark until the artwork arrives. Better than an empty
+// tile, and better than leaving a paying client off the wall for a week.
+export const clients: { name: string; logo?: string; url?: string; dark?: boolean }[] = [
   { name: "MP Copiers", logo: "/clients/mp-copiers.png", url: "https://www.mpcopiers.com/" },
   { name: "Water Runner LLC", logo: "/clients/water-runner.png", url: "https://waterrunner.com/" },
   { name: "Tra-Cal", logo: "/clients/tra-cal.png", url: "https://www.tra-cal.com/" },
@@ -230,6 +233,7 @@ export const clients: { name: string; logo: string; url?: string; dark?: boolean
   { name: "Resource Renewal", logo: "/clients/resource-renewal.png", url: "https://www.resourcerenewal.com/", dark: true },
   { name: "ViperJet Drain Services", logo: "/clients/viperjet-drain.png", url: "https://www.viperjetdrain.com/" },
   { name: "Municipal Maintenance Co.", logo: "/clients/municipal-maintenance.png", url: "https://mmc-nj.com/" },
+  { name: "The Food Architects", logo: "/clients/the-food-architects.png", url: "https://www.thefoodarchitectsnj.com/" },
 ];
 
 export const testimonials = [
