@@ -23,6 +23,7 @@
 import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
 import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
+import { buildDraftDoc } from "./lib/build-doc.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -310,6 +311,35 @@ const defaultsExist = (
   })
 ) > 0;
 
+// What the public site can actually see. The site queries the published
+// perspective only, so a page that exists solely as a draft is a 404 for
+// every visitor. Printed on every run because "the document is there" and
+// "the page loads" are different questions.
+const liveState = await client.fetch(
+  /* groq */ `*[_type == "landingPage"]{_id, "slug": slug.current, "hasH1": defined(h1), "hasIntro": defined(intro), "hasNotice": defined(affiliationNotice)}`,
+);
+console.log("Live state (what a visitor's request would find)");
+for (const docId of docIds) {
+  const pub = liveState.find((d) => d._id === docId);
+  const draft = liveState.find((d) => d._id === `drafts.${docId}`);
+  const where = pub ? `PUBLISHED /search-funds/${pub.slug}` : draft ? "DRAFT ONLY — 404 for visitors" : "MISSING";
+  const missing = pub && [
+    !pub.slug && "slug",
+    !pub.hasH1 && "h1",
+    !pub.hasIntro && "intro",
+    !pub.hasNotice && "affiliationNotice",
+  ].filter(Boolean);
+  console.log(`  ${docId.padEnd(34)} ${where}${missing?.length ? `  [missing: ${missing.join(", ")}]` : ""}`);
+}
+const strays = liveState.filter(
+  (d) => !docIds.includes(d._id) && !docIds.includes(d._id.replace(/^drafts\./, "")),
+);
+if (strays.length) {
+  console.log("\n  Documents not in the sheet:");
+  for (const d of strays) console.log(`    ${d._id}  slug=${d.slug ?? "(none)"}`);
+}
+console.log("");
+
 console.log("Plan");
 console.log(
   defaultsExist
@@ -352,21 +382,15 @@ if (!defaultsExist) {
   console.log("\nSeeding shared defaults.");
 }
 for (const p of [...plan.create, ...plan.update, ...plan.conflicts]) {
-  const fields = { ...p.mapped };
-  if (p.conflicts) for (const c of p.conflicts) delete fields[c.field]; // leave edits alone
-  const carried = { ...(byId.get(p.draftId) ?? byId.get(p.docId) ?? {}) };
-  for (const dead of RETIRED_FIELDS) delete carried[dead];
-  const snapshot = JSON.stringify(p.mapped); // what the sheet says now
-  tx.createOrReplace({
-    _id: p.draftId,
-    _type: "landingPage",
-    ...carried,
-    ...fields,
-    importSnapshot: snapshot,
-    _createdAt: undefined,
-    _updatedAt: undefined,
-    _rev: undefined,
-  });
+  tx.createOrReplace(
+    buildDraftDoc({
+      draftId: p.draftId,
+      mapped: p.mapped,
+      conflictFields: (p.conflicts ?? []).map((c) => c.field), // leave edits alone
+      existing: byId.get(p.draftId) ?? byId.get(p.docId) ?? {},
+      retiredFields: RETIRED_FIELDS,
+    }),
+  );
   written++;
 }
 if (written === 0) {

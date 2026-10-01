@@ -12,7 +12,9 @@ export default function LogoWall({ compact = false }: { compact?: boolean }) {
         <ul className="mt-7 flex flex-wrap justify-center gap-3">
           {list.map((c) => {
             const tile = `flex h-20 w-[calc(50%-0.375rem)] sm:w-[calc(33.333%-0.5rem)] lg:w-[calc(16.666%-0.625rem)] items-center justify-center rounded-md border border-line px-4 ${c.dark ? "bg-ink" : "bg-paper"}`;
-            const img = (
+            // No artwork yet: set the name instead. Tracks the tile's own
+            // background so it stays readable on the navy variant too.
+            const img = c.logo ? (
               <Image
                 src={c.logo}
                 alt={c.name}
@@ -20,6 +22,12 @@ export default function LogoWall({ compact = false }: { compact?: boolean }) {
                 height={80}
                 className="max-h-10 w-auto max-w-[8rem] object-contain"
               />
+            ) : (
+              <span
+                className={`text-center text-sm font-medium leading-tight tracking-tight ${c.dark ? "text-paper" : "text-ink"}`}
+              >
+                {c.name}
+              </span>
             );
             return (
               <li key={c.name} className="contents">

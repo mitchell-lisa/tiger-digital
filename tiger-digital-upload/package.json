@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prebuild": "node scripts/fetch-assets.mjs"
+    "prebuild": "node scripts/fetch-assets.mjs",
+    "test": "node scripts/test-map-row.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",
