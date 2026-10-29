@@ -66,52 +66,75 @@ export default function WaveRider() {
           </g>
         </g>
 
-        {/* Rider, cut out of the wave face in Sand. Drawn after the wave so it
-            sits on the water rather than behind it. The outer group places
-            them; the inner one does the bobbing, so position and animation
-            cannot drift apart. */}
-        <g transform="translate(272 86) scale(1.15)">
+        {/* Rider, cut out of the wave face in Sand. Drawn after the wave so
+            they sit on the water rather than behind it.
+
+            The figure and the board are rotated together, because a surfer
+            stands square to their board and the whole assembly leans with the
+            face. Limbs are built from a hip and a shoulder joint outwards, so
+            nothing crosses the torso - an earlier version drew each arm as one
+            long bar straight through the body, which is what made the hands
+            look wrong. Arms are thinner than the torso, as they are on people.
+
+            The outer group places them; the inner one bobs, so position and
+            animation cannot drift apart. */}
+        <g transform="translate(272 115) scale(1.15)">
           <g className="wave-surfer">
-            {/* Spray off the tail. */}
-            <path
-              d="M-26 30 C-18 26 -8 26 0 29"
-              stroke="var(--color-foam)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity="0.65"
-            />
-            {/* Board, angled into the line he is drawing across the face. */}
-            <rect
-              x="-22"
-              y="25"
-              width="48"
-              height="7"
-              rx="3.5"
-              fill="var(--color-sand)"
-              transform="rotate(14 2 28)"
-            />
-            {/* Legs, crouched over the board. */}
-            <path
-              d="M-2 25 L-7 13 M8 23 L7 11"
-              stroke="var(--color-sand)"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-            {/* Torso, leaning into the drop. */}
-            <path
-              d="M-7 13 C-6 5 2 1 7 0"
-              stroke="var(--color-sand)"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-            {/* Arms out for balance. */}
-            <path
-              d="M-4 6 L-18 1 M4 3 L16 9"
-              stroke="var(--color-sand)"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-            <circle cx="9" cy="-6" r="5.5" fill="var(--color-sand)" />
+            <g transform="rotate(13)">
+              {/* Spray off the tail. */}
+              <path
+                d="M-24 6 C-30 7 -35 9 -39 12"
+                stroke="var(--color-foam)"
+                strokeWidth="2.6"
+                strokeLinecap="round"
+                opacity="0.6"
+              />
+              {/* Board. */}
+              <rect x="-25" y="0" width="51" height="6" rx="3" fill="var(--color-sand)" />
+
+              {/* Back leg, then front leg: hip to knee to foot. */}
+              <path
+                d="M-1 -17 L-8 -10 L-9 -1"
+                stroke="var(--color-sand)"
+                strokeWidth="4.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              <path
+                d="M-1 -17 L7 -11 L11 -1"
+                stroke="var(--color-sand)"
+                strokeWidth="4.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Torso, hip to shoulder, leaning into the drop. */}
+              <path
+                d="M-1 -17 C2 -23 4 -27 7 -30"
+                stroke="var(--color-sand)"
+                strokeWidth="6.2"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Arms, each from the shoulder outwards. Thinner than the
+                  torso, and stopping at a wrist rather than a club. */}
+              <path
+                d="M7 -30 C12 -29 16 -27 20 -25"
+                stroke="var(--color-sand)"
+                strokeWidth="2.9"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M7 -30 C3 -31 -1 -32 -5 -34"
+                stroke="var(--color-sand)"
+                strokeWidth="2.9"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <circle cx="11.5" cy="-35.5" r="4.6" fill="var(--color-sand)" />
+            </g>
           </g>
         </g>
       </svg>
