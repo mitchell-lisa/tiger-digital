@@ -202,6 +202,60 @@ body {
     animation-delay: 0.24s;
   }
 }
+/* The wave strip. Each water layer scrolls exactly one tile width, so the
+   loop has no seam; the different durations are what read as depth. The
+   rider crosses once per lap and bobs as it goes. */
+.wave-layer {
+  width: 200%;
+  min-width: 1200px;
+}
+.wave-back {
+  animation: waveDrift 26s linear infinite;
+}
+.wave-mid {
+  animation: waveDrift 18s linear infinite;
+}
+.wave-front {
+  animation: waveDrift 11s linear infinite;
+}
+@keyframes waveDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.wave-rider {
+  width: auto;
+  left: 0;
+  animation: rideAcross 11s linear infinite;
+}
+@keyframes rideAcross {
+  from { transform: translateX(-30%); }
+  to { transform: translateX(100vw); }
+}
+.wave-surfer {
+  transform-origin: center;
+  animation: riderBob 2.2s ease-in-out infinite;
+}
+@keyframes riderBob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(3px) rotate(2deg); }
+}
+
+/* Reduced motion: the scene holds still, with the rider parked on the face
+   rather than off the left edge where nobody would see it. */
+@media (prefers-reduced-motion: reduce) {
+  .wave-back,
+  .wave-mid,
+  .wave-front,
+  .wave-surfer {
+    animation: none;
+  }
+  .wave-rider {
+    animation: none;
+    transform: translateX(14vw);
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

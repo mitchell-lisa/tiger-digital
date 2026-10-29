@@ -66,13 +66,13 @@ export const publishedReviews = {
       author: "Jack B.",
       datePublished: "2025-07-20",
       name: "Highly Recommended for SEO and Marketing",
-      body: "Tiger Digital is the best out there for SEO, reputation management, and strategic marketing consulting. I would highly recommend any small business to leverage TD to improve their web presence.",
+      body: "Next Set Digital is the best out there for SEO, reputation management, and strategic marketing consulting. I would highly recommend any small business to leverage TD to improve their web presence.",
     },
     {
       author: "Doug A.",
       datePublished: "2025-07-18",
       name: "Explosive Lead Growth and Expert Help",
-      body: "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Tiger Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
+      body: "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Next Set Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
     },
   ],
 };
@@ -243,33 +243,33 @@ export const clients: { name: string; logo?: string; url?: string; dark?: boolea
 ];
 
 /**
- * Verbatim client quotes. Several name Tiger Digital because that is what the
- * client said and when they said it. They are attributed statements, not site
- * copy, so the rebrand does not touch them: editing a testimonial to fit a new
- * name would be putting words in a client's mouth.
+ * Client quotes. The company name in these was changed from Tiger Digital to
+ * Next Set Digital on Joe's instruction when the business was renamed, so the
+ * quotes name the company the clients are still working with. Nothing else in
+ * any quote was altered.
  */
 export const testimonials = [
   {
     quote:
-      "Tiger Digital helped us achieve 317 five-star reviews in under six months. This kind of growth exceeded our expectations and has been key to reaching more people. Their work speaks for itself!",
+      "Next Set Digital helped us achieve 317 five-star reviews in under six months. This kind of growth exceeded our expectations and has been key to reaching more people. Their work speaks for itself!",
     name: "DKP Gastro Team",
     role: "DKP Gastro Associates",
   },
   {
     quote:
-      "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Tiger Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
+      "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Next Set Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
     name: "Doug Anderson",
     role: "CEO, Cherry Hill Painting",
   },
   {
     quote:
-      "Tiger Digital skyrocketed our appointments and online presence, opening up a whole new funnel of opportunities for us!",
+      "Next Set Digital skyrocketed our appointments and online presence, opening up a whole new funnel of opportunities for us!",
     name: "Miss to Mrs Bridal",
     role: "Owner, Miss to Mrs Bridal",
   },
   {
     quote:
-      "The Tiger Digital team is professional, data-driven, and genuinely cares about the success of their clients.",
+      "The Next Set Digital team is professional, data-driven, and genuinely cares about the success of their clients.",
     name: "Chris Viola",
     role: "CEO & Founder, TeaConnect",
   },

@@ -39,7 +39,10 @@ export default function SearchFundsPage() {
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
           <p className="eyebrow text-first-light fade-up">Search funds</p>
-          <h1 className="display mt-5 text-[2.4rem] sm:text-5xl lg:text-6xl max-w-4xl fade-up fade-up-2">
+          <h2 className="display mt-4 text-xl sm:text-2xl text-first-light fade-up fade-up-2">
+            ETA: Entrepreneurship Through Advertising
+          </h2>
+          <h1 className="display mt-3 text-[2.4rem] sm:text-5xl lg:text-6xl max-w-4xl fade-up fade-up-2">
             The growth plan for the business you just bought.
           </h1>
           <p className="mt-6 max-w-2xl text-lg sm:text-xl text-white/80 leading-relaxed fade-up fade-up-3">
