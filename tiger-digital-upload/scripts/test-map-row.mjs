@@ -5,6 +5,7 @@
 import { readFileSync } from "node:fs";
 import { mapRow, shortSlug, toRichText } from "./lib/map-row.mjs";
 import { buildDraftDoc } from "./lib/build-doc.mjs";
+import { same } from "./lib/compare.mjs";
 
 let failed = 0;
 const check = (name, ok, detail = "") => {
@@ -104,6 +105,24 @@ check("the snapshot records the whole sheet row", JSON.parse(guarded.importSnaps
 let refused = false;
 try { buildDraftDoc({ draftId: "landingPage-sf-stanford", mapped: {} }); } catch { refused = true; }
 check("writing a published id is refused outright", refused);
+
+console.log("\ncomparing a sheet value with what Sanity returns");
+// Sanity hands back object keys in its own order. If that counted as a
+// difference, every page would report a conflict on faqs that nobody made,
+// and the only way past it would be --accept-sheet, which switches the
+// protection off. This happened; these checks are why it cannot recur.
+check(
+  "key order is not a difference",
+  same({ _key: "faq1", question: "Q", answer: "A" }, { answer: "A", _key: "faq1", question: "Q" }),
+);
+check(
+  "nested key order is not a difference either",
+  same([{ a: { x: 1, y: 2 } }], [{ a: { y: 2, x: 1 } }]),
+);
+check("a real content change is still a difference", !same({ q: "one" }, { q: "two" }));
+check("array order still counts, because FAQ one is not FAQ two", !same([{ q: "a" }, { q: "b" }], [{ q: "b" }, { q: "a" }]));
+check("undefined and null compare equal", same(undefined, null));
+check("a missing field differs from a filled one", !same(undefined, "text"));
 
 console.log(failed === 0 ? "\nAll checks passed.\n" : `\n${failed} check(s) failed.\n`);
 process.exit(failed === 0 ? 0 : 1);

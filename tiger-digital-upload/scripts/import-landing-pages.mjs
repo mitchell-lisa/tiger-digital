@@ -24,6 +24,7 @@ import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
 import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
 import { buildDraftDoc } from "./lib/build-doc.mjs";
+import { same } from "./lib/compare.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -68,7 +69,6 @@ const REQUIRED = [
 /** Fields the schema no longer has, removed from documents written before it changed. */
 const RETIRED_FIELDS = ["sectionHeading", "sectionBody"];
 
-const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
 // --------------------------------------------------------------- main ----
 const { scanRow, checkAffiliationNotice } = await import("./lib/compliance.mjs");
