@@ -12,7 +12,7 @@
 const arg = (name, fallback) =>
   process.argv.find((a) => a.startsWith(`--${name}=`))?.split("=").slice(1).join("=") ?? fallback;
 
-const site = arg("site", "https://www.tigerdigital.marketing").replace(/\/$/, "");
+const site = arg("site", "https://nextset.digital").replace(/\/$/, "");
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "7yf56y02";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
 
