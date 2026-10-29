@@ -32,9 +32,9 @@ export async function generateMetadata({
   const page = await getLandingPage(slug);
   if (!page) return {};
   return {
-    // `absolute` bypasses the site-wide "%s | Tiger Digital" template. The
+    // `absolute` bypasses the site-wide "%s | Next Set Digital" template. The
     // sheet's seo_title column already carries the brand, and without this the
-    // tab reads "... | Tiger Digital | Tiger Digital".
+    // tab reads "... | Next Set Digital | Next Set Digital".
     title: { absolute: page.seoTitle },
     description: page.metaDescription,
     alternates: { canonical: `/search-funds/${page.slug}` },

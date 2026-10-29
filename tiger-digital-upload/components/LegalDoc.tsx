@@ -54,7 +54,7 @@ function linkify(text: string) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-tiger underline underline-offset-2 decoration-line hover:decoration-tiger break-words"
+          className="text-swell underline underline-offset-2 decoration-line hover:decoration-swell break-words"
         >
           {part}
         </a>
@@ -65,7 +65,7 @@ function linkify(text: string) {
         <a
           key={i}
           href={`mailto:${part}`}
-          className="text-tiger underline underline-offset-2 decoration-line hover:decoration-tiger break-words"
+          className="text-swell underline underline-offset-2 decoration-line hover:decoration-swell break-words"
         >
           {part}
         </a>
@@ -100,7 +100,7 @@ export default function LegalDoc({ source }: { source: string }) {
               {block.items.map((item, j) => (
                 <li
                   key={j}
-                  className="relative text-[0.98rem] leading-relaxed text-ink-soft before:absolute before:-left-5 before:top-[0.62em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-tiger-light"
+                  className="relative text-[0.98rem] leading-relaxed text-ink-soft before:absolute before:-left-5 before:top-[0.62em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-first-light"
                 >
                   {linkify(item)}
                 </li>

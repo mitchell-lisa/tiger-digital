@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 
+// Sky is the brand's light-blue ground; First Light is for bars and for text
+// on navy. Type on Sky is always Deep Water, never white.
 export default function CTABand() {
   return (
-    <section className="bg-tiger-light text-ink">
+    <section className="bg-sky text-ink">
       <div className="container-x py-14 md:py-20 grid gap-8 md:grid-cols-[1fr_auto] items-center">
         <div>
           <div>

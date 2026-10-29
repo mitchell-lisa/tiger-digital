@@ -23,7 +23,7 @@ export default function StudioPage() {
     return (
       <section className="container-x py-20 md:py-28">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Studio</p>
+          <p className="eyebrow text-swell">Studio</p>
           <h1 className="display mt-3 text-3xl sm:text-4xl">Sanity is not connected yet.</h1>
           <p className="mt-5 text-muted leading-relaxed">
             Set <code className="text-ink">NEXT_PUBLIC_SANITY_PROJECT_ID</code> and{" "}

@@ -68,7 +68,7 @@ export const landingPage = defineType({
       name: "audienceLocation",
       title: "Audience location",
       description:
-        "Where that audience is based. This is not a Tiger Digital office and not the acquired company's location.",
+        "Where that audience is based. This is not a Next Set Digital office and not the acquired company's location.",
       type: "string",
       group: "content",
     }),
@@ -147,7 +147,7 @@ export const landingPage = defineType({
       name: "affiliationNotice",
       title: "Affiliation notice",
       description:
-        "Shown prominently on the page. States that Tiger Digital is independent and not affiliated with or endorsed by the named institution. Required.",
+        "Shown prominently on the page. States that Next Set Digital is independent and not affiliated with or endorsed by the named institution. Required.",
       type: "text",
       rows: 2,
       group: "content",

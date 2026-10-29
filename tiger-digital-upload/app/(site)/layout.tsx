@@ -15,11 +15,15 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${site.url}/#business`,
-  name: site.legalName,
-  alternateName: site.name,
+  // `name` is what the business trades as; `legalName` carries the registered
+  // company, which is still Tiger Digital LLC. `alternateName` keeps the old
+  // trading name discoverable so searches for it still resolve here.
+  name: site.name,
+  legalName: site.legalName,
+  alternateName: site.formerName,
   url: site.url,
-  logo: `${site.url}/logo.png`,
-  image: `${site.url}/logo.png`,
+  logo: `${site.url}/brand/logo-primary-white.png`,
+  image: `${site.url}/brand/logo-primary-white.png`,
   telephone: "+1-856-924-9880",
   email: site.email,
   address: {

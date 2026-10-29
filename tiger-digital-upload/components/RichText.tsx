@@ -21,7 +21,7 @@ const components: PortableTextComponents = {
       <h4 className="mt-8 font-display font-bold text-lg tracking-tight first:mt-0">{children}</h4>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="mt-6 border-l-2 border-tiger pl-5 text-lg text-ink-soft leading-relaxed">
+      <blockquote className="mt-6 border-l-2 border-swell pl-5 text-lg text-ink-soft leading-relaxed">
         {children}
       </blockquote>
     ),
@@ -33,7 +33,7 @@ const components: PortableTextComponents = {
   listItem: {
     bullet: ({ children }) => (
       <li className="flex gap-3 text-ink-soft leading-relaxed">
-        <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-tiger shrink-0" aria-hidden />
+        <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-swell shrink-0" aria-hidden />
         <span>{children}</span>
       </li>
     ),

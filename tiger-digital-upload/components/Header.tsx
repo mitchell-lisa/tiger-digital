@@ -33,11 +33,19 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-cream border-b border-line">
       <div className="container-x flex items-center justify-between h-16 md:h-20">
-        <Link href="/" className="flex items-center gap-3" aria-label="Tiger Digital home">
-          <Image src="/seal.png" alt="" width={1024} height={1024} priority className="h-11 md:h-14 w-auto" />
-          <span className="font-display font-bold tracking-tight text-xl md:text-2xl leading-none">
-            Tiger Digital
-          </span>
+        {/* The logo is artwork: the brand book forbids retyping NEXT SET or
+            DIGITAL in a font, so the wordmark is part of the image and there is
+            no text beside it. Width, not height, is set because the brand book
+            specifies a 180px minimum display width. */}
+        <Link href="/" className="flex items-center" aria-label="Next Set Digital home">
+          <Image
+            src="/brand/logo-primary-sand.png"
+            alt="Next Set Digital"
+            width={800}
+            height={207}
+            priority
+            className="w-[180px] md:w-[210px] h-auto"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
@@ -45,7 +53,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm font-medium text-ink-soft hover:text-tiger hover:underline underline-offset-8 decoration-2 transition-colors"
+              className="text-sm font-medium text-ink-soft hover:text-swell hover:underline underline-offset-8 decoration-2 transition-colors"
             >
               {n.label}
             </Link>
@@ -53,7 +61,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href={site.phoneHref} className="text-sm font-semibold text-ink hover:text-tiger hover:underline underline-offset-4 transition-colors">
+          <a href={site.phoneHref} className="text-sm font-semibold text-ink hover:text-swell hover:underline underline-offset-4 transition-colors">
             {site.phone}
           </a>
           <Link href="/contact" className="btn btn-primary !min-h-[2.6rem] !py-2 !px-4 text-sm">
@@ -91,7 +99,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 onClick={close}
-                className="py-4 text-xl font-display font-bold tracking-tight border-b border-line hover:text-tiger"
+                className="py-4 text-xl font-display font-bold tracking-tight border-b border-line hover:text-swell"
               >
                 {n.label}
               </Link>

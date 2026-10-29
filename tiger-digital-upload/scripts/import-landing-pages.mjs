@@ -234,7 +234,7 @@ const SEED_DEFAULTS = {
     },
   ],
   proofDisclaimer:
-    "Results are from Tiger Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
+    "Results are from Next Set Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
   // Headings only. The full explanation lives on /search-funds; repeating
   // several hundred words of it on all ten pages would make each page
   // proportionally less distinctive rather than more useful.

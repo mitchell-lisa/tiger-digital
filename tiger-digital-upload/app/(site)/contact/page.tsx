@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book a Consultation",
-  description: `Talk to Tiger Digital about reviews, local search, and paid ads. Call ${site.phone} or send a note and our team will be in touch.`,
+  description: `Talk to Next Set Digital about reviews, local search, and paid ads. Call ${site.phone} or send a note and our team will be in touch.`,
 };
 
 export default function ContactPage() {
@@ -12,7 +12,7 @@ export default function ContactPage() {
     <section className="container-x py-16 md:py-24 grid gap-12 lg:grid-cols-[1fr_1.3fr]">
       <div>
         <div className="rule">
-          <p className="eyebrow text-tiger">Consultation</p>
+          <p className="eyebrow text-swell">Consultation</p>
           <h1 className="display mt-3 text-3xl sm:text-4xl">Let&rsquo;s work together.</h1>
           <p className="mt-5 text-lg text-muted leading-relaxed">
             Tell us a little about your business and what you want to improve. We&rsquo;ll take a look at your

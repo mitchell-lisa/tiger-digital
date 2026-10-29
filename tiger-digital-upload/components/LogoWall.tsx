@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { clients } from "@/lib/site";
-import RunningTiger from "./RunningTiger";
 
 export default function LogoWall({ compact = false }: { compact?: boolean }) {
   const list = compact ? clients.slice(0, 12) : clients;
   return (
     <section className="border-b border-line">
-      <RunningTiger />
       <div className="container-x py-10 md:py-12">
         <p className="eyebrow text-muted text-center">Companies we work with</p>
         <ul className="mt-7 flex flex-wrap justify-center gap-3">

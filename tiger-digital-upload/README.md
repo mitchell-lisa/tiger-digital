@@ -1,4 +1,4 @@
-# Tiger Digital: tigerdigital.marketing
+# Next Set Digital: tigerdigital.marketing
 
 Next.js (App Router) + TypeScript + Tailwind v4. Deployed on Vercel.
 

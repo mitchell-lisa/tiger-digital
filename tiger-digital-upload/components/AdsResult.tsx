@@ -13,7 +13,7 @@ export default function AdsResult() {
         <p className="text-sm font-semibold">
           Google Ads <span className="text-muted font-normal">· one client account, first month after we took it over</span>
         </p>
-        <p className="stat text-tiger text-lg sm:text-xl whitespace-nowrap">41% less spend, 25% more conversions</p>
+        <p className="stat text-swell text-lg sm:text-xl whitespace-nowrap">41% less spend, 25% more conversions</p>
       </div>
 
       <Image

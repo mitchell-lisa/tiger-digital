@@ -36,7 +36,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
 
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
-          <p className="eyebrow text-tiger-light fade-up">
+          <p className="eyebrow text-first-light fade-up">
             <Link href="/search-funds" className="hover:text-white transition-colors">
               Search funds
             </Link>
@@ -65,7 +65,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
               Running a different structure?{" "}
               <Link
                 href={`/search-funds/${other.slug}`}
-                className="font-semibold text-tiger-light hover:text-white transition-colors"
+                className="font-semibold text-first-light hover:text-white transition-colors"
               >
                 See the {other.name.toLowerCase()} page
               </Link>
@@ -78,7 +78,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       {/* Where the searcher actually is when they land here. */}
       <section className="container-x py-16 md:py-24 grid gap-10 lg:grid-cols-[1fr_1.15fr]">
         <div className="rule">
-          <p className="eyebrow text-tiger">{track.eyebrow}</p>
+          <p className="eyebrow text-swell">{track.eyebrow}</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">{track.situation.heading}</h2>
           <p className="mt-5 text-muted leading-relaxed">
             None of this is a marketing problem yet. It becomes one the first month the seller is
@@ -88,7 +88,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
         <ul className="space-y-4 self-center">
           {track.situation.points.map((p) => (
             <li key={p} className="flex gap-3 text-lg text-ink-soft leading-relaxed">
-              <span className="mt-[0.6rem] h-2 w-2 rounded-full bg-tiger shrink-0" aria-hidden />
+              <span className="mt-[0.6rem] h-2 w-2 rounded-full bg-swell shrink-0" aria-hidden />
               {p}
             </li>
           ))}
@@ -99,7 +99,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       <section className="border-y border-line bg-paper">
         <div className="container-x py-16 md:py-24">
           <div className="rule max-w-2xl">
-            <p className="eyebrow text-tiger">How we do it</p>
+            <p className="eyebrow text-swell">How we do it</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">
               Three channels, run as one system.
             </h2>
@@ -118,13 +118,13 @@ export default function SearchFundTrack({ track }: { track: Track }) {
                 className="scroll-mt-20 bg-paper p-7 md:p-10 grid gap-8 lg:grid-cols-[1fr_1fr]"
               >
                 <div>
-                  <div className="flex items-center gap-4 text-tiger">
+                  <div className="flex items-center gap-4 text-swell">
                     <Icon name={p.icon} className="w-8 h-8 shrink-0" />
                     <span className="stat text-3xl">{`0${i + 1}`}</span>
                     <h3 className="display text-2xl sm:text-3xl text-ink">{p.name}</h3>
                   </div>
                   <p className="mt-5 text-lg text-ink-soft leading-relaxed">{p.what}</p>
-                  <p className="mt-5 text-muted leading-relaxed border-l-2 border-tiger pl-4">
+                  <p className="mt-5 text-muted leading-relaxed border-l-2 border-swell pl-4">
                     {track.pillarNotes[p.slug]}
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
                   <ul className="mt-5 space-y-3">
                     {p.steps.map((s) => (
                       <li key={s} className="flex gap-3 text-ink-soft leading-relaxed">
-                        <span className="text-tiger font-bold shrink-0" aria-hidden>
+                        <span className="text-swell font-bold shrink-0" aria-hidden>
                           ✓
                         </span>
                         {s}
@@ -150,7 +150,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       {/* Verified campaign results. Numbers live in lib/site.ts. */}
       <section className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Proof</p>
+          <p className="eyebrow text-swell">Proof</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">What that looks like in practice.</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
             A campaign from our own client base. Not a search-fund portfolio company, but the same
@@ -162,7 +162,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
           <AdsResult />
         </div>
         <p className="mt-6 text-sm text-muted">
-          Results shown are from Tiger Digital client campaigns. Individual results vary.
+          Results shown are from Next Set Digital client campaigns. Individual results vary.
         </p>
       </section>
 
@@ -170,7 +170,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div className="rule rule-light">
-            <p className="eyebrow text-tiger-light">Sequencing</p>
+            <p className="eyebrow text-first-light">Sequencing</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">{track.plan.heading}</h2>
             <p className="mt-5 text-white/70 leading-relaxed">{track.plan.intro}</p>
           </div>
@@ -180,7 +180,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
                 key={s.title}
                 className="grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-white/10"
               >
-                <span className="stat text-3xl text-tiger-light">{i + 1}</span>
+                <span className="stat text-3xl text-first-light">{i + 1}</span>
                 <div>
                   <h3 className="font-display font-bold text-lg tracking-tight">{s.title}</h3>
                   <p className="mt-2 text-white/70 leading-relaxed">{s.body}</p>
@@ -194,14 +194,14 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       {/* Reporting. */}
       <section className="container-x py-16 md:py-24 grid gap-10 lg:grid-cols-[1fr_1fr]">
         <div className="rule">
-          <p className="eyebrow text-tiger">Reporting</p>
+          <p className="eyebrow text-swell">Reporting</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">{track.reporting.heading}</h2>
           <p className="mt-5 text-muted leading-relaxed">{track.reporting.intro}</p>
         </div>
         <ul className="space-y-3 self-center">
           {track.reporting.items.map((r) => (
             <li key={r} className="flex gap-3 text-ink-soft leading-relaxed">
-              <span className="text-tiger font-bold shrink-0" aria-hidden>
+              <span className="text-swell font-bold shrink-0" aria-hidden>
                 ✓
               </span>
               {r}
@@ -214,7 +214,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
       <section className="border-t border-line bg-paper">
         <div className="container-x py-16 md:py-24">
           <div className="rule max-w-2xl">
-            <p className="eyebrow text-tiger">Questions searchers ask</p>
+            <p className="eyebrow text-swell">Questions searchers ask</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">
               The ones that come up on every first call.
             </h2>
@@ -229,7 +229,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
           </dl>
           <p className="mt-10 text-muted">
             Still deciding which structure fits?{" "}
-            <Link href="/search-funds" className="font-semibold text-tiger hover:underline">
+            <Link href="/search-funds" className="font-semibold text-swell hover:underline">
               Start with the overview
             </Link>
             {other && (
@@ -237,7 +237,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
                 {", or read the "}
                 <Link
                   href={`/search-funds/${other.slug}`}
-                  className="font-semibold text-tiger hover:underline"
+                  className="font-semibold text-swell hover:underline"
                 >
                   {other.name.toLowerCase()} page
                 </Link>

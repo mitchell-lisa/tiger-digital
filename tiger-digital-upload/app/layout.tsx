@@ -1,27 +1,36 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Almarai } from "next/font/google";
+import { Archivo, Newsreader } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
-// Same two faces the live tigerdigital.marketing site uses.
-const display = Libre_Baskerville({
-  variable: "--font-display",
+/**
+ * Archivo carries the whole site, per the brand book: 800 for headlines, 600
+ * for labels, 400 for body. Newsreader italic is loaded for pull quotes and
+ * testimonials only.
+ *
+ * Both are self-hosted by next/font rather than fetched from Google at
+ * runtime, which is why the brand tokens' @import is not used: it would block
+ * rendering on a third-party request and shift the layout when it lands.
+ */
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const sans = Almarai({
-  variable: "--font-sans",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
+  style: ["italic"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Marketing for Acquisition Entrepreneurs`,
+    default: `${site.name} | Marketing for the Next Generation of Owners`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -44,7 +53,7 @@ export const metadata: Metadata = {
  */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} h-full`}>
+    <html lang="en" className={`${archivo.variable} ${newsreader.variable} h-full`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

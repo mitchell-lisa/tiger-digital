@@ -4,14 +4,20 @@ import type { IconName } from "@/components/Icon";
  * Single source of truth for every business fact on the site.
  * Every value below was taken from tigerdigital.marketing (Aug 2026).
  * Unknown facts are null and render nothing. Never guess.
+ *
+ * Renamed to Next Set Digital in October 2026. The LLC itself is still Tiger
+ * Digital LLC, so `legalName` carries the d/b/a rather than the new name on
+ * its own. The email and domain below are deliberately unchanged: the brand
+ * book marks both PENDING and says not to invent replacements.
  */
 
 export const site = {
-  name: "Tiger Digital",
-  legalName: "Tiger Digital LLC",
-  tagline: "Real growth. No fluff.",
+  name: "Next Set Digital",
+  formerName: "Tiger Digital",
+  legalName: "Tiger Digital LLC d/b/a Next Set Digital",
+  tagline: "Marketing for the next generation of owners.",
   description:
-    "Tiger Digital is a marketing agency for acquisition entrepreneurs. Reviews, Google Maps and AI search rankings, and Google Ads to dominate local search after the acquisition.",
+    "Next Set Digital is a marketing agency for the next generation of owners: searchers and acquirers who bought an established business, and the next generation taking over the family business. Reviews, Google Maps and AI search rankings, and Google Ads that turn local search into customers you can count.",
   url: "https://www.tigerdigital.marketing",
 
   phone: "856-924-9880",
@@ -236,6 +242,12 @@ export const clients: { name: string; logo?: string; url?: string; dark?: boolea
   { name: "The Food Architects", logo: "/clients/the-food-architects.png", url: "https://www.thefoodarchitectsnj.com/" },
 ];
 
+/**
+ * Verbatim client quotes. Several name Tiger Digital because that is what the
+ * client said and when they said it. They are attributed statements, not site
+ * copy, so the rebrand does not touch them: editing a testimonial to fit a new
+ * name would be putting words in a client's mouth.
+ */
 export const testimonials = [
   {
     quote:
@@ -268,7 +280,7 @@ export const team = [
     name: "Joe DiMarino",
     role: "Founder & CEO",
     photo: "/team/joe.webp",
-    bio: "Joe grew up in Moorestown, New Jersey, and holds a bachelor's degree in Public and International Affairs and Entrepreneurship from Princeton University. He founded Tiger Digital to drive measurable results for local businesses, and works directly with every client.",
+    bio: "Joe grew up in Moorestown, New Jersey, and holds a bachelor's degree in Public and International Affairs and Entrepreneurship from Princeton University. He founded the agency to drive measurable results for local businesses, and works directly with every client.",
   },
   {
     name: "Marvin Bermudez",
@@ -292,7 +304,7 @@ export const team = [
     name: "Gina Cooney",
     role: "Accounting Director",
     photo: "/team/gina.webp",
-    bio: "Gina is a seasoned educator who continues to work in the education field and supports Tiger Digital part time.",
+    bio: "Gina is a seasoned educator who continues to work in the education field and supports Next Set Digital part time.",
   },
 ];
 

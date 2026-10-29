@@ -1,20 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* Stamp palette: navy ink on warm paper, sky blue for anything set on navy. */
-  --color-ink: #12203a;
-  --color-ink-soft: #2c3b57;
-  --color-muted: #6a7183;
-  --color-line: #d9d4cb;
-  --color-paper: #ffffff;
-  --color-cream: #eae7e0;
-  --color-tiger: #1f3363;
-  --color-tiger-deep: #14224a;
-  --color-tiger-light: #9fb9d9;
-  --color-tiger-soft: #eaeff7;
+  /* Next Set Digital palette, from the Brand Book v1.1 tokens. The brand
+     names are the source of truth; the semantic names below them are what the
+     components actually use, so a future palette change is one block, not a
+     site-wide find and replace. */
+  --color-deep-water: #152038;
+  --color-swell: #233260;
+  --color-set-blue: #3f7cb8;
+  --color-first-light: #a4b8d6;
+  --color-sky: #aacbff;
+  --color-sand: #e9e7e1;
+  --color-foam: #ffffff;
+  --color-slate: #5b6478;
 
-  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-ink: #152038; /* Deep Water: headlines, dark grounds */
+  --color-ink-soft: #233260; /* Swell: the step between headline and caption */
+  --color-muted: #5b6478; /* Slate: captions and secondary text */
+  /* Borders are not a brand colour. Derived: Slate 14% over Sand, so rules sit
+     on the Sand ground without introducing a ninth colour. */
+  --color-line: #d5d5d2;
+  --color-paper: #ffffff; /* Foam */
+  --color-cream: #e9e7e1; /* Sand */
+
+  /* Archivo for everything, per the brand book. Newsreader italic is loaded
+     for pull quotes only and is never used for UI text. */
+  --font-display: var(--font-archivo), Arial, sans-serif;
+  --font-sans: var(--font-archivo), Arial, sans-serif;
+  --font-quote: var(--font-newsreader), Georgia, serif;
 }
 
 html {
@@ -25,24 +38,35 @@ body {
   background: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Libre Baskerville, set the way the live site sets it: regular weight,
-   tight tracking, and line-height loosened enough for serif descenders. */
+/* Headlines: Archivo 800 at -2% tracking, per the brand book. Line height is
+   tighter than the old serif needed because this face has no descender swash
+   to clear. */
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.08;
+  line-height: 1.04;
+}
+
+/* Newsreader italic, pull quotes and testimonials only. The brand book caps
+   it at one per page and forbids it for buttons, labels and body copy. */
+.pull-quote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-weight: 400;
 }
 
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
 }
 
@@ -72,7 +96,7 @@ body {
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--color-tiger);
+  background: var(--color-swell);
   color: #fff;
 }
 /* Hover states are deliberately a full step darker rather than a wash. A 5%
@@ -85,7 +109,7 @@ body {
   color: #fff;
 }
 .btn-dark:hover {
-  background: var(--color-tiger);
+  background: var(--color-swell);
 }
 .btn-outline {
   border: 1.5px solid currentColor;
@@ -93,8 +117,8 @@ body {
 /* Outline buttons fill in on hover instead of tinting, so the change is
    unmistakable on both paper and navy. */
 .btn-outline:hover {
-  background: var(--color-tiger);
-  border-color: var(--color-tiger);
+  background: var(--color-swell);
+  border-color: var(--color-swell);
   color: #fff;
 }
 .btn-outline-light:hover {
@@ -104,17 +128,17 @@ body {
 }
 .btn-light {
   background: var(--color-paper);
-  color: var(--color-tiger);
+  color: var(--color-swell);
 }
 .btn-light:hover {
-  background: var(--color-tiger);
+  background: var(--color-swell);
   color: #fff;
 }
 
 /* Keyboard focus. Only :focus-visible, so a mouse click never paints a ring,
    but tabbing always does. Two-tone so it survives on navy and on paper. */
 :focus-visible {
-  outline: 3px solid var(--color-tiger);
+  outline: 3px solid var(--color-swell);
   outline-offset: 2px;
   border-radius: 2px;
   /* Tailwind's transition-colors animates outline-color, which makes the ring
@@ -125,7 +149,7 @@ body {
    switch to sky. `on-dark` is for elements that only turn dark when focused. */
 .bg-ink :focus-visible,
 .on-dark:focus-visible {
-  outline-color: var(--color-tiger-light);
+  outline-color: var(--color-first-light);
 }
 
 /* Any card or tile that behaves as a link. Border and lift, not a tint. */
@@ -133,21 +157,21 @@ body {
   transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
 }
 .card-link:hover {
-  border-color: var(--color-tiger);
+  border-color: var(--color-swell);
   box-shadow: 0 10px 30px -18px rgba(18, 32, 58, 0.55);
 }
 
 /* Text links inside body copy: underline on hover rather than a colour shift
    alone, so the affordance does not depend on colour perception. */
 .link-quiet:hover {
-  color: var(--color-tiger);
+  color: var(--color-swell);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .stat {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-feature-settings: "lnum" 1;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -160,11 +184,11 @@ body {
   display: block;
   width: 2.5rem;
   height: 3px;
-  background: var(--color-tiger);
+  background: var(--color-swell);
   margin-bottom: 1.25rem;
 }
 .rule-light::before {
-  background: var(--color-tiger-light);
+  background: var(--color-first-light);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -187,17 +211,4 @@ body {
     opacity: 1;
     transform: none;
   }
-}
-
-/* running tiger: sweeps left to right across the strip */
-.tiger-run {
-  right: 100%;
-  animation: tigerRun 9s linear infinite;
-}
-@keyframes tigerRun {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(100vw + 100%)); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tiger-run { animation: none; right: auto; left: 2rem; }
 }

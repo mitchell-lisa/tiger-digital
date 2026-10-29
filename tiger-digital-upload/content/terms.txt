@@ -1,4 +1,4 @@
-These terms of service (“Terms”) govern each user’s (“user” or “you” or “your”) access to and use of all services provided by Tiger Digital, including the website at https://tigerdigital.marketing/ (the “Tiger Digital Site”) (collectively, the “Services”), as well as any information, files or other materials uploaded, downloaded, transmitted or appearing on the Services (collectively referred to as “Content”). The Services are owned and provided by Tiger Digital LLC. ("Tiger Digital" or "we" or "us").
+These terms of service (“Terms”) govern each user’s (“user” or “you” or “your”) access to and use of all services provided by Next Set Digital, including the website at https://tigerdigital.marketing/ (the “Next Set Digital Site”) (collectively, the “Services”), as well as any information, files or other materials uploaded, downloaded, transmitted or appearing on the Services (collectively referred to as “Content”). The Services are owned and provided by Tiger Digital LLC d/b/a Next Set Digital ("Next Set Digital" or "we" or "us").
 
 Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms.
 
@@ -14,13 +14,13 @@ You are responsible for your use of the Services, for any Content you post to or
 
 You may use the Services only if you are 18 years old or older. You may use the Services only in compliance with these Terms and all applicable local, state, national, and international laws, rules and regulations.
 
-The Services are always evolving and the form and nature of the Services may change from time to time without prior notice. In addition, Tiger Digital may stop (permanently or temporarily) providing the Services or any features within the Services to you or to other users without notice. Tiger Digital also retains the right to create limits on use and storage at Tiger Digital’s sole discretion at any time without prior notice.
+The Services are always evolving and the form and nature of the Services may change from time to time without prior notice. In addition, Next Set Digital may stop (permanently or temporarily) providing the Services or any features within the Services to you or to other users without notice. Next Set Digital also retains the right to create limits on use and storage at Next Set Digital’s sole discretion at any time without prior notice.
 
-The Services may include advertisements, which may be targeted to the Content or information on the Services, queries made through the Services, or other information. The types and extent of advertising on the Services are subject to change. In consideration for granting you access to and use of the Services, you agree that Tiger Digital and its partners and advertisers may place advertising on the Services or in connection with the display of Content or information from the Services submitted by you or others.
+The Services may include advertisements, which may be targeted to the Content or information on the Services, queries made through the Services, or other information. The types and extent of advertising on the Services are subject to change. In consideration for granting you access to and use of the Services, you agree that Next Set Digital and its partners and advertisers may place advertising on the Services or in connection with the display of Content or information from the Services submitted by you or others.
 
 ## 3. Privacy
 
-Any personally-identifiable information and other Content that identifies you (“Personal Data”) is subject to our Privacy Statement, which governs our collection and use of your Personal Data. California residents are also subject to the provisions entitled "Your Privacy Rights Under State Laws." You consent to the collection and use of Personal Data, including the transfer of Personal Data between you (wherever you may be) and us (which means each location from which we Provide our Services), including any transfer of Personal Data between countries, for storage, processing and use by Tiger Digital and by others.
+Any personally-identifiable information and other Content that identifies you (“Personal Data”) is subject to our Privacy Statement, which governs our collection and use of your Personal Data. California residents are also subject to the provisions entitled "Your Privacy Rights Under State Laws." You consent to the collection and use of Personal Data, including the transfer of Personal Data between you (wherever you may be) and us (which means each location from which we Provide our Services), including any transfer of Personal Data between countries, for storage, processing and use by Next Set Digital and by others.
 
 As part of providing you the Services, we may need to provide you with certain communications, such as service announcements and administrative messages. These communications are considered part of the Services and your account, which you may not be able to opt-out from receiving so long as you receive the Services.
 
@@ -28,7 +28,7 @@ In order to use some features of the Services, you may need to “opt-in” to r
 
 ## 4. Passwords
 
-You are responsible for safeguarding the password that you use to access the Services and for any activities or actions under your password. We encourage you to use “strong” passwords (longer passwords that may use a combination of upper and lower case letters, numbers and symbols, or pass phrases) with your account. We may also change our password recommendations and requirements and other requirements for user credentials to reflect any changes in our security protocols. Tiger Digital will not be liable for any loss or damage arising from any other person using your account.
+You are responsible for safeguarding the password that you use to access the Services and for any activities or actions under your password. We encourage you to use “strong” passwords (longer passwords that may use a combination of upper and lower case letters, numbers and symbols, or pass phrases) with your account. We may also change our password recommendations and requirements and other requirements for user credentials to reflect any changes in our security protocols. Next Set Digital will not be liable for any loss or damage arising from any other person using your account.
 
 ## 5. Content on the Services
 
@@ -38,7 +38,7 @@ We do not endorse, support, represent or guarantee the completeness, truthfulnes
 
 We or our users may use the Services to provide information or discussion on a variety of topics, including news, information regarding our services, and other topics of interest to our community of users. We do not endorse any particular advice or recommendations which may be made via the Services, and we strongly recommend that you seek the advice of an appropriate professional before making any decisions as a result of using the Services.
 
-We do not endorse any opinions expressed via the Services. You understand that by using the Services, you may be exposed to Content that might be offensive, harmful, inaccurate or otherwise inappropriate, or in some cases, Content that has been mislabeled or is otherwise deceptive. Under no circumstances shall Tiger Digital be liable for any Content, including, but not limited to, any errors or omissions in any Content, or any loss or damage of any kind incurred as a result of the use of any Content posted, emailed, transmitted or otherwise made available via the Services or broadcast elsewhere.
+We do not endorse any opinions expressed via the Services. You understand that by using the Services, you may be exposed to Content that might be offensive, harmful, inaccurate or otherwise inappropriate, or in some cases, Content that has been mislabeled or is otherwise deceptive. Under no circumstances shall Next Set Digital be liable for any Content, including, but not limited to, any errors or omissions in any Content, or any loss or damage of any kind incurred as a result of the use of any Content posted, emailed, transmitted or otherwise made available via the Services or broadcast elsewhere.
 
 If you see any Content on the Services that you consider offensive or that you think may violate these Terms of Service, please contact us at Joe@tigerdigital.marketing so that we may review it. While we have the right to delete or remove from public view any Content for any reason, we also reserve the right not to remove Content that some users consider offensive or in violation of the Terms of Service, but which we do not consider offensive or in violation of the Terms of Service.
 
@@ -46,27 +46,27 @@ If you see any Content on the Services that you consider offensive or that you t
 
 You retain ownership or other rights you may have to any Content you submit, post or display on or through the Services. By submitting, posting or displaying Content on or through the Services, you grant us the Content License, as stated above.
 
-You are responsible for your use of the Services, for any Content you provide, and for any consequences thereof, including the use of your Content by other users and our third party partners. You understand that the Content you submit may be rebroadcast or distributed by us, by our partners, and by the recipients of your Content. If you do not have the right to submit Content for such use, it may subject you to liability. Tiger Digital will not be responsible or liable for any transmission or use of your Content. You represent and warrant that you have all the rights, power and authority necessary to grant the rights granted herein to any Content that you submit.
+You are responsible for your use of the Services, for any Content you provide, and for any consequences thereof, including the use of your Content by other users and our third party partners. You understand that the Content you submit may be rebroadcast or distributed by us, by our partners, and by the recipients of your Content. If you do not have the right to submit Content for such use, it may subject you to liability. Next Set Digital will not be responsible or liable for any transmission or use of your Content. You represent and warrant that you have all the rights, power and authority necessary to grant the rights granted herein to any Content that you submit.
 
-## 7. Tiger Digital’s Rights
+## 7. Next Set Digital’s Rights
 
-All rights, titles, and interests in and to the Services are and will remain the exclusive property of Tiger Digital and its licensors (including other users). The Services are protected by copyright, trademark, and other laws of the United States and other countries around the world. Nothing in the Terms gives you a right to use the Tiger Digital name or any of Tiger Digital’s trademarks, logos, domain names, or other distinctive brand features. Any feedback, comments, or suggestions you may provide regarding Tiger Digital or the Services is entirely voluntary and Tiger Digital will be free to use your feedback, comments or suggestions as we see fit and without any obligation to you.
+All rights, titles, and interests in and to the Services are and will remain the exclusive property of Next Set Digital and its licensors (including other users). The Services are protected by copyright, trademark, and other laws of the United States and other countries around the world. Nothing in the Terms gives you a right to use the Next Set Digital name or any of Next Set Digital’s trademarks, logos, domain names, or other distinctive brand features. Any feedback, comments, or suggestions you may provide regarding Next Set Digital or the Services is entirely voluntary and Next Set Digital will be free to use your feedback, comments or suggestions as we see fit and without any obligation to you.
 
 ## 8. Restrictions on Content and Use of the Services
 
-We reserve the right at all times (but we do not have the obligation) to remove or refuse to distribute any Content on the Services and to terminate a user's access to them. We also reserve the right to access, read, preserve, and disclose any Content or other information for any reason in our sole discretion, including without limitation to satisfy any applicable law, regulation, legal process or governmental request, enforce the Terms, including investigation of potential violations hereof, detect, prevent, or otherwise address fraud, security or technical issues, respond to user support requests, or protect the rights, property or safety of Tiger Digital, its users and the public.
+We reserve the right at all times (but we do not have the obligation) to remove or refuse to distribute any Content on the Services and to terminate a user's access to them. We also reserve the right to access, read, preserve, and disclose any Content or other information for any reason in our sole discretion, including without limitation to satisfy any applicable law, regulation, legal process or governmental request, enforce the Terms, including investigation of potential violations hereof, detect, prevent, or otherwise address fraud, security or technical issues, respond to user support requests, or protect the rights, property or safety of Next Set Digital, its users and the public.
 
 You may not do any of the following while accessing or using the Services:
 
-- access, tamper with, or use non-public areas of the Services, Tiger Digital’s computer systems, or the technical delivery systems of the website’s systems;
+- access, tamper with, or use non-public areas of the Services, Next Set Digital’s computer systems, or the technical delivery systems of the website’s systems;
 - probe, scan, or test the vulnerability of any system or network or breach or circumvent any security or authentication measures;
-- access or search or attempt to access or search the Services by any means (automated or otherwise) other than through our currently available interfaces published by Tiger Digital (and only pursuant to those interfaces), unless you have been specifically allowed to do so in a separate written agreement signed by Tiger Digital;
+- access or search or attempt to access or search the Services by any means (automated or otherwise) other than through our currently available interfaces published by Next Set Digital (and only pursuant to those interfaces), unless you have been specifically allowed to do so in a separate written agreement signed by Next Set Digital;
 - forge any TCP/IP packet header or any part of the header information in any email or posting, or in any way use the Services to send altered, deceptive or false source-identifying information;
 - interfere with, or disrupt, (or attempt to do so), the access of any user, host or network, including, without limitation, sending a virus, overloading, flooding, spamming, mail-bombing the Services, or by scripting the creation of Content in such a manner as to interfere with or create an undue burden on the Services.
 
 ## 9. Intellectual Property Policy
 
-Tiger Digital respects the intellectual property rights of others and expects users of our Services to do the same. We will respond to notices of alleged copyright or other intellectual property infringement that comply with applicable law (including the Digital Millennium Copyright or “DMCA” at 17 U.S.C. §512) and are properly provided to us. If you would like the benefit of your legal protections under the DMCA, please review the DMCA to ensure your compliance.
+Next Set Digital respects the intellectual property rights of others and expects users of our Services to do the same. We will respond to notices of alleged copyright or other intellectual property infringement that comply with applicable law (including the Digital Millennium Copyright or “DMCA” at 17 U.S.C. §512) and are properly provided to us. If you would like the benefit of your legal protections under the DMCA, please review the DMCA to ensure your compliance.
 
 If you believe that your Content has been copied in a way that constitutes copyright infringement or the infringement of other intellectual property rights, please send us a written request to remove the allegedly-infringing Content (“takedown notice”). Each takedown notice must be in English and include the following information:
 
@@ -80,9 +80,9 @@ If you believe that your Content has been copied in a way that constitutes copyr
 
 On our receipt of a takedown notice, we may publish the takedown notice to the general public, or provide a copy of the takedown notice to the user that uploaded or provided the Content accused to be infringing (“Accused Content”). For any takedown notice that is subject to the provisions of the DMCA, the original provider of the Accused Content may have the right to send a notice to us (called a “counter notice”) demanding that the Accused Content be restored to the Services.
 
-In compliance with the DMCA or other applicable law, we may implement any takedown notice by removing the Accused Content or other material from public view on the Services, and we may implement any counter notice by restoring the Accused Content or other material to public view on the Services. In either case, Tiger Digital shall bear no liability to you or anyone else for the posting, removal or re-posting of any Accused Content.
+In compliance with the DMCA or other applicable law, we may implement any takedown notice by removing the Accused Content or other material from public view on the Services, and we may implement any counter notice by restoring the Accused Content or other material to public view on the Services. In either case, Next Set Digital shall bear no liability to you or anyone else for the posting, removal or re-posting of any Accused Content.
 
-Independent of the DMCA and any other applicable laws or regulations, we reserve the right to remove any Accused Content without prior notice, at our sole discretion, and without liability to you or anyone else. In appropriate circumstances, Tiger Digital will also terminate a registered user’s account if we determine the registered user to be a repeat infringer.
+Independent of the DMCA and any other applicable laws or regulations, we reserve the right to remove any Accused Content without prior notice, at our sole discretion, and without liability to you or anyone else. In appropriate circumstances, Next Set Digital will also terminate a registered user’s account if we determine the registered user to be a repeat infringer.
 
 Our designated copyright agent for sending takedown notices and counter notices is:
 
@@ -97,7 +97,7 @@ YOUR ACCESS TO AND USE OF THE SERVICES AND ANY CONTENT IS AT YOUR OWN RISK. YOU 
 
 ## 11. Links
 
-The Services may contain links to or integration with third-party websites, software, or resources (“third party systems”). You acknowledge and agree that Tiger Digital is not responsible or liable for the availability or accuracy of such third party systems, or the content, products, or services on or available from such third party systems. Links to such third party systems do not imply any endorsement of such third party systems or the content, products, or services available from such third party systems. You acknowledge sole responsibility for and assume all risk arising from your use of any such third party systems.
+The Services may contain links to or integration with third-party websites, software, or resources (“third party systems”). You acknowledge and agree that Next Set Digital is not responsible or liable for the availability or accuracy of such third party systems, or the content, products, or services on or available from such third party systems. Links to such third party systems do not imply any endorsement of such third party systems or the content, products, or services available from such third party systems. You acknowledge sole responsibility for and assume all risk arising from your use of any such third party systems.
 
 ## 12. Limitation of Liability
 
@@ -121,11 +121,11 @@ Any controversy or claim between the parties or arising out of these Terms or an
 
 ## 16. Entire Agreement
 
-These Terms and our Privacy Statement are the entire and exclusive agreement between Tiger Digital and you regarding the Services (excluding any services for which you have a separate written agreement signed by Tiger Digital that expressly states it is in addition to or in place of these Terms), and these Terms supersede and replace any prior agreements between Tiger Digital and you regarding the Services.
+These Terms and our Privacy Statement are the entire and exclusive agreement between Next Set Digital and you regarding the Services (excluding any services for which you have a separate written agreement signed by Next Set Digital that expressly states it is in addition to or in place of these Terms), and these Terms supersede and replace any prior agreements between Next Set Digital and you regarding the Services.
 
 We may revise these Terms from time to time and post the revised version of the Terms on the Services. If the revision, in our sole discretion, is material we may notify you via an e-mail to the email address associated with your account. By continuing to access or use the Services after those revisions become effective, you agree to be bound by the revised Terms.
 
-If you have any questions about these Terms, please contact Tiger Digital at:
+If you have any questions about these Terms, please contact Next Set Digital at:
 
 TIGER DIGITAL LLC
 Moorestown, New Jersey

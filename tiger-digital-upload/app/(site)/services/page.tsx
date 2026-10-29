@@ -8,7 +8,7 @@ import Icon from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Services: Local SEO, Paid Ads & Reputation Management",
   description:
-    "Tiger Digital's services for local businesses: local SEO and AI search visibility, paid advertising guided by real local visibility data, and reputation management.",
+    "Next Set Digital's services for local businesses: local SEO and AI search visibility, paid advertising guided by real local visibility data, and reputation management.",
 };
 
 export default function ServicesPage() {
@@ -16,7 +16,7 @@ export default function ServicesPage() {
     <>
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
-          <p className="eyebrow text-tiger-light">Services</p>
+          <p className="eyebrow text-first-light">Services</p>
           <h1 className="display mt-4 text-3xl sm:text-5xl max-w-3xl">
             Smarter coverage. Better spend. Real local results.
           </h1>
@@ -48,7 +48,7 @@ export default function ServicesPage() {
               <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3">
                 {s.bullets.map((b) => (
                   <li key={b} className="flex gap-3 text-ink-soft">
-                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-tiger shrink-0" aria-hidden />
+                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-swell shrink-0" aria-hidden />
                     {b}
                   </li>
                 ))}
@@ -59,7 +59,7 @@ export default function ServicesPage() {
               </div>
             </div>
             <aside className="bg-ink text-white rounded-lg p-7 md:p-8 self-start">
-              <p className="eyebrow text-tiger-light">{s.resultsHeading}</p>
+              <p className="eyebrow text-first-light">{s.resultsHeading}</p>
               <dl className="mt-6 space-y-5">
                 {s.results.map((r) => (
                   <div
@@ -67,12 +67,12 @@ export default function ServicesPage() {
                     className="flex items-start gap-4 border-b border-white/10 pb-4 last:border-0 last:pb-0"
                   >
                     {r.icon && (
-                      <span className="text-tiger-light mt-1.5 shrink-0">
+                      <span className="text-first-light mt-1.5 shrink-0">
                         <Icon name={r.icon} className="w-6 h-6" />
                       </span>
                     )}
                     <div>
-                      <dd className="stat text-3xl text-tiger-light">{r.value}</dd>
+                      <dd className="stat text-3xl text-first-light">{r.value}</dd>
                       <dt className="mt-1 text-sm text-white/60">{r.label}</dt>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ export default function ServicesPage() {
 
       <section className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Why this works</p>
+          <p className="eyebrow text-swell">Why this works</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">Paid ads perform best when guided by real local visibility.</h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -107,7 +107,7 @@ export default function ServicesPage() {
               "Clear, visual reporting that makes sense",
             ].map((g) => (
               <li key={g} className="flex gap-3">
-                <span className="text-tiger font-bold" aria-hidden>✓</span>
+                <span className="text-swell font-bold" aria-hidden>✓</span>
                 {g}
               </li>
             ))}
@@ -120,7 +120,7 @@ export default function ServicesPage() {
       <section className="border-t border-line bg-paper">
         <div className="container-x py-14 md:py-20 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div className="rule max-w-2xl">
-            <p className="eyebrow text-tiger">Buying a business?</p>
+            <p className="eyebrow text-swell">Buying a business?</p>
             <h2 className="display mt-3 text-2xl sm:text-3xl">
               The same three services, sequenced for an acquisition.
             </h2>

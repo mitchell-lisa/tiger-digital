@@ -1,6 +1,6 @@
 /**
  * Hero proof card. Every number comes from the local-seo figures in lib/site.ts,
- * which are Tiger Digital's own published results for one tracked campaign.
+ * which are Next Set Digital's own published results for one tracked campaign.
  * Nothing here is invented and nothing is attributed to a named client.
  *
  * components/ReviewProof.tsx is the reputation version of this card, kept in
@@ -29,7 +29,7 @@ export default function LocalProof() {
 
       <div className="px-6 sm:px-8 py-7">
         <div className="flex items-baseline gap-3.5 flex-wrap">
-          <p className="stat text-[3.4rem] text-tiger">{HEADLINE}</p>
+          <p className="stat text-[3.4rem] text-swell">{HEADLINE}</p>
           <p className="text-sm text-muted leading-snug">
             improvement in
             <br className="hidden sm:block" /> local visibility
@@ -39,7 +39,7 @@ export default function LocalProof() {
         <div className="mt-8" aria-hidden="true">
           <div className="relative h-1 rounded-full bg-line">
             <span
-              className="absolute inset-y-0 rounded-full bg-tiger/25"
+              className="absolute inset-y-0 rounded-full bg-swell/25"
               style={{ left: `${pct(RANK_TO)}%`, right: `${100 - pct(RANK_FROM)}%` }}
             />
             <span
@@ -47,13 +47,13 @@ export default function LocalProof() {
               style={{ left: `${pct(RANK_FROM)}%` }}
             />
             <span
-              className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-tiger ring-2 ring-paper"
+              className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-swell ring-2 ring-paper"
               style={{ left: `${pct(RANK_TO)}%` }}
             />
           </div>
           <div className="relative mt-2.5 h-4 text-[0.7rem] font-semibold uppercase tracking-[0.08em]">
             <span
-              className="absolute -translate-x-1/2 whitespace-nowrap text-tiger"
+              className="absolute -translate-x-1/2 whitespace-nowrap text-swell"
               style={{ left: `${pct(RANK_TO)}%` }}
             >
               Now {RANK_TO}
