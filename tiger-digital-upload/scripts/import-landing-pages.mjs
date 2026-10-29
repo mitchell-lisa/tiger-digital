@@ -24,6 +24,7 @@ import { readFileSync } from "node:fs";
 import { createClient } from "@sanity/client";
 import { mapRow, RESERVED_SLUGS, shortSlug } from "./lib/map-row.mjs";
 import { buildDraftDoc } from "./lib/build-doc.mjs";
+import { same } from "./lib/compare.mjs";
 
 const args = new Set(process.argv.slice(2));
 const APPLY = args.has("--apply");
@@ -68,7 +69,6 @@ const REQUIRED = [
 /** Fields the schema no longer has, removed from documents written before it changed. */
 const RETIRED_FIELDS = ["sectionHeading", "sectionBody"];
 
-const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
 // --------------------------------------------------------------- main ----
 const { scanRow, checkAffiliationNotice } = await import("./lib/compliance.mjs");
@@ -234,7 +234,7 @@ const SEED_DEFAULTS = {
     },
   ],
   proofDisclaimer:
-    "Results are from Tiger Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
+    "Results are from Next Set Digital client campaigns and reflect the specific clients and periods listed. Your results will depend on your market, budget, and starting point.",
   // Headings only. The full explanation lives on /search-funds; repeating
   // several hundred words of it on all ten pages would make each page
   // proportionally less distinctive rather than more useful.

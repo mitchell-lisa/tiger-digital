@@ -4,14 +4,20 @@ import type { IconName } from "@/components/Icon";
  * Single source of truth for every business fact on the site.
  * Every value below was taken from tigerdigital.marketing (Aug 2026).
  * Unknown facts are null and render nothing. Never guess.
+ *
+ * Renamed to Next Set Digital in October 2026. The LLC itself is still Tiger
+ * Digital LLC, so `legalName` carries the d/b/a rather than the new name on
+ * its own. The email and domain below are deliberately unchanged: the brand
+ * book marks both PENDING and says not to invent replacements.
  */
 
 export const site = {
-  name: "Tiger Digital",
-  legalName: "Tiger Digital LLC",
-  tagline: "Real growth. No fluff.",
+  name: "Next Set Digital",
+  formerName: "Tiger Digital",
+  legalName: "Tiger Digital LLC d/b/a Next Set Digital",
+  tagline: "Marketing for the next generation of owners.",
   description:
-    "Tiger Digital is a marketing agency for acquisition entrepreneurs. Reviews, Google Maps and AI search rankings, and Google Ads to dominate local search after the acquisition.",
+    "Next Set Digital is a marketing agency for the next generation of owners: searchers and acquirers who bought an established business, and the next generation taking over the family business. Reviews, Google Maps and AI search rankings, and Google Ads that turn local search into customers you can count.",
   url: "https://www.tigerdigital.marketing",
 
   phone: "856-924-9880",
@@ -60,13 +66,13 @@ export const publishedReviews = {
       author: "Jack B.",
       datePublished: "2025-07-20",
       name: "Highly Recommended for SEO and Marketing",
-      body: "Tiger Digital is the best out there for SEO, reputation management, and strategic marketing consulting. I would highly recommend any small business to leverage TD to improve their web presence.",
+      body: "Next Set Digital is the best out there for SEO, reputation management, and strategic marketing consulting. I would highly recommend any small business to leverage TD to improve their web presence.",
     },
     {
       author: "Doug A.",
       datePublished: "2025-07-18",
       name: "Explosive Lead Growth and Expert Help",
-      body: "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Tiger Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
+      body: "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Next Set Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
     },
   ],
 };
@@ -236,28 +242,34 @@ export const clients: { name: string; logo?: string; url?: string; dark?: boolea
   { name: "The Food Architects", logo: "/clients/the-food-architects.png", url: "https://www.thefoodarchitectsnj.com/" },
 ];
 
+/**
+ * Client quotes. The company name in these was changed from Tiger Digital to
+ * Next Set Digital on Joe's instruction when the business was renamed, so the
+ * quotes name the company the clients are still working with. Nothing else in
+ * any quote was altered.
+ */
 export const testimonials = [
   {
     quote:
-      "Tiger Digital helped us achieve 317 five-star reviews in under six months. This kind of growth exceeded our expectations and has been key to reaching more people. Their work speaks for itself!",
+      "Next Set Digital helped us achieve 317 five-star reviews in under six months. This kind of growth exceeded our expectations and has been key to reaching more people. Their work speaks for itself!",
     name: "DKP Gastro Team",
     role: "DKP Gastro Associates",
   },
   {
     quote:
-      "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Tiger Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
+      "If you are looking to get your business noticed, then I would strongly suggest that you give Joe from Next Set Digital a call. I am so grateful for his hands-on help with our company. We experienced explosive leads since hiring Joe. His knowledge goes beyond his years.",
     name: "Doug Anderson",
     role: "CEO, Cherry Hill Painting",
   },
   {
     quote:
-      "Tiger Digital skyrocketed our appointments and online presence, opening up a whole new funnel of opportunities for us!",
+      "Next Set Digital skyrocketed our appointments and online presence, opening up a whole new funnel of opportunities for us!",
     name: "Miss to Mrs Bridal",
     role: "Owner, Miss to Mrs Bridal",
   },
   {
     quote:
-      "The Tiger Digital team is professional, data-driven, and genuinely cares about the success of their clients.",
+      "The Next Set Digital team is professional, data-driven, and genuinely cares about the success of their clients.",
     name: "Chris Viola",
     role: "CEO & Founder, TeaConnect",
   },
@@ -268,7 +280,7 @@ export const team = [
     name: "Joe DiMarino",
     role: "Founder & CEO",
     photo: "/team/joe.webp",
-    bio: "Joe grew up in Moorestown, New Jersey, and holds a bachelor's degree in Public and International Affairs and Entrepreneurship from Princeton University. He founded Tiger Digital to drive measurable results for local businesses, and works directly with every client.",
+    bio: "Joe grew up in Moorestown, New Jersey, and holds a bachelor's degree in Public and International Affairs and Entrepreneurship from Princeton University. He founded the agency to drive measurable results for local businesses, and works directly with every client.",
   },
   {
     name: "Marvin Bermudez",
@@ -292,7 +304,7 @@ export const team = [
     name: "Gina Cooney",
     role: "Accounting Director",
     photo: "/team/gina.webp",
-    bio: "Gina is a seasoned educator who continues to work in the education field and supports Tiger Digital part time.",
+    bio: "Gina is a seasoned educator who continues to work in the education field and supports Next Set Digital part time.",
   },
 ];
 

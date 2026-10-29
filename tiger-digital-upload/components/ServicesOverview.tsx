@@ -13,7 +13,7 @@ export default function ServicesOverview() {
     <section className="container-x py-16 md:py-24" id="services">
       <div className="md:flex md:items-end md:justify-between gap-8">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">What we do</p>
+          <p className="eyebrow text-swell">What we do</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">
             Rankings, ads, and reviews.
           </h2>
@@ -32,9 +32,9 @@ export default function ServicesOverview() {
           <Link
             key={s.slug}
             href={`/services#${s.slug}`}
-            className="on-dark group bg-paper p-7 md:p-8 flex flex-col transition-colors hover:bg-tiger hover:text-white focus-visible:bg-tiger focus-visible:text-white"
+            className="on-dark group bg-paper p-7 md:p-8 flex flex-col transition-colors hover:bg-swell hover:text-white focus-visible:bg-swell focus-visible:text-white"
           >
-            <span className="text-tiger group-hover:text-tiger-light group-focus-visible:text-tiger-light transition-colors">
+            <span className="text-swell group-hover:text-first-light group-focus-visible:text-first-light transition-colors">
               <Icon name={icons[s.slug]} className="w-8 h-8" />
             </span>
             <h3 className="mt-6 font-display font-bold text-xl tracking-tight">{s.name}</h3>

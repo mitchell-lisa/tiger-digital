@@ -6,20 +6,22 @@ export default function Hero() {
     <section className="bg-ink text-white overflow-hidden">
       <div className="container-x py-20 md:py-28">
         <div className="max-w-4xl">
-          <p className="eyebrow text-tiger-light fade-up">Marketing for acquisition entrepreneurs</p>
+          <p className="eyebrow text-first-light fade-up">Marketing for the next generation of owners</p>
           <h1 className="display mt-5 text-[2.9rem] sm:text-6xl lg:text-7xl fade-up fade-up-2">
-            Real growth.
+            The first set built it.
             <br />
-            <span className="text-tiger-light">No fluff.</span>
+            <span className="text-first-light">The next set takes it further.</span>
           </h1>
           <p className="mt-7 text-xl sm:text-2xl text-white/80 leading-snug fade-up fade-up-3">
+            You bought an established business, or you are the next generation running
+            the family one.{" "}
             <Link
               href="/search-funds"
-              className="underline decoration-tiger-light/40 underline-offset-4 hover:decoration-tiger-light transition-colors"
+              className="underline decoration-first-light/40 underline-offset-4 hover:decoration-first-light transition-colors"
             >
               Self-funded or traditional searcher
             </Link>
-            , we help you dominate local search after the acquisition.
+            , we turn search and advertising into customers you can count.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3 fade-up fade-up-3">
             <Link href={site.cta.primary.href} className="btn btn-primary !min-h-[3.5rem] !px-8 text-base">
@@ -44,7 +46,7 @@ export default function Hero() {
             <p className="eyebrow text-white/40">A few recent numbers</p>
             <a
               href="#results"
-              className="text-sm font-semibold text-tiger-light hover:text-white transition-colors"
+              className="text-sm font-semibold text-first-light hover:text-white transition-colors"
             >
               See what is behind them <span aria-hidden>↓</span>
             </a>
@@ -54,7 +56,7 @@ export default function Hero() {
               <div key={r.value}>
                 <dt className="sr-only">{r.teaser}</dt>
                 <dd>
-                  <span className="stat block text-2xl sm:text-3xl text-tiger-light">
+                  <span className="stat block text-2xl sm:text-3xl text-first-light">
                     {r.value}
                   </span>
                   <span className="mt-2 block text-xs text-white/50 leading-snug">{r.teaser}</span>

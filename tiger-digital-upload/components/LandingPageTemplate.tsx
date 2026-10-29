@@ -36,7 +36,7 @@ export default function LandingPageTemplate({
     <>
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
-          <p className="eyebrow text-tiger-light">
+          <p className="eyebrow text-first-light">
             {page.audienceName}
             {page.audienceLocation ? ` · ${page.audienceLocation}` : ""}
           </p>
@@ -60,7 +60,7 @@ export default function LandingPageTemplate({
 
           {/* Kept in the hero, not the footer: a reader should meet the
               affiliation notice before the marketing copy, not after it. */}
-          <p className="mt-9 max-w-2xl border-l-2 border-tiger-light/50 pl-4 text-sm text-white/60 leading-relaxed">
+          <p className="mt-9 max-w-2xl border-l-2 border-first-light/50 pl-4 text-sm text-white/60 leading-relaxed">
             {page.affiliationNotice}
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function LandingPageTemplate({
             return (
               <section key={key} className="container-x py-16 md:py-20">
                 <div className="rule max-w-3xl">
-                  <p className="eyebrow text-tiger">Overview</p>
+                  <p className="eyebrow text-swell">Overview</p>
                   <p className="mt-5 text-lg text-ink-soft leading-relaxed whitespace-pre-line">
                     {page.intro}
                   </p>
@@ -97,7 +97,7 @@ export default function LandingPageTemplate({
             return (
               <section key={key} className="container-x pb-4">
                 <div className="max-w-3xl rounded-lg border border-line bg-paper p-6 md:p-7">
-                  <p className="eyebrow text-tiger">Our experience</p>
+                  <p className="eyebrow text-swell">Our experience</p>
                   <p className="mt-3 text-lg text-ink-soft leading-relaxed">
                     {page.clientExperience}
                   </p>
@@ -110,13 +110,13 @@ export default function LandingPageTemplate({
               <section key={key} className="border-y border-line bg-paper">
                 <div className="container-x py-16 md:py-20">
                   <div className="rule max-w-2xl">
-                    <p className="eyebrow text-tiger">What we run</p>
+                    <p className="eyebrow text-swell">What we run</p>
                     <h2 className="display mt-3 text-3xl sm:text-4xl">How we would help.</h2>
                   </div>
                   <div className="mt-10 grid gap-px bg-line border border-line md:grid-cols-2">
                     {defaults!.serviceBlocks.map((b, i) => (
                       <div key={b.heading} className="bg-paper p-7 md:p-8">
-                        <span className="text-tiger">
+                        <span className="text-swell">
                           <Icon name={i === 0 ? "pin" : "target"} className="w-8 h-8" />
                         </span>
                         <h3 className="mt-5 font-display font-bold text-xl tracking-tight">
@@ -127,7 +127,7 @@ export default function LandingPageTemplate({
                           <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
                             {b.steps.map((step) => (
                               <li key={step} className="flex gap-2.5 text-sm text-ink-soft leading-relaxed">
-                                <span className="text-tiger font-bold shrink-0" aria-hidden>
+                                <span className="text-swell font-bold shrink-0" aria-hidden>
                                   ✓
                                 </span>
                                 {step}
@@ -162,14 +162,14 @@ export default function LandingPageTemplate({
             return (
               <section key={key} className="container-x py-14 md:py-16">
                 <div className="rule max-w-2xl">
-                  <p className="eyebrow text-tiger">Results</p>
+                  <p className="eyebrow text-swell">Results</p>
                   <h2 className="display mt-3 text-2xl sm:text-3xl">Figures we can stand behind.</h2>
                 </div>
                 <dl className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                   {defaults!.proofPoints!.map((pt) => (
                     <div
                       key={pt.value + pt.label}
-                      className="border border-line border-t-4 border-t-tiger rounded-lg bg-paper p-5"
+                      className="border border-line border-t-4 border-t-swell rounded-lg bg-paper p-5"
                     >
                       <dd className="stat text-[2rem] text-ink">{pt.value}</dd>
                       <dt className="mt-2 text-sm leading-snug">{pt.label}</dt>
@@ -193,7 +193,7 @@ export default function LandingPageTemplate({
               <section key={key} className="bg-ink text-white">
                 <div className="container-x py-14 md:py-16">
                   <div className="rule rule-light max-w-2xl">
-                    <p className="eyebrow text-tiger-light">Before you optimise anything</p>
+                    <p className="eyebrow text-first-light">Before you optimise anything</p>
                     <h2 className="display mt-3 text-2xl sm:text-3xl">
                       {cl.heading ?? "What breaks at close"}
                     </h2>
@@ -201,7 +201,7 @@ export default function LandingPageTemplate({
                   <ul className="mt-8 grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
                     {cl.items!.map((item) => (
                       <li key={item} className="flex gap-3 text-white/80">
-                        <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-tiger-light shrink-0" aria-hidden />
+                        <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-first-light shrink-0" aria-hidden />
                         {item}
                       </li>
                     ))}
@@ -209,7 +209,7 @@ export default function LandingPageTemplate({
                   {cl.linkHref && cl.linkLabel && (
                     <Link
                       href={cl.linkHref}
-                      className="mt-8 inline-block text-sm font-semibold text-tiger-light hover:text-white transition-colors"
+                      className="mt-8 inline-block text-sm font-semibold text-first-light hover:text-white transition-colors"
                     >
                       {cl.linkLabel} <span aria-hidden>→</span>
                     </Link>
@@ -227,7 +227,7 @@ export default function LandingPageTemplate({
               <section key={key} className="border-t border-line bg-paper">
                 <div className="container-x py-14 md:py-16">
                   <div className="rule max-w-2xl">
-                    <p className="eyebrow text-tiger">Keep reading</p>
+                    <p className="eyebrow text-swell">Keep reading</p>
                     <h2 className="display mt-3 text-2xl sm:text-3xl">More on this site.</h2>
                   </div>
                   <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
@@ -251,7 +251,12 @@ export default function LandingPageTemplate({
             return (
               <section key={key} className="container-x py-12">
                 <blockquote className="bg-ink text-white rounded-lg p-7 md:p-9 max-w-3xl">
-                  <p className="text-lg md:text-xl leading-relaxed">“{page.testimonialQuote}”</p>
+                  {/* The one Newsreader italic the brand book allows per page.
+                      The schema permits a single testimonial, so it cannot be
+                      used twice by accident. */}
+                  <p className="pull-quote text-xl md:text-2xl leading-relaxed">
+                    “{page.testimonialQuote}”
+                  </p>
                   <footer className="mt-4 text-sm text-white/60">
                     {page.testimonialAttribution}
                   </footer>
@@ -264,7 +269,7 @@ export default function LandingPageTemplate({
               <section key={key} className="border-t border-line bg-paper">
                 <div className="container-x py-16 md:py-20">
                   <div className="rule max-w-2xl">
-                    <p className="eyebrow text-tiger">Questions</p>
+                    <p className="eyebrow text-swell">Questions</p>
                     <h2 className="display mt-3 text-3xl sm:text-4xl">Common questions.</h2>
                   </div>
                   <dl className="mt-10 border-t border-line max-w-3xl">
@@ -303,7 +308,7 @@ export default function LandingPageTemplate({
 
           case "cta":
             return (
-              <section key={key} className="bg-tiger-light text-ink">
+              <section key={key} className="bg-first-light text-ink">
                 <div className="container-x py-14 md:py-20 grid gap-8 md:grid-cols-[1fr_auto] items-center">
                   <div>
                     <h2 className="display text-2xl sm:text-3xl lg:text-4xl">

@@ -16,12 +16,12 @@ export default function PrivacyPage() {
       <section className="bg-ink text-white">
         <div className="container-x py-14 md:py-20">
           <div className="rule rule-light max-w-2xl">
-            <p className="eyebrow text-tiger-light">Legal</p>
+            <p className="eyebrow text-first-light">Legal</p>
             <h1 className="display mt-3 text-3xl sm:text-5xl">Privacy Statement</h1>
             <p className="mt-5 text-white/70 leading-relaxed">
               How we collect, use, share, and protect the information you provide. This statement
               works alongside our{" "}
-              <Link href="/terms" className="text-tiger-light underline underline-offset-4">
+              <Link href="/terms" className="text-first-light underline underline-offset-4">
                 Terms of Service
               </Link>
               .

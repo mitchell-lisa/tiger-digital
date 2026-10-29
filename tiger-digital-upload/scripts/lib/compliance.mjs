@@ -50,7 +50,7 @@ export function checkAffiliationNotice(notice) {
 
 /**
  * Scan one row's public-facing fields. `skipFields` exists because the
- * disclaimer and the "Is Tiger Digital affiliated with...?" FAQ are supposed
+ * disclaimer and the "Is Next Set Digital affiliated with...?" FAQ are supposed
  * to use this vocabulary.
  */
 export function scanRow(row, { skipFields = [] } = {}) {

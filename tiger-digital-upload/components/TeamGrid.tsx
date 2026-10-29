@@ -22,14 +22,14 @@ export default function TeamGrid({ limit }: { limit?: number }) {
         <li key={m.name}>
           <Image
             src={m.photo}
-            alt={`${m.name}, ${m.role} at Tiger Digital`}
+            alt={`${m.name}, ${m.role} at Next Set Digital`}
             width={480}
             height={600}
             sizes="176px"
             className="h-[13.75rem] w-44 rounded-lg border border-line bg-cream object-cover"
           />
           <h3 className="mt-6 font-display font-bold text-lg tracking-tight">{m.name}</h3>
-          <p className="mt-1.5 text-sm text-tiger font-semibold">{m.role}</p>
+          <p className="mt-1.5 text-sm text-swell font-semibold">{m.role}</p>
           <p className="mt-4 text-muted leading-relaxed text-sm">{m.bio}</p>
         </li>
       ))}

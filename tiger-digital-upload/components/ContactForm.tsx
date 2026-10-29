@@ -63,7 +63,7 @@ export default function ContactForm() {
   }
 
   const field =
-    "w-full rounded-md border border-line bg-paper px-3.5 py-3 text-base outline-none focus:border-tiger focus:ring-2 focus:ring-tiger/25";
+    "w-full rounded-md border border-line bg-paper px-3.5 py-3 text-base outline-none focus:border-swell focus:ring-2 focus:ring-swell/25";
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">

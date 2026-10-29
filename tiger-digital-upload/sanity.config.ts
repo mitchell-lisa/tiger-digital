@@ -8,7 +8,7 @@ import { schemaTypes } from "@/sanity/schemaTypes";
 
 export default defineConfig({
   name: "tiger-digital",
-  title: "Tiger Digital",
+  title: "Next Set Digital",
   basePath: "/studio",
   // Empty when unconfigured; the /studio route checks before mounting, so this
   // never reaches the network with a blank project.

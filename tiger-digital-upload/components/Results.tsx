@@ -11,7 +11,7 @@ export default function Results() {
     <section id="results" className="border-y border-line scroll-mt-20">
       <div className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Results</p>
+          <p className="eyebrow text-swell">Results</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">Numbers we can back up.</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
             Every client result below comes straight from the reporting tools we use with clients.
@@ -24,7 +24,7 @@ export default function Results() {
           {homeResults.map((r) => (
             <div
               key={r.label}
-              className="bg-paper border border-line border-t-4 border-t-tiger rounded-lg p-6 flex flex-col"
+              className="bg-paper border border-line border-t-4 border-t-swell rounded-lg p-6 flex flex-col"
             >
               <p className="stat text-[2.15rem] sm:text-[2.5rem] text-ink">{r.value}</p>
               <p className="mt-3 leading-snug flex-1">{r.label}</p>
@@ -34,7 +34,7 @@ export default function Results() {
         </div>
 
         <div className="mt-12 bg-ink text-white rounded-lg p-7 md:p-8 flex flex-wrap items-center gap-6 md:gap-10">
-          <p className="stat text-4xl md:text-5xl text-tiger-light shrink-0">
+          <p className="stat text-4xl md:text-5xl text-first-light shrink-0">
             {reviewThreshold.value}
           </p>
           <div className="flex-1 min-w-[15rem]">
@@ -44,7 +44,7 @@ export default function Results() {
         </div>
 
         <p className="mt-7 text-xs text-muted leading-relaxed max-w-3xl">
-          Results are from Tiger Digital client campaigns and reflect the specific clients and
+          Results are from Next Set Digital client campaigns and reflect the specific clients and
           periods listed. Your results will depend on your market, budget, and starting point.
         </p>
       </div>

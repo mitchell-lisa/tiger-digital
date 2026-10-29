@@ -1,7 +1,7 @@
 /**
  * One icon set for the whole site.
  *
- * Drawn to sit beside the hand-inked tiger and the seal rather than beside a
+ * Drawn to sit beside the Next Set wave mark rather than beside a
  * stock icon font: a single 1.7 stroke weight, round caps and joins, and paths
  * that are deliberately a little off-square (a rule that tilts a degree, a
  * corner that overshoots) so they read as drawn rather than snapped to a grid.

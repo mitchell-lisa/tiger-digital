@@ -1,6 +1,6 @@
 /**
  * Hero proof card. Every number below comes from the reputation-management
- * figures in lib/site.ts, which are Tiger Digital's own published averages.
+ * figures in lib/site.ts, which are Next Set Digital's own published averages.
  * Nothing here is invented and nothing is attributed to a named client.
  */
 import { services } from "@/lib/site";
@@ -20,7 +20,7 @@ function Stars({ filled, size }: { filled: number; size: number }) {
           <span key={i} className="relative block" style={{ height: size, width: size }}>
             <Star className="absolute inset-0 h-full w-full text-line" />
             <span className="absolute inset-0 overflow-hidden" style={{ width: `${pct}%` }}>
-              <Star className="text-tiger" style={{ height: size, width: size }} />
+              <Star className="text-swell" style={{ height: size, width: size }} />
             </span>
           </span>
         );
@@ -49,7 +49,7 @@ export default function ReviewProof() {
 
       <div className="px-6 sm:px-8 py-7">
         <div className="flex items-baseline gap-3.5 flex-wrap">
-          <p className="stat text-[3.4rem] text-tiger">{RATING_TO.toFixed(1)}</p>
+          <p className="stat text-[3.4rem] text-swell">{RATING_TO.toFixed(1)}</p>
           <p className="text-sm text-muted leading-snug">
             average rating,
             <br className="hidden sm:block" /> up from{" "}

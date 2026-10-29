@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
  * Required env vars on Vercel:
  *   RESEND_API_KEY   from resend.com
  *   CONTACT_TO       destination inbox (defaults to site.email)
- *   CONTACT_FROM     a verified sender, e.g. "Tiger Digital <hello@tigerdigital.marketing>"
+ *   CONTACT_FROM     a verified sender, e.g. "Next Set Digital <hello@tigerdigital.marketing>"
  * Without RESEND_API_KEY the route returns 503 and the form shows the email/phone fallback.
  */
 export async function POST(req: Request) {
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM ?? "Tiger Digital <onboarding@resend.dev>",
+      from: process.env.CONTACT_FROM ?? "Next Set Digital <onboarding@resend.dev>",
       to: [process.env.CONTACT_TO ?? site.email],
       reply_to: email,
       subject: `Consultation request: ${business} (${name})`,

@@ -1,6 +1,11 @@
 /**
- * Regenerates public/ brand assets from the original Squarespace CDN uploads.
- * Runs before `next build` only when public/tiger-head.png is missing
+ * Regenerates public/ client logos, team headshots and result graphics from
+ * the original Squarespace CDN uploads.
+ *
+ * The Next Set Digital logo, favicon and banners are NOT generated here. They
+ * are designed artwork shipped in the brand kit and committed under
+ * public/brand/ and app/, so nothing regenerates or recolours them.
+ * Runs before `next build` only when public/clients/mp-copiers.png is missing
  * (i.e. a source-only deploy). In the git repo the outputs are committed,
  * so this is a no-op there.
  */
@@ -37,7 +42,6 @@ const team = {
   santiago: "c2b1df53-57e6-4a48-b7e5-0960446d1e0d/santi+final.png",
   gina: "2e5efc0e-49f1-42bc-8ec6-8cb6011839e7/Gina.png",
 };
-const LOGO = "198dcc8b-e78e-4e9c-9dba-0c3dfef8013a/tiger+logo+main.png";
 
 /**
  * Clients added after the Squarespace era. Their logos are not in Joe's old
@@ -54,10 +58,10 @@ const externalLogos = {
   "viperjet-drain": "https://static.wixstatic.com/media/4ccdaa_f7e871ab67744927be028e1e5957cfdc~mv2.png",
 };
 
-const NAVY = { r: 0x1f, g: 0x33, b: 0x63 };
-const SKY = { r: 0x9f, g: 0xb9, b: 0xd9 };
+const NAVY = { r: 0x23, g: 0x32, b: 0x60 }; // Swell
+const SKY = { r: 0xa4, g: 0xb8, b: 0xd6 }; // First Light
 
-if (existsSync("public/logo.png")) {
+if (existsSync("public/clients/mp-copiers.png")) {
   console.log("assets present, skipping fetch");
   process.exit(0);
 }
@@ -142,187 +146,6 @@ for (const [name, url] of Object.entries(externalLogos)) {
 void team;
 void recolourRing;
 console.log("team photos: skipped (committed crops are final)");
-const SEAL = 1024;
-const INNER_R = 431; // inner ring radius
-const FILL = 0.86; // how much of the inner circle the head occupies
-
-// A circle drawn by hand never closes perfectly; this wobbles the radius so the
-// ring reads as pressed ink rather than a vector stroke.
-function wobble(cx, cy, r, amp, seed) {
-  const pts = [];
-  const N = 260;
-  for (let i = 0; i <= N; i++) {
-    const t = (i / N) * Math.PI * 2;
-    const w =
-      Math.sin(t * 3 + seed) * 0.55 +
-      Math.sin(t * 5 + seed * 2.3) * 0.3 +
-      Math.sin(t * 8 + seed * 3.7) * 0.15;
-    const rr = r + w * amp;
-    pts.push(`${(cx + Math.cos(t) * rr).toFixed(1)},${(cy + Math.sin(t) * rr).toFixed(1)}`);
-  }
-  return `M${pts.join("L")}Z`;
-}
-
-async function makeSeal(headPng, ink) {
-  // Two passes: sharp reorders operations internally, so negate has to run on
-  // its own image or it inverts the alpha channel instead of the pixels.
-  const flat = await sharp(headPng)
-    .flatten({ background: "#ffffff" })
-    .greyscale()
-    .threshold(70)
-    .png()
-    .toBuffer();
-  const head0 = await sharp(flat)
-    .removeAlpha()
-    .negate()
-    .resize({ width: 800, height: 800, fit: "inside" })
-    .png()
-    .toBuffer();
-
-  // Fitting a tiger head into a circle takes two measurements, not one.
-  // The bounding box alone sits the head too high (the ears reach much further
-  // up than the chin reaches down); the smallest enclosing circle alone sits it
-  // too low (it balances against the two ear tips). Halfway between the two
-  // reads as centred. The enclosing radius also sets the scale, so the gap to
-  // the ring is even the whole way round instead of the ears crowding it.
-  const { data, info } = await sharp(head0).greyscale().raw().toBuffer({ resolveWithObject: true });
-  const pts = [];
-  let minX = info.width, maxX = -1, minY = info.height, maxY = -1;
-  for (let y = 0; y < info.height; y++) {
-    for (let x = 0; x < info.width; x++) {
-      if (data[(y * info.width + x) * info.channels] > 40) {
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-        if (y % 2 === 0 && x % 2 === 0) pts.push(x, y);
-      }
-    }
-  }
-  // Badoiu-Clarkson: step the centre a shrinking fraction of the way toward
-  // whichever point is furthest from it. Deterministic, converges fast.
-  let mx = 0, my = 0;
-  for (let i = 0; i < pts.length; i += 2) {
-    mx += pts[i];
-    my += pts[i + 1];
-  }
-  mx /= pts.length / 2;
-  my /= pts.length / 2;
-  for (let i = 1; i <= 300; i++) {
-    let far = 0, farDist = -1;
-    for (let j = 0; j < pts.length; j += 2) {
-      const d = (pts[j] - mx) ** 2 + (pts[j + 1] - my) ** 2;
-      if (d > farDist) {
-        farDist = d;
-        far = j;
-      }
-    }
-    mx += (pts[far] - mx) / (i + 1);
-    my += (pts[far + 1] - my) / (i + 1);
-  }
-  let radius = 0;
-  for (let j = 0; j < pts.length; j += 2) {
-    const d = Math.hypot(pts[j] - mx, pts[j + 1] - my);
-    if (d > radius) radius = d;
-  }
-
-  const scale = (INNER_R * FILL) / radius;
-  const head = await sharp(head0)
-    .resize(Math.round(info.width * scale), Math.round(info.height * scale))
-    .png()
-    .toBuffer();
-  const left = Math.round(SEAL / 2 - ((minX + maxX) / 2 + mx) / 2 * scale);
-  const top = Math.round(SEAL / 2 - ((minY + maxY) / 2 + my) / 2 * scale);
-
-  const rings = `<svg xmlns="http://www.w3.org/2000/svg" width="${SEAL}" height="${SEAL}">
-    <rect width="${SEAL}" height="${SEAL}" fill="black"/>
-    <path d="${wobble(SEAL / 2, SEAL / 2, 468, 5, 1.1)}" fill="none" stroke="white" stroke-width="11"/>
-    <path d="${wobble(SEAL / 2, SEAL / 2, INNER_R, 4, 4.7)}" fill="none" stroke="white" stroke-width="7"/>
-  </svg>`;
-
-  const mask = await sharp(Buffer.from(rings))
-    .composite([{ input: head, left, top, blend: "screen" }])
-    .greyscale()
-    .png()
-    .toBuffer();
-
-  // Letterpress texture: broad blotches where the plate lifted, plus fine speckle.
-  const blotches = await sharp({
-    create: { width: 110, height: 110, channels: 1, noise: { type: "gaussian", mean: 150, sigma: 60 } },
-  })
-    .resize(SEAL, SEAL, { kernel: "cubic" })
-    .blur(2)
-    .threshold(62)
-    .png()
-    .toBuffer();
-  const speckle = await sharp({
-    create: { width: SEAL, height: SEAL, channels: 1, noise: { type: "gaussian", mean: 150, sigma: 60 } },
-  })
-    .blur(0.6)
-    .threshold(58)
-    .png()
-    .toBuffer();
-
-  const inked = await sharp(mask)
-    .composite([
-      { input: blotches, blend: "multiply" },
-      { input: speckle, blend: "multiply" },
-    ])
-    .greyscale()
-    .raw()
-    .toBuffer();
-
-  return sharp({ create: { width: SEAL, height: SEAL, channels: 3, background: ink } })
-    .joinChannel(inked, { raw: { width: SEAL, height: SEAL, channels: 1 } })
-    .png({ compressionLevel: 9 })
-    .toBuffer();
-}
-
-{
-  const buf = await get(LOGO);
-  const full = sharp(buf).ensureAlpha().trim();
-  const meta = await full.toBuffer({ resolveWithObject: true });
-  // find the blank row between the tiger head and the wordmark so the head is never clipped
-  const { data: alpha, info } = await full.clone().extractChannel("alpha").raw().toBuffer({ resolveWithObject: true });
-  let h = info.height;
-  for (let y = Math.round(info.height * 0.4); y < info.height; y++) {
-    let ink = 0;
-    for (let x = 0; x < info.width; x++) if (alpha[y * info.width + x] > 40) ink++;
-    if (ink === 0) { h = y; break; }
-  }
-  const head = await sharp(meta.data).extract({ left: 0, top: 0, width: meta.info.width, height: h }).trim().resize({ width: 400, height: 400, fit: "inside" }).png({ palette: true, colors: 128 }).toBuffer();
-  writeFileSync("public/tiger-head.png", head);
-  const logo = await full.clone().resize({ width: 400, height: 560, fit: "inside" }).png({ palette: true, colors: 128 }).toBuffer();
-  writeFileSync("public/logo.png", logo);
-
-  const seal = await makeSeal(head, NAVY);
-  writeFileSync("public/seal.png", seal);
-  writeFileSync("public/seal-light.png", await makeSeal(head, SKY));
-
-  // Favicon: just the rings and the tiger, no background, trimmed so the mark
-  // fills the tab icon instead of floating inside the seal's own margin.
-  const trimmedSeal = await sharp(seal).trim().png().toBuffer();
-  writeFileSync(
-    "app/icon.png",
-    await sharp(trimmedSeal)
-      .resize({ width: 256, height: 256, fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-      .png()
-      .toBuffer(),
-  );
-  // The Apple touch icon is the exception: iOS composites transparency onto
-  // black, which would swallow navy ink, so that one keeps the paper behind it.
-  writeFileSync(
-    "app/apple-icon.png",
-    await sharp(trimmedSeal)
-      .resize({ width: 172, height: 172, fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-      .extend({ top: 4, bottom: 4, left: 4, right: 4, background: "#eae7e0" })
-      .flatten({ background: "#eae7e0" })
-      .png()
-      .toBuffer(),
-  );
-  console.log("seal + icons");
-}
-
 // Real client result graphics from the services page.
 {
   /**
@@ -376,53 +199,3 @@ async function makeSeal(headPng, ink) {
   console.log("result graphics");
 }
 
-// Running tiger GIF: downloaded, cropped to the animal, recoloured into the
-// brand duotone (navy stripes on sky blue), and re-encoded small. The source is
-// a 4961x3508 18-frame GIF on a white ground, far too big to ship as-is.
-{
-  const res = await fetch("https://i.pinimg.com/originals/f8/d2/fd/f8d2fdc95c44de27b5b9f82365123730.gif", {
-    headers: { "User-Agent": "Mozilla/5.0" },
-  });
-  if (!res.ok) throw new Error(`gif ${res.status}`);
-  const src = Buffer.from(await res.arrayBuffer());
-  const strip = await sharp(src, { animated: true, limitInputPixels: false })
-    .resize({ height: 320 })
-    .png()
-    .toBuffer();
-  const meta = await sharp(strip).metadata();
-  const pages = 18;
-  const pageH = Math.round(meta.height / pages);
-  const W = meta.width;
-  // the tiger occupies this fraction of each frame; the rest is whitespace and a ground line
-  const left = Math.round(0.0219 * W);
-  const right = Math.round(0.9158 * W);
-  const top = Math.round(0.4619 * pageH);
-  const bottom = Math.round(0.828 * pageH);
-  const cw = right - left;
-  const ch = bottom - top;
-
-  // duotone ramp: darkest ink -> NAVY, lightest -> SKY
-  const dark = [NAVY.r, NAVY.g, NAVY.b];
-  const light = [SKY.r, SKY.g, SKY.b];
-  const gain = dark.map((d, i) => (light[i] - d) / 255);
-
-  const frames = [];
-  for (let i = 0; i < pages; i++) {
-    const frame = await sharp(strip)
-      .extract({ left, top: i * pageH + top, width: cw, height: ch })
-      .png()
-      .toBuffer();
-    const grey = await sharp(frame).removeAlpha().greyscale().png().toBuffer();
-    // key the white ground out, with a 15-level ramp so the edges stay smooth
-    const alpha = await sharp(grey).linear(-17, 4250).removeAlpha().extractChannel(0).raw().toBuffer();
-    const duo = await sharp(grey).toColourspace("srgb").linear(gain, dark).removeAlpha().png().toBuffer();
-    frames.push(
-      await sharp(duo).joinChannel(alpha, { raw: { width: cw, height: ch, channels: 1 } }).png().toBuffer(),
-    );
-  }
-  const gif = await sharp(frames, { join: { across: 1, animated: true } })
-    .gif({ colours: 48, effort: 10, delay: 60, loop: 0 })
-    .toBuffer();
-  writeFileSync("public/tiger-run.gif", gif);
-  console.log("tiger gif", Math.round(gif.length / 1024), "KB");
-}

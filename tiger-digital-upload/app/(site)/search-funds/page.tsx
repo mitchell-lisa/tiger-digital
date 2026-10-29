@@ -9,7 +9,7 @@ import { services, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Marketing for Search Funds: SEO, AI Search & Paid Ads",
   description:
-    "Tiger Digital runs local SEO, AI search visibility, and Google Ads for search funds. Self-funded or investor-backed, we take custody of the seller's digital assets, baseline what you bought, and grow it without breaking the rankings.",
+    "Next Set Digital runs local SEO, AI search visibility, and Google Ads for search funds. Self-funded or investor-backed, we take custody of the seller's digital assets, baseline what you bought, and grow it without breaking the rankings.",
   alternates: { canonical: "/search-funds" },
 };
 
@@ -38,8 +38,11 @@ export default function SearchFundsPage() {
 
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
-          <p className="eyebrow text-tiger-light fade-up">Search funds</p>
-          <h1 className="display mt-5 text-[2.4rem] sm:text-5xl lg:text-6xl max-w-4xl fade-up fade-up-2">
+          <p className="eyebrow text-first-light fade-up">Search funds</p>
+          <h2 className="display mt-4 text-xl sm:text-2xl text-first-light fade-up fade-up-2">
+            ETA: Entrepreneurship Through Advertising
+          </h2>
+          <h1 className="display mt-3 text-[2.4rem] sm:text-5xl lg:text-6xl max-w-4xl fade-up fade-up-2">
             The growth plan for the business you just bought.
           </h1>
           <p className="mt-6 max-w-2xl text-lg sm:text-xl text-white/80 leading-relaxed fade-up fade-up-3">
@@ -70,7 +73,7 @@ export default function SearchFundsPage() {
       {/* Pick a track. This is the main job of the hub page. */}
       <section className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Two structures, two plans</p>
+          <p className="eyebrow text-swell">Two structures, two plans</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">Which one are you running?</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
             A searcher with an SBA note and a personal guarantee has a different first ninety days
@@ -86,9 +89,9 @@ export default function SearchFundsPage() {
               className="group bg-paper p-8 md:p-10 flex flex-col hover:bg-cream transition-colors"
             >
               <h3 className="display text-2xl sm:text-3xl">{t.name}</h3>
-              <p className="mt-3 text-sm font-semibold text-tiger">{t.subtitle}</p>
+              <p className="mt-3 text-sm font-semibold text-swell">{t.subtitle}</p>
               <p className="mt-5 text-muted leading-relaxed flex-1">{t.lede}</p>
-              <p className="mt-7 text-sm font-semibold inline-flex items-center gap-1.5 group-hover:text-tiger transition-colors">
+              <p className="mt-7 text-sm font-semibold inline-flex items-center gap-1.5 group-hover:text-swell transition-colors">
                 See the plan <span aria-hidden>→</span>
               </p>
             </Link>
@@ -100,7 +103,7 @@ export default function SearchFundsPage() {
       <section className="border-y border-line bg-paper">
         <div className="container-x py-16 md:py-24">
           <div className="rule max-w-2xl">
-            <p className="eyebrow text-tiger">What we run</p>
+            <p className="eyebrow text-swell">What we run</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">
               SEO, AI search, and paid ads, in that order of patience.
             </h2>
@@ -114,7 +117,7 @@ export default function SearchFundsPage() {
           <div className="mt-12 grid gap-px bg-line border border-line lg:grid-cols-3">
             {pillars.map((p, i) => (
               <div key={p.slug} className="bg-paper p-7 md:p-8 flex flex-col">
-                <div className="flex items-center gap-3 text-tiger">
+                <div className="flex items-center gap-3 text-swell">
                   <Icon name={p.icon} className="w-8 h-8" />
                   <span className="stat text-3xl">{`0${i + 1}`}</span>
                 </div>
@@ -123,7 +126,7 @@ export default function SearchFundsPage() {
                 <ul className="mt-6 space-y-2.5 border-t border-line pt-6 flex-1">
                   {p.steps.map((s) => (
                     <li key={s} className="flex gap-2.5 text-sm text-ink-soft leading-relaxed">
-                      <span className="text-tiger font-bold shrink-0" aria-hidden>
+                      <span className="text-swell font-bold shrink-0" aria-hidden>
                         ✓
                       </span>
                       {s}
@@ -140,7 +143,7 @@ export default function SearchFundsPage() {
       <section className="bg-ink text-white">
         <div className="container-x py-16 md:py-24">
           <div className="rule rule-light max-w-2xl">
-            <p className="eyebrow text-tiger-light">Before you optimize anything</p>
+            <p className="eyebrow text-first-light">Before you optimize anything</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">
               Six things that break at close.
             </h2>
@@ -157,7 +160,7 @@ export default function SearchFundsPage() {
                 key={r.title}
                 className="flex flex-col rounded-lg border border-white/15 bg-white/[0.04] p-6 md:p-7"
               >
-                <span className="text-tiger-light">
+                <span className="text-first-light">
                   <Icon name={r.icon} className="w-8 h-8" />
                 </span>
                 <h3 className="mt-5 font-display font-bold text-lg tracking-tight">{r.title}</h3>
@@ -171,7 +174,7 @@ export default function SearchFundsPage() {
       {/* Verified numbers, pulled from lib/site.ts. */}
       <section className="container-x py-16 md:py-24">
         <div className="rule max-w-2xl">
-          <p className="eyebrow text-tiger">Results</p>
+          <p className="eyebrow text-swell">Results</p>
           <h2 className="display mt-3 text-3xl sm:text-4xl">Real numbers from real campaigns.</h2>
           <p className="mt-4 text-muted text-lg leading-relaxed">
             The same work, on the same kind of local service business a searcher buys.
@@ -199,7 +202,7 @@ export default function SearchFundsPage() {
           ))}
         </div>
         <p className="mt-6 text-sm text-muted">
-          Results shown are from Tiger Digital client campaigns. Individual results vary.
+          Results shown are from Next Set Digital client campaigns. Individual results vary.
         </p>
       </section>
 
@@ -207,7 +210,7 @@ export default function SearchFundsPage() {
       <section className="border-t border-line bg-paper">
         <div className="container-x py-16 md:py-24">
           <div className="rule max-w-2xl">
-            <p className="eyebrow text-tiger">Next</p>
+            <p className="eyebrow text-swell">Next</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">Read the plan for your deal.</h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -219,7 +222,7 @@ export default function SearchFundsPage() {
               >
                 <h3 className="font-display font-bold text-xl tracking-tight">{t.name}</h3>
                 <p className="mt-2 text-sm text-muted">{t.subtitle}</p>
-                <p className="mt-5 text-sm font-semibold inline-flex items-center gap-1.5 group-hover:text-tiger transition-colors">
+                <p className="mt-5 text-sm font-semibold inline-flex items-center gap-1.5 group-hover:text-swell transition-colors">
                   {t.plan.heading} <span aria-hidden>→</span>
                 </p>
               </Link>
