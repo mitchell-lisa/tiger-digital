@@ -14,7 +14,7 @@ import {
  *
  * Purely presentational: it takes a page and the shared defaults and draws
  * them with the site's existing design system, so these pages look like the
- * rest of tigerdigital.marketing rather than like a CMS theme. Editors change
+ * rest of the site rather than like a CMS theme. Editors change
  * content and section order in the Studio; the layout itself is not editable,
  * which is the point.
  *

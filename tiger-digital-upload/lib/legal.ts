@@ -41,7 +41,7 @@
  *   Revision dates, which the originals left blank.
  */
 
-export const termsOfService = `These terms of service (“Terms”) govern each user’s (“user” or “you” or “your”) access to and use of all services provided by Next Set Digital, including the website at https://tigerdigital.marketing/ (the “Next Set Digital Site”) (collectively, the “Services”), as well as any information, files or other materials uploaded, downloaded, transmitted or appearing on the Services (collectively referred to as “Content”). The Services are owned and provided by Tiger Digital LLC d/b/a Next Set Digital ("Next Set Digital" or "we" or "us").
+export const termsOfService = `These terms of service (“Terms”) govern each user’s (“user” or “you” or “your”) access to and use of all services provided by Next Set Digital, including the website at https://nextset.digital/ (the “Next Set Digital Site”) (collectively, the “Services”), as well as any information, files or other materials uploaded, downloaded, transmitted or appearing on the Services (collectively referred to as “Content”). The Services are owned and provided by Tiger Digital LLC d/b/a Next Set Digital ("Next Set Digital" or "we" or "us").
 
 Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms.
 
@@ -178,7 +178,7 @@ Email: Joe@tigerdigital.marketing
 
 Date of this revision: August 27, 2026.`;
 
-export const privacyStatement = `We are Next Set Digital. Formally, we are Tiger Digital LLC d/b/a Next Set Digital (“Next Set Digital”, “we”, “us” and “our”). Among other things, we provide marketing services to local and owner-operated businesses, including reputation management, local search visibility, and paid advertising. As part of this effort, we provide our services online, including via the website at https://tigerdigital.marketing/ (the “Next Set Digital Site”) (collectively, the “Services”).
+export const privacyStatement = `We are Next Set Digital. Formally, we are Tiger Digital LLC d/b/a Next Set Digital (“Next Set Digital”, “we”, “us” and “our”). Among other things, we provide marketing services to local and owner-operated businesses, including reputation management, local search visibility, and paid advertising. As part of this effort, we provide our services online, including via the website at https://nextset.digital/ (the “Next Set Digital Site”) (collectively, the “Services”).
 
 Each person or entity who uses our Services is referred to as a “user” or “you” or “your”. This Privacy Statement and our Terms of Service (“Terms”) apply to each user.
 
