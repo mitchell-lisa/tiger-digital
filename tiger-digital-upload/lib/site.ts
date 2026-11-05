@@ -2,13 +2,15 @@ import type { IconName } from "@/components/Icon";
 
 /**
  * Single source of truth for every business fact on the site.
- * Every value below was taken from tigerdigital.marketing (Aug 2026).
+ * Every value below was taken from the Tiger Digital site (Aug 2026).
  * Unknown facts are null and render nothing. Never guess.
  *
  * Renamed to Next Set Digital in October 2026. The LLC itself is still Tiger
  * Digital LLC, so `legalName` carries the d/b/a rather than the new name on
  * its own. The email and domain below are deliberately unchanged: the brand
- * book marks both PENDING and says not to invent replacements.
+ * book marked the email and domain PENDING in October 2026. The domain has
+ * since been decided and is set below; the email has not, so it still reads
+ * tigerdigital.marketing until a mailbox exists on the new one.
  */
 
 export const site = {
@@ -18,7 +20,7 @@ export const site = {
   tagline: "Marketing for the next generation of owners.",
   description:
     "Next Set Digital is a marketing agency for the next generation of owners: searchers and acquirers who bought an established business, and the next generation taking over the family business. Reviews, Google Maps and AI search rankings, and Google Ads that turn local search into customers you can count.",
-  url: "https://www.tigerdigital.marketing",
+  url: "https://nextset.digital",
 
   phone: "856-924-9880",
   phoneHref: "tel:+18569249880",
