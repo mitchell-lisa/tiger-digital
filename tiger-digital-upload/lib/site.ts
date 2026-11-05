@@ -22,7 +22,7 @@ export const site = {
 
   phone: "856-924-9880",
   phoneHref: "tel:+18569249880",
-  email: "Joe@tigerdigital.marketing",
+  email: "joe@nextset.digital",
   city: "Moorestown",
   state: "NJ",
   stateLong: "New Jersey",
@@ -39,7 +39,7 @@ export const site = {
   social: {
     // Instagram removed from the site in September 2026 at Joe's request: no
     // link, no icon, and not published in the sameAs list either.
-    linkedin: "https://www.linkedin.com/company/tiger-digital-llc",
+    linkedin: "https://www.linkedin.com/company/nextsetdigital",
     facebook: "https://www.facebook.com/profile.php?id=61564562785554",
   },
 
