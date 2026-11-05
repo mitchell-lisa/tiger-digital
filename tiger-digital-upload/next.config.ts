@@ -21,6 +21,15 @@ const nextConfig: NextConfig = {
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/testimonials", destination: "/#results", permanent: true },
 
+      // The Harvard page's slug was shortened in the Studio from
+      // harvard-business-school to harvard. The old URL was indexed, and a
+      // slug edit in a CMS leaves no redirect behind on its own.
+      {
+        source: "/search-funds/harvard-business-school",
+        destination: "/search-funds/harvard",
+        permanent: true,
+      },
+
       // Old and alternate domains, sent to the canonical one.
       //
       // `:path*` is the whole point: every one of these keeps the path, so
