@@ -23,6 +23,37 @@ export default function Footer() {
             generation of owners: reviews, Google rankings, and ads.
           </p>
           <p className="mt-2 text-white/50 text-xs">Formerly {site.formerName}.</p>
+
+          {/* Google Partner badge.
+              Loaded from Google's own URL rather than copied into public/ or
+              proxied through next/image: the badge reflects current standing
+              in the programme, so it has to be the live artwork, and Google's
+              terms expect it served from gstatic.
+
+              A plain <img> for the same reason, plus Next's optimiser skips
+              SVG unless dangerouslyAllowSVG is set, which is not worth turning
+              on for one badge.
+
+              The white tile is deliberate. The footer is Deep Water, and the
+              badge is Google's artwork, not ours - we cannot restyle it and it
+              is not guaranteed to read on navy. A light ground also gives it
+              the clear space Google's brand rules ask for. */}
+          <a
+            href="https://www.google.com/partners/agency?id=1247652471"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex rounded-md bg-paper p-2.5"
+            aria-label="Next Set Digital on Google Partners (opens in a new tab)"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg"
+              alt="Google Partner"
+              className="h-16 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
         </div>
 
         <div>
