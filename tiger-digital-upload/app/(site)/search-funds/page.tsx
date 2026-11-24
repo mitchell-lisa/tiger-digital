@@ -206,6 +206,25 @@ export default function SearchFundsPage() {
         </p>
       </section>
 
+      {/* Diligence sits before the track choice: it is the thing a searcher
+          needs while the deal is still open, not after it closes. */}
+      <section className="border-t border-line bg-cream">
+        <div className="container-x py-14 md:py-20 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="rule max-w-2xl">
+            <p className="eyebrow text-swell">Before you close</p>
+            <h2 className="display mt-3 text-2xl sm:text-3xl">Under LOI? We check the marketing before you close.</h2>
+            <p className="mt-4 text-muted leading-relaxed">
+              Almost every listing says the owner does no marketing. We tell you whether that is
+              real upside or a business that runs on the owner&rsquo;s relationships. Free snapshot
+              once you are under LOI.
+            </p>
+          </div>
+          <Link href="/search-funds/marketing-diligence" className="btn btn-primary shrink-0">
+            Marketing diligence
+          </Link>
+        </div>
+      </section>
+
       {/* Second pass at the track choice, for anyone who read the whole page. */}
       <section className="border-t border-line bg-paper">
         <div className="container-x py-16 md:py-24">

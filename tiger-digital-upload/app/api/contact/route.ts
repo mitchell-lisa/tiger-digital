@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import { site } from "@/lib/site";
 
 /**
- * Sends the consultation request to Joe via Resend.
+ * Sends a form submission to Joe via Resend.
+ *
+ * Two forms post here: the consultation form on /contact and the snapshot
+ * request on /search-funds/marketing-diligence. One route rather than two so
+ * there is a single place a lead can go missing. `formName` says which form
+ * it was, and the fields only one of them sends are optional throughout.
+ *
  * Required env vars on Vercel:
  *   RESEND_API_KEY   from resend.com
  *   CONTACT_TO       destination inbox (defaults to site.email)
@@ -26,6 +32,11 @@ export async function POST(req: Request) {
   const phone = (body.phone ?? "").trim().slice(0, 50);
   const interest = (body.interest ?? "").trim().slice(0, 100);
   const message = (body.message ?? "").trim().slice(0, 4000);
+  // Sent by the marketing diligence form only.
+  const formName = (body.formName ?? "").trim().slice(0, 100);
+  const role = (body.role ?? "").trim().slice(0, 100);
+  const location = (body.location ?? "").trim().slice(0, 200);
+  const stage = (body.stage ?? "").trim().slice(0, 100);
 
   if (!name || !business || !email.includes("@")) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -34,15 +45,23 @@ export async function POST(req: Request) {
   const key = process.env.RESEND_API_KEY;
   if (!key) return NextResponse.json({ error: "Email not configured" }, { status: 503 });
 
+  // Only the lines this submission actually has, so the diligence fields do
+  // not show up as a column of "n/a" on a consultation request.
   const text = [
+    `Form: ${formName || "Consultation request"}`,
     `Name: ${name}`,
     `Business: ${business}`,
     `Email: ${email}`,
     `Phone: ${phone || "n/a"}`,
-    `Interest: ${interest || "n/a"}`,
+    role && `Role: ${role}`,
+    location && `City and state: ${location}`,
+    stage && `Deal stage: ${stage}`,
+    interest && `Interest: ${interest}`,
     "",
     message || "(no message)",
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -51,7 +70,7 @@ export async function POST(req: Request) {
       from: process.env.CONTACT_FROM ?? "Next Set Digital <onboarding@resend.dev>",
       to: [process.env.CONTACT_TO ?? site.email],
       reply_to: email,
-      subject: `Consultation request: ${business} (${name})`,
+      subject: `${formName || "Consultation request"}: ${business} (${name})`,
       text,
     }),
   });

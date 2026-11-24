@@ -6,9 +6,17 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 
-const nav = [
+const nav: { href: string; label: string; children?: { href: string; label: string }[] }[] = [
   { href: "/services", label: "Services" },
-  { href: "/search-funds", label: "Search Funds" },
+  {
+    href: "/search-funds",
+    label: "Search Funds",
+    children: [
+      { href: "/search-funds/marketing-diligence", label: "Marketing Diligence" },
+      { href: "/search-funds/self-funded", label: "Self-funded search" },
+      { href: "/search-funds/traditional", label: "Traditional search funds" },
+    ],
+  },
   { href: "/#results", label: "Results" },
   { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" },
@@ -48,15 +56,40 @@ export default function Header() {
           />
         </Link>
 
+        {/* The submenu opens on hover and on focus-within. It is hidden with
+            opacity rather than `hidden` or `invisible` on purpose: both of
+            those take the links out of the tab order, which would mean the
+            panel could never be reached by keyboard to open in the first
+            place. Tabbing into a child reveals it. */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
           {nav.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-sm font-medium text-ink-soft hover:text-swell hover:underline underline-offset-8 decoration-2 transition-colors"
-            >
-              {n.label}
-            </Link>
+            <div key={n.href} className="relative group">
+              <Link
+                href={n.href}
+                className="text-sm font-medium text-ink-soft hover:text-swell hover:underline underline-offset-8 decoration-2 transition-colors"
+              >
+                {n.label}
+              </Link>
+              {n.children && (
+                <div className="absolute left-1/2 top-full z-10 -translate-x-1/2 pt-4 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
+                  <ul
+                    className="min-w-[15rem] rounded-md border border-line bg-paper p-2 shadow-[0_18px_50px_-24px_rgba(18,32,58,0.55)]"
+                    aria-label={n.label}
+                  >
+                    {n.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          className="block rounded px-3 py-2.5 text-sm text-ink-soft hover:bg-cream hover:text-swell transition-colors"
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -95,14 +128,30 @@ export default function Header() {
         <div id="mobile-nav" className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-cream border-t border-line">
           <nav className="container-x py-6 flex flex-col" aria-label="Mobile">
             {nav.map((n) => (
-              <Link
-                key={n.href}
-                href={n.href}
-                onClick={close}
-                className="py-4 text-xl font-display font-bold tracking-tight border-b border-line hover:text-swell"
-              >
-                {n.label}
-              </Link>
+              <div key={n.href} className="border-b border-line">
+                <Link
+                  href={n.href}
+                  onClick={close}
+                  className="block py-4 text-xl font-display font-bold tracking-tight hover:text-swell"
+                >
+                  {n.label}
+                </Link>
+                {n.children && (
+                  <ul className="pb-3 pl-4" aria-label={n.label}>
+                    {n.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          onClick={close}
+                          className="block py-2 text-base text-ink-soft hover:text-swell"
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             ))}
             <div className="mt-8 flex flex-col gap-3">
               <Link href="/contact" onClick={close} className="btn btn-primary w-full">
