@@ -242,6 +242,7 @@ export const clients: { name: string; logo?: string; url?: string; dark?: boolea
   { name: "ViperJet Drain Services", logo: "/clients/viperjet-drain.png", url: "https://www.viperjetdrain.com/" },
   { name: "Municipal Maintenance Co.", logo: "/clients/municipal-maintenance.png", url: "https://mmc-nj.com/" },
   { name: "The Food Architects", logo: "/clients/the-food-architects.png", url: "https://www.thefoodarchitectsnj.com/" },
+  { name: "Corvex Roofing", logo: "/clients/corvex-roofing.png", url: "https://corvexroofing.com/" },
 ];
 
 /**
