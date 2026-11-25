@@ -1,7 +1,7 @@
 import type { IconName } from "@/components/Icon";
 
 /**
- * Content for /search-funds/marketing-diligence.
+ * Content for /marketing-diligence.
  *
  * Kept out of the page for the same reason lib/search-funds.ts is: the copy is
  * the part that gets revised, and it is easier to revise a list than a tree of

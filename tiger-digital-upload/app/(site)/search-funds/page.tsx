@@ -219,7 +219,7 @@ export default function SearchFundsPage() {
               once you are under LOI.
             </p>
           </div>
-          <Link href="/search-funds/marketing-diligence" className="btn btn-primary shrink-0">
+          <Link href="/marketing-diligence" className="btn btn-primary shrink-0">
             Marketing diligence
           </Link>
         </div>

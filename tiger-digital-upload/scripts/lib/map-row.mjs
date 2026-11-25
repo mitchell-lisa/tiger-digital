@@ -11,7 +11,7 @@
 const shortSlug = (slug) => slug.replace(/^search-fund-marketing-/, "").trim();
 
 /** Slugs that already belong to hand-built pages under /search-funds. */
-const RESERVED_SLUGS = new Set(["self-funded", "traditional", "marketing-diligence"]);
+const RESERVED_SLUGS = new Set(["self-funded", "traditional"]);
 
 const STATUS = { draft: "draft", "needs revision": "needs-revision", approved: "approved" };
 

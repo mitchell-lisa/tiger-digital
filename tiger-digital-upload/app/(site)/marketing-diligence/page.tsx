@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: { absolute: "Marketing Diligence for Searchers | Next Set Digital" },
   description:
     "Just signed an LOI? Find out if “the owner does no marketing” is real upside. Free snapshot, full diligence report, and a day-one plan.",
-  alternates: { canonical: "/search-funds/marketing-diligence" },
+  alternates: { canonical: "/marketing-diligence" },
 };
 
 /**
- * This route sits beside the CMS-driven /search-funds/[slug] segment. A static
- * route at this level wins over the dynamic one, and "marketing-diligence" is
- * in the importer's reserved slugs, so a landing page cannot take it over.
+ * Top level rather than under /search-funds. Diligence is sold to brokers and
+ * lenders as well as to searchers, and a page they are sent to directly reads
+ * oddly as a child of a page about search fund structures.
  */
 
 /** The proof figures already published on /services. Nothing new is claimed. */

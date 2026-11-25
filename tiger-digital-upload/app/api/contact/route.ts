@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
  * Sends a form submission to Joe via Resend.
  *
  * Two forms post here: the consultation form on /contact and the snapshot
- * request on /search-funds/marketing-diligence. One route rather than two so
+ * request on /marketing-diligence. One route rather than two so
  * there is a single place a lead can go missing. `formName` says which form
  * it was, and the fields only one of them sends are optional throughout.
  *

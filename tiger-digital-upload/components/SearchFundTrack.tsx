@@ -230,7 +230,7 @@ export default function SearchFundTrack({ track }: { track: Track }) {
           <p className="mt-10 font-semibold text-ink">
             Under LOI? We check the marketing before you close.{" "}
             <Link
-              href="/search-funds/marketing-diligence"
+              href="/marketing-diligence"
               className="text-swell hover:underline"
             >
               Request a free snapshot

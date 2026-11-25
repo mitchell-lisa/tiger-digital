@@ -131,7 +131,7 @@ export default function ServicesPage() {
             <p className="mt-3 font-semibold text-ink">Under LOI? We check the marketing before you close.</p>
           </div>
           <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-            <Link href="/search-funds/marketing-diligence" className="btn btn-primary">
+            <Link href="/marketing-diligence" className="btn btn-primary">
               Marketing diligence
             </Link>
             <Link href="/search-funds/self-funded" className="btn btn-outline">
