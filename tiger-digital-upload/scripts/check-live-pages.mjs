@@ -38,6 +38,27 @@ if (!res.ok) {
 const { result } = await res.json();
 const slugs = result.map((r) => r.slug);
 
+/**
+ * The site's own pages, as opposed to the ones Sanity publishes.
+ *
+ * Checking these is how we find out whether a deploy actually happened. A
+ * merge to main only puts code in the repository; something else has to turn
+ * it into the website, and when that step fails it fails quietly. A page that
+ * exists in the repository and 404s in public is the exact gap this closes.
+ */
+const PAGES = [
+  "/",
+  "/services",
+  "/search-funds",
+  "/search-funds/self-funded",
+  "/search-funds/traditional",
+  "/marketing-diligence",
+  "/team",
+  "/contact",
+  "/privacy",
+  "/terms",
+];
+
 if (slugs.length === 0) {
   console.error("Sanity reports no published landing pages. Nothing to check.");
   process.exit(1);
@@ -47,8 +68,9 @@ let failures = 0;
 for (const site of sites) {
   console.log(`\n${site}`);
   let bad = 0;
-  for (const slug of slugs) {
-    const target = `${site}/search-funds/${slug}`;
+  const targets = [...PAGES, ...slugs.map((slug) => `/search-funds/${slug}`)];
+  for (const path of targets) {
+    const target = `${site}${path}`;
     let status = "ERR";
     try {
       // Follow redirects so a 301 to a 404 page is reported as the 404 it is,
@@ -64,8 +86,8 @@ for (const site of sites) {
   }
   console.log(
     bad === 0
-      ? `  -> all ${slugs.length} pages load on this address`
-      : `  -> ${bad} of ${slugs.length} pages do not load on this address`,
+      ? `  -> all ${targets.length} pages load on this address`
+      : `  -> ${bad} of ${targets.length} pages do not load on this address`,
   );
   failures += bad;
 }
