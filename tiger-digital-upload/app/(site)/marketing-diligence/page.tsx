@@ -157,7 +157,7 @@ export default function MarketingDiligencePage() {
                 <Icon name="tag" className="w-8 h-8" />
               </span>
               <p className="text-lg text-ink-soft leading-relaxed">
-                If you close and hire us, the report counts as your first month.
+                If you close and hire us, the report counts towards your first month.
               </p>
             </li>
           </ul>
