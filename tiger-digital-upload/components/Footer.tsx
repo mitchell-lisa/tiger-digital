@@ -61,6 +61,7 @@ export default function Footer() {
           <ul className="space-y-2.5 text-sm">
             <li><Link href="/services" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Services</Link></li>
             <li><Link href="/search-funds" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Search Funds</Link></li>
+            <li><Link href="/marketing-diligence" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Marketing diligence</Link></li>
             <li><Link href="/search-funds/self-funded" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Self-funded search</Link></li>
             <li><Link href="/search-funds/traditional" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Traditional search funds</Link></li>
             <li><Link href="/#results" className="hover:text-first-light hover:underline underline-offset-4 transition-colors">Results</Link></li>

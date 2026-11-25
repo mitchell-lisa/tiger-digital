@@ -128,8 +128,12 @@ export default function ServicesPage() {
               A searcher has a very different first ninety days than an owner who has been running
               the place for twenty years. We wrote the plan out for both structures.
             </p>
+            <p className="mt-3 font-semibold text-ink">Under LOI? We check the marketing before you close.</p>
           </div>
           <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+            <Link href="/marketing-diligence" className="btn btn-primary">
+              Marketing diligence
+            </Link>
             <Link href="/search-funds/self-funded" className="btn btn-outline">
               Self-funded search
             </Link>

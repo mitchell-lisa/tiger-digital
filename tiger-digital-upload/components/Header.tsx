@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 const nav = [
   { href: "/services", label: "Services" },
   { href: "/search-funds", label: "Search Funds" },
+  { href: "/marketing-diligence", label: "Marketing Diligence" },
   { href: "/#results", label: "Results" },
   { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" },
@@ -48,12 +49,12 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
           {nav.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm font-medium text-ink-soft hover:text-swell hover:underline underline-offset-8 decoration-2 transition-colors"
+              className="text-sm font-medium text-ink-soft hover:text-swell hover:underline underline-offset-8 decoration-2 transition-colors whitespace-nowrap"
             >
               {n.label}
             </Link>

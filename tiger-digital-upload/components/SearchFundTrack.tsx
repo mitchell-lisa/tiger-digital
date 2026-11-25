@@ -227,7 +227,18 @@ export default function SearchFundTrack({ track }: { track: Track }) {
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-muted">
+          <p className="mt-10 font-semibold text-ink">
+            Under LOI? We check the marketing before you close.{" "}
+            <Link
+              href="/marketing-diligence"
+              className="text-swell hover:underline"
+            >
+              Request a free snapshot
+            </Link>
+            .
+          </p>
+
+          <p className="mt-4 text-muted">
             Still deciding which structure fits?{" "}
             <Link href="/search-funds" className="font-semibold text-swell hover:underline">
               Start with the overview
