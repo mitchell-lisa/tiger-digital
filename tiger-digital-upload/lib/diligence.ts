@@ -97,7 +97,7 @@ export const pricing: { name: string; price: string; when: string; note?: string
     name: "Marketing Diligence Report",
     price: "$1,000",
     when: "During diligence",
-    note: "Counts as your first month if you sign on after close.",
+    note: "Counts towards your first month.",
   },
 ];
 
